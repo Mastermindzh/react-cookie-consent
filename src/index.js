@@ -100,7 +100,7 @@ class CookieConsent extends Component {
     }
 
     return (
-      <div style={myStyle}>
+      <div className="cookieConsent" style={myStyle}>
         {this.props.children}
         <button
           style={myButtonStyle}

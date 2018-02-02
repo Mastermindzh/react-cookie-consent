@@ -810,7 +810,7 @@ var CookieConsent = function (_Component) {
 
       return _react2.default.createElement(
         "div",
-        { style: myStyle },
+        { className: "cookieConsent", style: myStyle },
         this.props.children,
         _react2.default.createElement(
           "button",

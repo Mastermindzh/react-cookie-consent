@@ -4,7 +4,7 @@
 
 A small, simple and customizable cookie consent bar for use in React applications.
 
-![default look](images/default.png)
+![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)
 
 ## Installation
 
@@ -73,8 +73,8 @@ On of the props (onAccept) is a function, this function will be called after the
 | buttonText    |              string              | I understand  | Text to appear on the button                                                                          |
 | cookieName    |              string              | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
 | onAccept      |             function             | () => {}      | Function to be called after the accept button has been clicked.                                       |
-| style         |              Object              |  ![barstyle](images/barStyle.png)             | React styling object for the bar.                                                                     |
-| buttonStyle   |              Object              |   ![buttonStyle](images/buttonStyle.png)              | React styling object for the button.                                                                  |
+| style         |              Object              |  ![barstyle](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/barStyle.png?raw=true)             | React styling object for the bar.                                                                     |
+| buttonStyle   |              Object              |   ![buttonStyle](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/buttonStyle.png?raw=true)              | React styling object for the button.                                                                  |
 
 
 
@@ -106,7 +106,7 @@ You can use `disableStyles={true}` to disable any built-in styling.
 
 #### rainbows!
 
-![rainbows!](images/rainbow.png)
+![rainbows!](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/rainbow.png?raw=true)
 
 If you're crazy enough you can even make a rainbow colored bar:
 

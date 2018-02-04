@@ -7,7 +7,7 @@ class App extends Component {
 
   render() {
 
-    Cookies.set("test", "nice2")
+    Cookies.set("test", "nice")
 
     return (
       <div className="App">

@@ -9,8 +9,7 @@
   "main": "build/index.js",
   "dependencies": {
     "js-cookie": "^2.2.0",
-    "react": "^15.5.4",
-    "webpack": "^2.6.1"
+    "react": "^15.5.4"
   },
   "scripts": {
     "build": "webpack"
@@ -38,6 +37,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.5.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1"
+    "babel-preset-stage-1": "^6.24.1",
+    "webpack": "^2.6.1"
   }
 }

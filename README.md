@@ -1,7 +1,5 @@
 # :cookie: react-cookie-consent :cookie:
 
-![build](https://img.shields.io/travis/rust-lang/rust.svg?maxAge=2592000)
-
 A small, simple and customizable cookie consent bar for use in React applications.
 
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)

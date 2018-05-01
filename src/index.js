@@ -123,7 +123,7 @@ CookieConsent.propTypes = {
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
   onAccept: PropTypes.func,
-  buttonText: PropTypes.string,
+  buttonText: PropTypes.oneOf([PropTypes.string,PropTypes.func])
   cookieName: PropTypes.string
 };
 CookieConsent.defaultProps = {

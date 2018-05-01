@@ -4,6 +4,7 @@ A small, simple and customizable cookie consent bar for use in React application
 
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)
 
+
 ## Installation
 
 ```
@@ -15,6 +16,8 @@ or use yarn:
 ```
 yarn add react-cookie-consent
 ```
+
+More details on [npmjs](https://www.npmjs.com/package/react-cookie-consent).
 
 ## Using it
 

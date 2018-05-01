@@ -2,6 +2,10 @@
 
 A small, simple and customizable cookie consent bar for use in React applications.
 
+[![NPM](https://nodei.co/npm/react-cookie-consent.png)](https://npmjs.org/package/react-cookie-consent)
+
+## Default look
+
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)
 
 
@@ -16,8 +20,6 @@ or use yarn:
 ```
 yarn add react-cookie-consent
 ```
-
-More details on [npmjs](https://www.npmjs.com/package/react-cookie-consent).
 
 ## Using it
 

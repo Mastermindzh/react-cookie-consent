@@ -93,7 +93,6 @@ You can use `disableStyles={true}` to disable any built-in styling.
 #### changing the bar background to red
 
 ```js
-
 <CookieConsent
     style={{ background: "red" }}
 >
@@ -107,9 +106,6 @@ You can use `disableStyles={true}` to disable any built-in styling.
 >
 </CookieConsent>
 ```
-
-
-
 
 #### rainbows!
 

@@ -57,7 +57,7 @@ You can optionally set some props like this (next chapter will show all props):
 </CookieConsent>
 ```
 
-On of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. You can provide a function like so:
+One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. You can provide a function like so:
 
 ```js
 <CookieConsent
@@ -81,7 +81,7 @@ On of the props (onAccept) is a function, this function will be called after the
 
 
 
-## styling it
+## Styling it
 
 You can provide styling for both the bar and the button.
 You can do this using the `style` and `buttonStyle` prop, both of these will append / replace the default style of the component.
@@ -127,12 +127,12 @@ If you're crazy enough you can even make a rainbow colored bar:
 </CookieConsent>
 ```
 
-## debugging it
+## Debugging it
 
-Because the cookie consent bar is only shown the first time, you need to remove the cookie, if you want to evaluate changes:
+Because the cookie consent bar will be hidden once accepted, you will have to remove the cookie if you want to evaluate changes:
 
 ```js
-// import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent, { Cookies } from "react-cookie-consent";
 
 {Cookies.remove("myAwesomeCookieName2")}
 <CookieConsent

@@ -30,7 +30,7 @@ import CookieConsent from "react-cookie-consent";
 ```
 If you want to set/remove cookies yourself you can optionally import Cookie (straight from js-cookie) like this:
 ```js
-import CookieConsent, { Cookie } from "react-cookie-consent";
+import CookieConsent, { Cookies } from "react-cookie-consent";
 ```
 
 Then you can use the component anywhere in your React app like so:
@@ -127,3 +127,16 @@ If you're crazy enough you can even make a rainbow colored bar:
 </CookieConsent>
 ```
 
+## debugging it
+
+Because the cookie consent bar is only shown the first time, you need to remove the cookie, if you want to evaluate changes:
+
+```js
+// import CookieConsent, { Cookies } from "react-cookie-consent";
+
+{Cookies.remove("myAwesomeCookieName2")}
+<CookieConsent
+    cookieName="myAwesomeCookieName2"
+>
+</CookieConsent>
+```

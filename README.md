@@ -4,6 +4,12 @@ A small, simple and customizable cookie consent bar for use in React application
 
 [![NPM](https://nodei.co/npm/react-cookie-consent.png)](https://npmjs.org/package/react-cookie-consent)
 
+
+Demo: https://mastermindzh.github.io/react-cookie-consent/
+
+Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/example
+
+
 ## Default look
 
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)

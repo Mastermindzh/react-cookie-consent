@@ -76,13 +76,13 @@ class CookieConsent extends Component {
 
     let myStyle = {};
     let myButtonStyle = {};
-    let myTextStyle = {};
+    let myContentStyle = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or non)
       myStyle = Object.assign({}, style);
       myButtonStyle = Object.assign({}, buttonStyle);
-      myTextStyle = Object.assign({}, contentStyle);
+      myContentStyle = Object.assign({}, contentStyle);
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
@@ -90,7 +90,7 @@ class CookieConsent extends Component {
         {},
         { ...this.state.buttonStyle, ...buttonStyle }
       );
-      myTextStyle = Object.assign(
+      myContentStyle = Object.assign(
         {},
         { ...this.state.contentStyle, ...contentStyle }
       );
@@ -109,7 +109,7 @@ class CookieConsent extends Component {
 
     return (
       <div className="cookieConsent" style={myStyle}>
-        <div style={myTextStyle}>{this.props.children}</div>
+        <div style={myContentStyle}>{this.props.children}</div>
         <button
           style={myButtonStyle}
           onClick={() => {

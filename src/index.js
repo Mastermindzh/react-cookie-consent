@@ -26,7 +26,6 @@ class CookieConsent extends Component {
         width: "100%",
         zIndex: "999"
       },
-      contentStyle: {},
       buttonStyle: {
         background: "#ffd42d",
         border: "0",
@@ -36,7 +35,8 @@ class CookieConsent extends Component {
         flex: "0 0 auto",
         marginLeft: "15px",
         padding: "5px 10px"
-      }
+      },
+      contentStyle: {}
     };
   }
 

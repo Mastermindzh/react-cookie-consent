@@ -15,33 +15,35 @@ class CookieConsent extends Component {
     this.state = {
       visible: true,
       style: {
-        position: "fixed",
-        width: "100%",
-        padding: "15px",
+        alignItems: "baseline",
         background: "#353535",
         color: "white",
+        display: "flex",
+        justifyContent: "space-between",
         left: "0",
-        zIndex: "999",
-        lineHeight: "30px",
-        textAlign: "left"
+        padding: "15px",
+        position: "fixed",
+        width: "100%",
+        zIndex: "999"
       },
+      contentStyle: {},
       buttonStyle: {
-        position: "absolute",
-        right: "50px",
-        border: "0",
         background: "#ffd42d",
-        boxShadow: "none",
+        border: "0",
         borderRadius: "0px",
-        padding: "5px",
-        color: "black"
+        boxShadow: "none",
+        color: "black",
+        flex: "0 0 auto",
+        marginLeft: "15px",
+        padding: "5px 10px"
       }
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     const { cookieName } = this.props;
 
-    if (Cookies.get(cookieName) != undefined ) {
+    if (Cookies.get(cookieName) != undefined) {
       this.setState({ visible: false });
     }
   }
@@ -57,7 +59,6 @@ class CookieConsent extends Component {
   }
 
   render() {
-
     // If the bar shouldn't be visible don't render anything.
     if (!this.state.visible) {
       return null;
@@ -67,24 +68,31 @@ class CookieConsent extends Component {
       location,
       style,
       buttonStyle,
+      contentStyle,
       disableStyles,
       onAccept,
       buttonText
     } = this.props;
 
-    let myStyle = {},
-      myButtonStyle = {};
+    let myStyle = {};
+    let myButtonStyle = {};
+    let myTextStyle = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or non)
       myStyle = Object.assign({}, style);
       myButtonStyle = Object.assign({}, buttonStyle);
+      myTextStyle = Object.assign({}, contentStyle);
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
       myButtonStyle = Object.assign(
         {},
         { ...this.state.buttonStyle, ...buttonStyle }
+      );
+      myTextStyle = Object.assign(
+        {},
+        { ...this.state.contentStyle, ...contentStyle }
       );
     }
 
@@ -101,7 +109,7 @@ class CookieConsent extends Component {
 
     return (
       <div className="cookieConsent" style={myStyle}>
-        {this.props.children}
+        <div style={myTextStyle}>{this.props.children}</div>
         <button
           style={myButtonStyle}
           onClick={() => {
@@ -120,10 +128,15 @@ CookieConsent.propTypes = {
   location: PropTypes.oneOf(["top", "bottom"]),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
+  contentStyle: PropTypes.object,
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
   onAccept: PropTypes.func,
-  buttonText: PropTypes.oneOfType([PropTypes.string,PropTypes.func,PropTypes.element]),
+  buttonText: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.element
+  ]),
   cookieName: PropTypes.string
 };
 CookieConsent.defaultProps = {
@@ -135,4 +148,4 @@ CookieConsent.defaultProps = {
 };
 
 export default CookieConsent;
-export {Cookies};
+export { Cookies };

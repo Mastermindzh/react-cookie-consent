@@ -82,8 +82,8 @@ One of the props (onAccept) is a function, this function will be called after th
 | buttonText    | String or React component        | I understand  | Text to appear on the button                                                                          |
 | cookieName    | string                           | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
 | onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
-| style      | Object                           | [style](style) | React styling object for the bar.                                                                       |
-| buttonStyle   | Object                           | [buttonStyle](buttonStyle) | React styling object for the button.                                                     |
+| style         | Object                           | [look at source][style] | React styling object for the bar.                                                           |
+| buttonStyle   | Object                           | [look at source][buttonStyle] | React styling object for the button.                                                  |
 | contentStyle  | Object                           | {}            | React styling object for the content.                                                                 |
 
 ## Styling it

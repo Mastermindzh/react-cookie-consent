@@ -147,5 +147,5 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 </CookieConsent>
 ```
 
-[style]: https://github.com/karland/react-cookie-consent/blob/master/src/index.js#L17-L28
-[buttonStyle]: https://github.com/karland/react-cookie-consent/blob/master/src/index.js#L29-L38
+[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38

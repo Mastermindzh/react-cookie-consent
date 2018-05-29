@@ -88,8 +88,9 @@ One of the props (onAccept) is a function, this function will be called after th
 
 ## Styling it
 
-You can provide styling for both the bar and the button.
-You can do this using the `style` and `buttonStyle` prop, both of these will append / replace the default style of the component.
+You can provide styling for the bar, for the button and the content. Note that the bar is a parent has a `display: flex` property as default and is parent to its children content and button. 
+
+You can style each component with using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
 
 You can use `disableStyles={true}` to disable any built-in styling.
 

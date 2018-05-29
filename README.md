@@ -88,7 +88,7 @@ One of the props (onAccept) is a function, this function will be called after th
 
 ## Styling it
 
-You can provide styling for the bar, for the button and the content. Note that the bar is a parent has a `display: flex` property as default and is parent to its children content and button. 
+You can provide styling for the bar, for the button and the content. Note that the bar has a `display: flex` property as default and is parent to its children content and button. 
 
 You can style each component with using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
 

@@ -77,20 +77,20 @@ One of the props (onAccept) is a function, this function will be called after th
 | Prop          |               Type               | Default value | Description                                                                                           |
 |---------------|:--------------------------------:|---------------|-------------------------------------------------------------------------------------------------------|
 | location      | String, either "top" or "bottom" | bottom        | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
-| children      |     String or React component    |               | Content to appear inside the bar                                                                      |
-| disableStyles |              boolean             | false         | If enabled the component will have no default style. (you can still supply style through props)       |
-| buttonText    |              String or React component              | I understand  | Text to appear on the button                                                                          |
-| cookieName    |              string              | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
-| onAccept      |             function             | () => {}      | Function to be called after the accept button has been clicked.                                       |
-| style         |              Object              |  ![barstyle](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/barStyle.png?raw=true)             | React styling object for the bar.                                                                     |
-| buttonStyle   |              Object              |   ![buttonStyle](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/buttonStyle.png?raw=true)              | React styling object for the button.                                                                  |
-
-
+| children      | String or React component        |               | Content to appear inside the bar                                                                      |
+| disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
+| buttonText    | String or React component        | I understand  | Text to appear on the button                                                                          |
+| cookieName    | string                           | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
+| onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
+| style         | Object                           | [look at source][style] | React styling object for the bar.                                                           |
+| buttonStyle   | Object                           | [look at source][buttonStyle] | React styling object for the button.                                                  |
+| contentStyle  | Object                           | {}            | React styling object for the content.                                                                 |
 
 ## Styling it
 
-You can provide styling for both the bar and the button.
-You can do this using the `style` and `buttonStyle` prop, both of these will append / replace the default style of the component.
+You can provide styling for the bar, for the button and the content. Note that the bar has a `display: flex` property as default and is parent to its children content and button. 
+
+You can style each component with using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
 
 You can use `disableStyles={true}` to disable any built-in styling.
 
@@ -146,3 +146,6 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 >
 </CookieConsent>
 ```
+
+[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38

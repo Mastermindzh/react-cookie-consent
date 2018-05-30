@@ -736,7 +736,8 @@ var CookieConsent = function (_Component) {
         color: "black",
         flex: "0 0 auto",
         marginLeft: "15px",
-        padding: "5px 10px"
+        padding: "5px 10px",
+        marginRight: "25px"
       },
       contentStyle: {}
     };

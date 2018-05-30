@@ -4,12 +4,12 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "dependencies": {
     "js-cookie": "^2.2.0",
-    "react": "^15.5.4"
+    "react": "^16.4.0"
   },
   "scripts": {
     "build": "webpack"

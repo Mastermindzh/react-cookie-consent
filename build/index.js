@@ -717,26 +717,28 @@ var CookieConsent = function (_Component) {
     _this.state = {
       visible: true,
       style: {
-        position: "fixed",
-        width: "100%",
-        padding: "15px",
+        alignItems: "baseline",
         background: "#353535",
         color: "white",
+        display: "flex",
+        justifyContent: "space-between",
         left: "0",
-        zIndex: "999",
-        lineHeight: "30px",
-        textAlign: "left"
+        padding: "15px",
+        position: "fixed",
+        width: "100%",
+        zIndex: "999"
       },
       buttonStyle: {
-        position: "absolute",
-        right: "50px",
-        border: "0",
         background: "#ffd42d",
-        boxShadow: "none",
+        border: "0",
         borderRadius: "0px",
-        padding: "5px",
-        color: "black"
-      }
+        boxShadow: "none",
+        color: "black",
+        flex: "0 0 auto",
+        marginLeft: "15px",
+        padding: "5px 10px"
+      },
+      contentStyle: {}
     };
     return _this;
   }
@@ -779,22 +781,26 @@ var CookieConsent = function (_Component) {
           location = _props.location,
           style = _props.style,
           buttonStyle = _props.buttonStyle,
+          contentStyle = _props.contentStyle,
           disableStyles = _props.disableStyles,
           onAccept = _props.onAccept,
           buttonText = _props.buttonText;
 
 
-      var myStyle = {},
-          myButtonStyle = {};
+      var myStyle = {};
+      var myButtonStyle = {};
+      var myContentStyle = {};
 
       if (disableStyles) {
         // if styles are disabled use the provided styles (or non)
         myStyle = Object.assign({}, style);
         myButtonStyle = Object.assign({}, buttonStyle);
+        myContentStyle = Object.assign({}, contentStyle);
       } else {
         // if styles aren't disabled merge them with the styles that are provided (or use default styles)
         myStyle = Object.assign({}, _extends({}, this.state.style, style));
         myButtonStyle = Object.assign({}, _extends({}, this.state.buttonStyle, buttonStyle));
+        myContentStyle = Object.assign({}, _extends({}, this.state.contentStyle, contentStyle));
       }
 
       // syntactic sugar to enable user to easily select top / bottom
@@ -811,7 +817,11 @@ var CookieConsent = function (_Component) {
       return _react2.default.createElement(
         "div",
         { className: "cookieConsent", style: myStyle },
-        this.props.children,
+        _react2.default.createElement(
+          "div",
+          { style: myContentStyle },
+          this.props.children
+        ),
         _react2.default.createElement(
           "button",
           {
@@ -834,6 +844,7 @@ CookieConsent.propTypes = {
   location: _propTypes2.default.oneOf(["top", "bottom"]),
   style: _propTypes2.default.object,
   buttonStyle: _propTypes2.default.object,
+  contentStyle: _propTypes2.default.object,
   children: _propTypes2.default.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: _propTypes2.default.bool,
   onAccept: _propTypes2.default.func,

@@ -91,6 +91,8 @@ One of the props (onAccept) is a function, this function will be called after th
 
 You can provide styling for the bar, the button and the content. Note that the bar has a `display: flex` property as default and is parent to its children "content" and "button".
 
+The styling behaves kind of responsive. The minimum content width has been chosen to be "300px" as a default value. If the button does not fit into the same line it is wrapped around into the next line.
+
 You can style each component by using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
 
 You can use `disableStyles={true}` to disable any built-in styling.

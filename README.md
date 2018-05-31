@@ -82,9 +82,9 @@ One of the props (onAccept) is a function, this function will be called after th
 | buttonText    | String or React component        | I understand  | Text to appear on the button                                                                          |
 | cookieName    | string                           | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
 | onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
-| style         | Object                           | [look at source][style] | React styling object for the bar.                                                           |
-| buttonStyle   | Object                           | [look at source][buttonStyle] | React styling object for the button.                                                  |
-| contentStyle  | Object                           | {}            | React styling object for the content.                                                                 |
+| style         | Object                           | [look at source][style]        | React styling object for the bar.                                                    |
+| buttonStyle   | Object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
+| contentStyle  | Object                           | [look at source][contentStyle] | React styling object for the content.                                                |
 | debug         | boolean                          | undefined     | Cookie is removed to debug styling.                                                                   |
 
 ## Styling it
@@ -148,4 +148,5 @@ Because the cookie consent bar will be hidden once accepted, you will have to se
 **Note:** Dont forget to remove the `debug`-property for production.
 
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
-[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L39
+[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L40-L43

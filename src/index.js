@@ -19,9 +19,9 @@ class CookieConsent extends Component {
         background: "#353535",
         color: "white",
         display: "flex",
+        flexWrap: "wrap"
         justifyContent: "space-between",
         left: "0",
-        padding: "15px",
         position: "fixed",
         width: "100%",
         zIndex: "999"
@@ -35,22 +35,23 @@ class CookieConsent extends Component {
         flex: "0 0 auto",
         marginLeft: "15px",
         padding: "5px 10px",
-        marginRight: "25px"
+        margin: "15px"
       },
-      contentStyle: {}
+      contentStyle: {
+        flex: "1 0 300px",
+        margin: "15px"
+      }
     };
   }
 
   componentWillMount() {
     const { cookieName, debug } = this.props;
 
-    if (Cookies.get(cookieName) !== undefined) {
+    if (
+      !(debug !== undefined && debug) &&
+      Cookies.get(cookieName) !== undefined
+    ) {
       this.setState({ visible: false });
-    }
-
-    if (debug !== undefined && debug) {
-      Cookies.remove(cookieName);
-      this.setState({ visible: true });
     }
   }
 

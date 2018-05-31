@@ -85,6 +85,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | style         | Object                           | [look at source][style] | React styling object for the bar.                                                           |
 | buttonStyle   | Object                           | [look at source][buttonStyle] | React styling object for the button.                                                  |
 | contentStyle  | Object                           | {}            | React styling object for the content.                                                                 |
+| debug         | boolean                          | undefined     | Cookie is removed to debug styling.                                                                   |
 
 ## Styling it
 
@@ -135,17 +136,16 @@ If you're crazy enough you can even make a rainbow colored bar:
 
 ## Debugging it
 
-Because the cookie consent bar will be hidden once accepted, you will have to remove the cookie if you want to evaluate changes:
+Because the cookie consent bar will be hidden once accepted, you will have to set the prop `debug={true}` to evaluate styling changes:
 
 ```js
-import CookieConsent, { Cookies } from "react-cookie-consent";
-
-{Cookies.remove("myAwesomeCookieName2")}
 <CookieConsent
-    cookieName="myAwesomeCookieName2"
+    debug={true}
 >
 </CookieConsent>
 ```
+
+**Note:** Dont forget to remove the `debug`-property for production.
 
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
 [buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38

@@ -19,7 +19,7 @@ class CookieConsent extends Component {
         background: "#353535",
         color: "white",
         display: "flex",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
         justifyContent: "space-between",
         left: "0",
         position: "fixed",
@@ -33,7 +33,6 @@ class CookieConsent extends Component {
         boxShadow: "none",
         color: "black",
         flex: "0 0 auto",
-        marginLeft: "15px",
         padding: "5px 10px",
         margin: "15px"
       },
@@ -48,8 +47,7 @@ class CookieConsent extends Component {
     const { cookieName, debug } = this.props;
 
     // debug not desired and cookieName not undefined
-    if (
-      !(debug !== undefined && debug) &&
+    if (!debug &&
       Cookies.get(cookieName) !== undefined
     ) {
       this.setState({ visible: false });
@@ -145,14 +143,17 @@ CookieConsent.propTypes = {
     PropTypes.func,
     PropTypes.element
   ]),
-  cookieName: PropTypes.string
+  cookieName: PropTypes.string,
+  debug: PropTypes.bool
 };
+
 CookieConsent.defaultProps = {
   disableStyles: false,
   location: OPTIONS.BOTTOM,
   onAccept: () => {},
   cookieName: "CookieConsent",
-  buttonText: "I understand"
+  buttonText: "I understand",
+  debug: false
 };
 
 export default CookieConsent;

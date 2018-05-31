@@ -721,9 +721,9 @@ var CookieConsent = function (_Component) {
         background: "#353535",
         color: "white",
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "space-between",
         left: "0",
-        padding: "15px",
         position: "fixed",
         width: "100%",
         zIndex: "999"
@@ -735,11 +735,13 @@ var CookieConsent = function (_Component) {
         boxShadow: "none",
         color: "black",
         flex: "0 0 auto",
-        marginLeft: "15px",
         padding: "5px 10px",
-        marginRight: "25px"
+        margin: "15px"
       },
-      contentStyle: {}
+      contentStyle: {
+        flex: "1 0 300px",
+        margin: "15px"
+      }
     };
     return _this;
   }
@@ -747,10 +749,13 @@ var CookieConsent = function (_Component) {
   _createClass(CookieConsent, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      var cookieName = this.props.cookieName;
+      var _props = this.props,
+          cookieName = _props.cookieName,
+          debug = _props.debug;
 
+      // debug not desired and cookieName not undefined
 
-      if (_jsCookie2.default.get(cookieName) != undefined) {
+      if (!debug && _jsCookie2.default.get(cookieName) !== undefined) {
         this.setState({ visible: false });
       }
     }
@@ -778,14 +783,14 @@ var CookieConsent = function (_Component) {
         return null;
       }
 
-      var _props = this.props,
-          location = _props.location,
-          style = _props.style,
-          buttonStyle = _props.buttonStyle,
-          contentStyle = _props.contentStyle,
-          disableStyles = _props.disableStyles,
-          onAccept = _props.onAccept,
-          buttonText = _props.buttonText;
+      var _props2 = this.props,
+          location = _props2.location,
+          style = _props2.style,
+          buttonStyle = _props2.buttonStyle,
+          contentStyle = _props2.contentStyle,
+          disableStyles = _props2.disableStyles,
+          onAccept = _props2.onAccept,
+          buttonText = _props2.buttonText;
 
 
       var myStyle = {};
@@ -850,14 +855,17 @@ CookieConsent.propTypes = {
   disableStyles: _propTypes2.default.bool,
   onAccept: _propTypes2.default.func,
   buttonText: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func, _propTypes2.default.element]),
-  cookieName: _propTypes2.default.string
+  cookieName: _propTypes2.default.string,
+  debug: _propTypes2.default.bool
 };
+
 CookieConsent.defaultProps = {
   disableStyles: false,
   location: OPTIONS.BOTTOM,
   onAccept: function onAccept() {},
   cookieName: "CookieConsent",
-  buttonText: "I understand"
+  buttonText: "I understand",
+  debug: false
 };
 
 exports.default = CookieConsent;

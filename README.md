@@ -76,19 +76,22 @@ One of the props (onAccept) is a function, this function will be called after th
 ## Props
 | Prop          |               Type               | Default value | Description                                                                                           |
 |---------------|:--------------------------------:|---------------|-------------------------------------------------------------------------------------------------------|
-| location      | String, either "top" or "bottom" | bottom        | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
-| children      | String or React component        |               | Content to appear inside the bar                                                                      |
+| location      | string, either "top" or "bottom" | "bottom"      | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
+| children      | string or React component        |               | Content to appear inside the bar                                                                      |
 | disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
-| buttonText    | String or React component        | I understand  | Text to appear on the button                                                                          |
-| cookieName    | string                           | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
-| onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
-| style         | Object                           | [look at source][style] | React styling object for the bar.                                                           |
-| buttonStyle   | Object                           | [look at source][buttonStyle] | React styling object for the button.                                                  |
-| contentStyle  | Object                           | {}            | React styling object for the content.                                                                 |
+| buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                          |
+| cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                         |
+| onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                       |
+| style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
+| buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
+| contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
+| debug         | boolean                          | undefined     | Cookie is removed to debug styling.                                                                   |
 
 ## Styling it
 
 You can provide styling for the bar, the button and the content. Note that the bar has a `display: flex` property as default and is parent to its children "content" and "button".
+
+The styling behaves kind of responsive. The minimum content width has been chosen to be "300px" as a default value. If the button does not fit into the same line it is wrapped around into the next line.
 
 You can style each component by using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
 
@@ -135,17 +138,17 @@ If you're crazy enough you can even make a rainbow colored bar:
 
 ## Debugging it
 
-Because the cookie consent bar will be hidden once accepted, you will have to remove the cookie if you want to evaluate changes:
+Because the cookie consent bar will be hidden once accepted, you will have to set the prop `debug={true}` to evaluate styling changes:
 
 ```js
-import CookieConsent, { Cookies } from "react-cookie-consent";
-
-{Cookies.remove("myAwesomeCookieName2")}
 <CookieConsent
-    cookieName="myAwesomeCookieName2"
+    debug={true}
 >
 </CookieConsent>
 ```
 
+**Note:** Dont forget to remove the `debug`-property for production.
+
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
-[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L39
+[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L40-L43

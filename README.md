@@ -76,11 +76,11 @@ One of the props (onAccept) is a function, this function will be called after th
 ## Props
 | Prop          |               Type               | Default value | Description                                                                                           |
 |---------------|:--------------------------------:|---------------|-------------------------------------------------------------------------------------------------------|
-| location      | String, either "top" or "bottom" | bottom        | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
+| location      | String, either "top" or "bottom" | "bottom"      | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
 | children      | String or React component        |               | Content to appear inside the bar                                                                      |
 | disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
-| buttonText    | String or React component        | I understand  | Text to appear on the button                                                                          |
-| cookieName    | string                           | CookieConsent | Name of the cookie used to track whether the user has agreed.                                         |
+| buttonText    | String or React component        | "I understand"  | Text to appear on the button                                                                          |
+| cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                         |
 | onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
 | style         | Object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | Object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |

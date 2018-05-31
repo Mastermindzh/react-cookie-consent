@@ -81,7 +81,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
 | buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                          |
 | cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                         |
-| onAccept      | function                         | () => {}      | Function to be called after the accept button has been clicked.                                       |
+| onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                       |
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |

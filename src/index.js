@@ -47,6 +47,7 @@ class CookieConsent extends Component {
   componentWillMount() {
     const { cookieName, debug } = this.props;
 
+    // debug not desired and cookieName not undefined
     if (
       !(debug !== undefined && debug) &&
       Cookies.get(cookieName) !== undefined

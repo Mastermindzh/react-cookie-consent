@@ -150,5 +150,5 @@ Because the cookie consent bar will be hidden once accepted, you will have to se
 **Note:** Dont forget to remove the `debug`-property for production.
 
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
-[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L39
-[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L40-L43
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
+[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L39-L42

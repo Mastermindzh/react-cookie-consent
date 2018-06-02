@@ -90,14 +90,8 @@ class CookieConsent extends Component {
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
-      myButtonStyle = Object.assign(
-        {},
-        { ...this.state.buttonStyle, ...buttonStyle }
-      );
-      myContentStyle = Object.assign(
-        {},
-        { ...this.state.contentStyle, ...contentStyle }
-      );
+      myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
+      myContentStyle = Object.assign({}, { ...this.state.contentStyle, ...contentStyle });
     }
 
     // syntactic sugar to enable user to easily select top / bottom
@@ -136,11 +130,7 @@ CookieConsent.propTypes = {
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
   onAccept: PropTypes.func,
-  buttonText: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.element
-  ]),
+  buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   cookieName: PropTypes.string,
   debug: PropTypes.bool
 };

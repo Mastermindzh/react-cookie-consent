@@ -13,7 +13,7 @@ class CookieConsent extends Component {
     this.accept.bind(this);
 
     this.state = {
-      visible: true,
+      visible: false,
       style: {
         alignItems: "baseline",
         background: "#353535",
@@ -46,11 +46,9 @@ class CookieConsent extends Component {
   componentWillMount() {
     const { cookieName, debug } = this.props;
 
-    // debug not desired and cookieName not undefined
-    if (!debug &&
-      Cookies.get(cookieName) !== undefined
-    ) {
-      this.setState({ visible: false });
+    // if debug desired or cookieName undefined
+    if (debug || Cookies.get(cookieName) === undefined) {
+      this.setState({ visible: true });
     }
   }
 

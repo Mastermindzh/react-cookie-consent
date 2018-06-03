@@ -4,7 +4,7 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "1.1.5",
+  "version": "1.1.11",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "dependencies": {
@@ -14,7 +14,7 @@
   "scripts": {
     "build": "webpack",
     "patch": "npm --no-git-tag-version version patch",
-    "publish": "npm run patch && npm run build && git add -A && git commit -m 'version bump and build' && npm publish"
+    "release": "npm run patch && npm run build && git add -A && git commit -m 'version bump and build' && git push && npm publish"
   },
   "repository": {
     "type": "git",

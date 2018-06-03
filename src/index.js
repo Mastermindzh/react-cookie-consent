@@ -43,12 +43,14 @@ class CookieConsent extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { cookieName, debug } = this.props;
 
-    // if debug desired or cookieName undefined
-    if (debug || Cookies.get(cookieName) === undefined) {
-      this.setState({ visible: true });
+    // if cookie undefined or debug
+    if (Cookies.get(cookieName) === undefined || debug) {
+      this.setState(() => {
+        visible: true;
+      });
     }
   }
 
@@ -59,7 +61,9 @@ class CookieConsent extends Component {
     const { cookieName } = this.props;
 
     Cookies.set(cookieName, true);
-    this.setState({ visible: false });
+    this.setState(() => {
+      visible: false;
+    });
   }
 
   render() {

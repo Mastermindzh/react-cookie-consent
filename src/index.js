@@ -43,11 +43,11 @@ class CookieConsent extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { cookieName, debug } = this.props;
 
-    // if debug desired or cookieName undefined
-    if (debug || Cookies.get(cookieName) === undefined) {
+    // if cookie undefined or debug
+    if (Cookies.get(cookieName) === undefined || debug) {
       this.setState({ visible: true });
     }
   }

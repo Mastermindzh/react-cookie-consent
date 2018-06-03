@@ -528,15 +528,15 @@ var CookieConsent = function (_Component) {
   }
 
   _createClass(CookieConsent, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _props = this.props,
           cookieName = _props.cookieName,
           debug = _props.debug;
 
-      // if debug desired or cookieName undefined
+      // if cookie undefined or debug
 
-      if (debug || _jsCookie2.default.get(cookieName) === undefined) {
+      if (_jsCookie2.default.get(cookieName) === undefined || debug) {
         this.setState({ visible: true });
       }
     }

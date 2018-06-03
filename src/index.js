@@ -13,7 +13,7 @@ class CookieConsent extends Component {
     this.accept.bind(this);
 
     this.state = {
-      visible: true,
+      visible: false,
       style: {
         alignItems: "baseline",
         background: "#353535",
@@ -46,11 +46,9 @@ class CookieConsent extends Component {
   componentWillMount() {
     const { cookieName, debug } = this.props;
 
-    // debug not desired and cookieName not undefined
-    if (!debug &&
-      Cookies.get(cookieName) !== undefined
-    ) {
-      this.setState({ visible: false });
+    // if debug desired or cookieName undefined
+    if (debug || Cookies.get(cookieName) === undefined) {
+      this.setState({ visible: true });
     }
   }
 
@@ -92,14 +90,8 @@ class CookieConsent extends Component {
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
-      myButtonStyle = Object.assign(
-        {},
-        { ...this.state.buttonStyle, ...buttonStyle }
-      );
-      myContentStyle = Object.assign(
-        {},
-        { ...this.state.contentStyle, ...contentStyle }
-      );
+      myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
+      myContentStyle = Object.assign({}, { ...this.state.contentStyle, ...contentStyle });
     }
 
     // syntactic sugar to enable user to easily select top / bottom
@@ -138,11 +130,7 @@ CookieConsent.propTypes = {
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
   onAccept: PropTypes.func,
-  buttonText: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.element
-  ]),
+  buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   cookieName: PropTypes.string,
   debug: PropTypes.bool
 };

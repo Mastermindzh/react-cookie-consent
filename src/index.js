@@ -58,7 +58,7 @@ class CookieConsent extends Component {
   accept() {
     const { cookieName } = this.props;
 
-    Cookies.set(cookieName, true);
+    Cookies.set(cookieName, true, { expires: 365 });
     this.setState({ visible: false });
   }
 

@@ -792,7 +792,10 @@ var CookieConsent = function (_Component) {
           contentStyle = _props3.contentStyle,
           disableStyles = _props3.disableStyles,
           onAccept = _props3.onAccept,
-          buttonText = _props3.buttonText;
+          buttonText = _props3.buttonText,
+          containerClasses = _props3.containerClasses,
+          contentClasses = _props3.contentClasses,
+          buttonClasses = _props3.buttonClasses;
 
 
       var myStyle = {};
@@ -815,25 +818,28 @@ var CookieConsent = function (_Component) {
       switch (location) {
         case OPTIONS.TOP:
           myStyle.top = "0";
+          myStyle.position = "fixed";
           break;
 
         case OPTIONS.BOTTOM:
           myStyle.bottom = "0";
+          myStyle.position = "fixed";
           break;
       }
 
       return _react2.default.createElement(
         "div",
-        { className: "cookieConsent", style: myStyle },
+        { className: "cookieConsent " + containerClasses, style: myStyle },
         _react2.default.createElement(
           "div",
-          { style: myContentStyle },
+          { style: myContentStyle, className: contentClasses },
           this.props.children
         ),
         _react2.default.createElement(
           "button",
           {
             style: myButtonStyle,
+            className: buttonClasses,
             onClick: function onClick() {
               _this2.accept();
               onAccept();
@@ -859,7 +865,10 @@ CookieConsent.propTypes = {
   buttonText: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func, _propTypes2.default.element]),
   cookieName: _propTypes2.default.string,
   debug: _propTypes2.default.bool,
-  expires: _propTypes2.default.number
+  expires: _propTypes2.default.number,
+  containerClasses: _propTypes2.default.string,
+  contentClasses: _propTypes2.default.string,
+  buttonClasses: _propTypes2.default.string
 };
 
 CookieConsent.defaultProps = {
@@ -869,7 +878,10 @@ CookieConsent.defaultProps = {
   cookieName: "CookieConsent",
   buttonText: "I understand",
   debug: false,
-  expires: 365
+  expires: 365,
+  containerClasses: "",
+  contentClasses: "",
+  buttonClasses: ""
 };
 
 exports.default = CookieConsent;

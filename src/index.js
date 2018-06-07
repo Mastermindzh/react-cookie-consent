@@ -75,7 +75,10 @@ class CookieConsent extends Component {
       contentStyle,
       disableStyles,
       onAccept,
-      buttonText
+      buttonText,
+      containerClasses,
+      contentClasses,
+      buttonClasses
     } = this.props;
 
     let myStyle = {};
@@ -98,18 +101,23 @@ class CookieConsent extends Component {
     switch (location) {
       case OPTIONS.TOP:
         myStyle.top = "0";
+        myStyle.position = "fixed";
         break;
 
       case OPTIONS.BOTTOM:
         myStyle.bottom = "0";
+        myStyle.position = "fixed";
         break;
     }
 
     return (
-      <div className="cookieConsent" style={myStyle}>
-        <div style={myContentStyle}>{this.props.children}</div>
+      <div className={`cookieConsent ${containerClasses}`} style={myStyle}>
+        <div style={myContentStyle} className={contentClasses}>
+          {this.props.children}
+        </div>
         <button
           style={myButtonStyle}
+          className={buttonClasses}
           onClick={() => {
             this.accept();
             onAccept();
@@ -133,7 +141,10 @@ CookieConsent.propTypes = {
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   cookieName: PropTypes.string,
   debug: PropTypes.bool,
-  expires: PropTypes.number
+  expires: PropTypes.number,
+  containerClasses: PropTypes.string,
+  contentClasses: PropTypes.string,
+  buttonClasses: PropTypes.string
 };
 
 CookieConsent.defaultProps = {
@@ -143,7 +154,10 @@ CookieConsent.defaultProps = {
   cookieName: "CookieConsent",
   buttonText: "I understand",
   debug: false,
-  expires: 365
+  expires: 365,
+  containerClasses:"",
+  contentClasses:"",
+  buttonClasses:""
 };
 
 export default CookieConsent;

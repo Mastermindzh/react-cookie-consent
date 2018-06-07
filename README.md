@@ -83,11 +83,29 @@ One of the props (onAccept) is a function, this function will be called after th
 | buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                          |
 | cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                         |
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                       |
+| debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                                                   |
+| expires       | number                          | 365     | Number of days before the cookie expires.                                                                   |
+| containerClasses| string                           | ""        | CSS classes to apply to the surrounding container |
+| buttonClasses | string                           | ""  | CSS classes to apply to the button|
+| contentClasses| string                           | "" | CSS classes to apply to the content                    |
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
-| debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                                                   |
-| expires         | number                          | 365     | Number of days before the cookie expires.                                                                   |
+
+
+## Debugging it
+
+Because the cookie consent bar will be hidden once accepted, you will have to set the prop `debug={true}` to evaluate styling changes:
+
+```js
+<CookieConsent
+    debug={true}
+>
+</CookieConsent>
+```
+
+**Note:** Dont forget to remove the `debug`-property for production.
+
 
 ## Styling it
 
@@ -96,6 +114,7 @@ You can provide styling for the bar, the button and the content. Note that the b
 The styling behaves kind of responsive. The minimum content width has been chosen to be "300px" as a default value. If the button does not fit into the same line it is wrapped around into the next line.
 
 You can style each component by using the `style`, `buttonStyle` and `contentStyle` prop. These will append / replace the default styles of the components.
+Alternatively you can provide CSS classnames as `containerClasses`, `buttonClasses` and `contentClasses` to apply predefined CSS classes.
 
 You can use `disableStyles={true}` to disable any built-in styling.
 
@@ -118,6 +137,28 @@ You can use `disableStyles={true}` to disable any built-in styling.
 </CookieConsent>
 ```
 
+#### Using predefined CSS classes
+You can pass predefined CSS classes to the components using the `containerClasses`, `buttonClasses` and `contentClasses` props. The example below uses bootstrap classes:
+
+```js
+    <CookieConsent
+          disableStyles={true}
+          location={OPTIONS.BOTTOM}
+          buttonClasses="btn btn-primary"
+          containerClasses="alert alert-warning col-lg-12"
+          contentClasses="text-capitalize"
+        >
+          This website uses cookies to enhance the user experience.{" "}
+          <span style={{ fontSize: "10px" }}>
+            This bit of text is smaller :O
+          </span>
+        </CookieConsent>
+```
+
+Which results in:
+
+![bootstrap styling](./images/css_classes.png)
+
 #### rainbows!
 
 ![rainbows!](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/rainbow.png?raw=true)
@@ -138,19 +179,7 @@ If you're crazy enough you can even make a rainbow colored bar:
 </CookieConsent>
 ```
 
-## Debugging it
-
-Because the cookie consent bar will be hidden once accepted, you will have to set the prop `debug={true}` to evaluate styling changes:
-
-```js
-<CookieConsent
-    debug={true}
->
-</CookieConsent>
-```
-
-**Note:** Dont forget to remove the `debug`-property for production.
-
+<!-- links -->
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
 [buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
 [contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L39-L42

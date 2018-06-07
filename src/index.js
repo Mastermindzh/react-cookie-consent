@@ -56,9 +56,9 @@ class CookieConsent extends Component {
    * Set a persistent cookie
    */
   accept() {
-    const { cookieName } = this.props;
+    const { cookieName, expires } = this.props;
 
-    Cookies.set(cookieName, true);
+    Cookies.set(cookieName, true, { expires: expires });
     this.setState({ visible: false });
   }
 
@@ -132,7 +132,8 @@ CookieConsent.propTypes = {
   onAccept: PropTypes.func,
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   cookieName: PropTypes.string,
-  debug: PropTypes.bool
+  debug: PropTypes.bool,
+  expires: PropTypes.number
 };
 
 CookieConsent.defaultProps = {
@@ -141,7 +142,8 @@ CookieConsent.defaultProps = {
   onAccept: () => {},
   cookieName: "CookieConsent",
   buttonText: "I understand",
-  debug: false
+  debug: false,
+  expires: 365
 };
 
 export default CookieConsent;

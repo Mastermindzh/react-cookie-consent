@@ -55,6 +55,7 @@ You can optionally set some props like this (next chapter will show all props):
     cookieName="myAwesomeCookieName2"
     style={{ background: "#2B373B" }}
     buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+    expires={150}
 >
     This website uses cookies to enhance the user experience.{" "}
     <span style={{ fontSize: "10px" }}>
@@ -85,7 +86,8 @@ One of the props (onAccept) is a function, this function will be called after th
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
-| debug         | boolean                          | undefined     | Cookie is removed to debug styling.                                                                   |
+| debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                                                   |
+| expires         | number                          | 365     | Number of days before the cookie expires.                                                                   |
 
 ## Styling it
 

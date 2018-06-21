@@ -4,7 +4,8 @@ import Cookies from "js-cookie";
 
 export const OPTIONS = {
   TOP: "top",
-  BOTTOM: "bottom"
+  BOTTOM: "bottom",
+  NONE: "none"
 };
 
 class CookieConsent extends Component {
@@ -131,7 +132,7 @@ class CookieConsent extends Component {
 }
 
 CookieConsent.propTypes = {
-  location: PropTypes.oneOf(["top", "bottom"]),
+  location: PropTypes.oneOf(Object.values(OPTIONS)),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   contentStyle: PropTypes.object,

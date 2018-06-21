@@ -769,11 +769,14 @@ var CookieConsent = function (_Component) {
     value: function accept() {
       var _props2 = this.props,
           cookieName = _props2.cookieName,
-          expires = _props2.expires;
+          expires = _props2.expires,
+          autoHide = _props2.autoHide;
 
 
       _jsCookie2.default.set(cookieName, true, { expires: expires });
-      this.setState({ visible: false });
+      if (autoHide) {
+        this.setState({ visible: false });
+      }
     }
   }, {
     key: "render",
@@ -791,6 +794,7 @@ var CookieConsent = function (_Component) {
           buttonStyle = _props3.buttonStyle,
           contentStyle = _props3.contentStyle,
           disableStyles = _props3.disableStyles,
+          autoHide = _props3.autoHide,
           onAccept = _props3.onAccept,
           buttonText = _props3.buttonText,
           containerClasses = _props3.containerClasses,
@@ -861,6 +865,7 @@ CookieConsent.propTypes = {
   contentStyle: _propTypes2.default.object,
   children: _propTypes2.default.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: _propTypes2.default.bool,
+  autoHide: _propTypes2.default.bool,
   onAccept: _propTypes2.default.func,
   buttonText: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func, _propTypes2.default.element]),
   cookieName: _propTypes2.default.string,
@@ -873,6 +878,7 @@ CookieConsent.propTypes = {
 
 CookieConsent.defaultProps = {
   disableStyles: false,
+  autoHide: true,
   location: OPTIONS.BOTTOM,
   onAccept: function onAccept() {},
   cookieName: "CookieConsent",

@@ -77,7 +77,7 @@ One of the props (onAccept) is a function, this function will be called after th
 ## Props
 | Prop          |               Type               | Default value | Description                                                                                           |
 |---------------|:--------------------------------:|---------------|-------------------------------------------------------------------------------------------------------|
-| location      | string, either "top" or "bottom" | "bottom"      | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. |
+| location      | string, "top", "bottom" or "none"| "bottom"      | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. Use "none" to disable. |
 | children      | string or React component        |               | Content to appear inside the bar                                                                      |
 | disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
 | buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                          |

@@ -701,7 +701,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var OPTIONS = exports.OPTIONS = {
   TOP: "top",
-  BOTTOM: "bottom"
+  BOTTOM: "bottom",
+  NONE: "none"
 };
 
 var CookieConsent = function (_Component) {
@@ -855,7 +856,7 @@ var CookieConsent = function (_Component) {
 }(_react.Component);
 
 CookieConsent.propTypes = {
-  location: _propTypes2.default.oneOf(["top", "bottom"]),
+  location: _propTypes2.default.oneOf(Object.values(OPTIONS)),
   style: _propTypes2.default.object,
   buttonStyle: _propTypes2.default.object,
   contentStyle: _propTypes2.default.object,

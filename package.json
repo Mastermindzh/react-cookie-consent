@@ -4,7 +4,7 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "dependencies": {
@@ -14,7 +14,10 @@
   "scripts": {
     "build": "webpack",
     "patch": "npm --no-git-tag-version version patch",
-    "release": "npm run patch && npm run build && git add -A && git commit -m 'version bump and build' && git push && npm publish"
+    "minor": "npm --no-git-tag-version version minor",
+    "release": "npm run build && git add -A && git commit -m 'version bump and build' && git push && npm publish",
+    "release-patch": "npm run patch && npm run release",
+    "release-minor": "npm run minor && npm run release"
   },
   "repository": {
     "type": "git",
@@ -33,8 +36,8 @@
   "homepage": "https://github.com/Mastermindzh/react-cookie-consent#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.5.1",

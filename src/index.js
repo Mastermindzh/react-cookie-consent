@@ -57,10 +57,12 @@ class CookieConsent extends Component {
    * Set a persistent cookie
    */
   accept() {
-    const { cookieName, expires } = this.props;
+    const { cookieName, expires, hideOnAccept } = this.props;
 
     Cookies.set(cookieName, true, { expires: expires });
-    this.setState({ visible: false });
+    if (hideOnAccept) {
+      this.setState({ visible: false });
+    }
   }
 
   render() {
@@ -138,6 +140,7 @@ CookieConsent.propTypes = {
   contentStyle: PropTypes.object,
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
+  hideOnAccept: PropTypes.bool,
   onAccept: PropTypes.func,
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   cookieName: PropTypes.string,
@@ -150,6 +153,7 @@ CookieConsent.propTypes = {
 
 CookieConsent.defaultProps = {
   disableStyles: false,
+  hideOnAccept: true,
   location: OPTIONS.BOTTOM,
   onAccept: () => {},
   cookieName: "CookieConsent",

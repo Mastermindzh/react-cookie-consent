@@ -4,26 +4,23 @@ A small, simple and customizable cookie consent bar for use in React application
 
 [![NPM](https://nodei.co/npm/react-cookie-consent.png)](https://npmjs.org/package/react-cookie-consent)
 
-
 Demo: https://mastermindzh.github.io/react-cookie-consent/
 
 Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/example
-
 
 ## Default look
 
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)
 
-
 ## Installation
 
-```
+``` shell
 npm install react-cookie-consent
 ```
 
 or use yarn:
 
-```
+``` shell
 yarn add react-cookie-consent
 ```
 
@@ -31,21 +28,24 @@ yarn add react-cookie-consent
 
 You can import the cookie bar like this:
 
-```js
+``` js
 import CookieConsent from "react-cookie-consent";
 ```
+
 If you want to set/remove cookies yourself you can optionally import Cookie (straight from js-cookie) like this:
-```js
+
+``` js
 import CookieConsent, { Cookies } from "react-cookie-consent";
 ```
 
 Then you can use the component anywhere in your React app like so:
 
-```js
+```jsx
 <CookieConsent>
     This website uses cookies to enhance the user experience.
 </CookieConsent>
 ```
+
 You can optionally set some props like this (next chapter will show all props):
 
 ```js
@@ -81,18 +81,19 @@ One of the props (onAccept) is a function, this function will be called after th
 | children      | string or React component        |               | Content to appear inside the bar                                                                      |
 | disableStyles | boolean                          | false         | If enabled the component will have no default style. (you can still supply style through props)       |
 | hideOnAccept  | boolean                          | true          | If disabled the component will not hide it self after the accept button has been clicked. You will need to hide yourself (see onAccept)|
-| buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                          |
-| cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                         |
-| onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                       |
-| debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                                                   |
-| expires       | number                          | 365     | Number of days before the cookie expires.                                                                   |
-| containerClasses| string                           | ""        | CSS classes to apply to the surrounding container |
-| buttonClasses | string                           | ""  | CSS classes to apply to the button|
-| contentClasses| string                           | "" | CSS classes to apply to the content                    |
+| acceptOnScroll   | boolean                       | false | Defines whether "accept" should be fired after the user scrolls a certain distance (see acceptOnScrollPercentage)     |
+| acceptOnScrollPercentage  | number               | 25 | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled      |
+| buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                        |
+| cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                       |
+| onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
+| debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
+| expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |
+| containerClasses| string                         | ""        | CSS classes to apply to the surrounding container                                                         |
+| buttonClasses | string                           | ""  | CSS classes to apply to the button                                                                              |
+| contentClasses| string                           | "" | CSS classes to apply to the content                                                                              |
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
-
 
 ## Debugging it
 
@@ -106,7 +107,6 @@ Because the cookie consent bar will be hidden once accepted, you will have to se
 ```
 
 **Note:** Dont forget to remove the `debug`-property for production.
-
 
 ## Styling it
 
@@ -131,6 +131,7 @@ You can use `disableStyles={true}` to disable any built-in styling.
 ```
 
 #### changing the button font-weight to bold
+
 ```js
 <CookieConsent
     buttonStyle={{ fontWeight: "bold" }}
@@ -139,6 +140,7 @@ You can use `disableStyles={true}` to disable any built-in styling.
 ```
 
 #### Using predefined CSS classes
+
 You can pass predefined CSS classes to the components using the `containerClasses`, `buttonClasses` and `contentClasses` props. The example below uses bootstrap classes:
 
 ```js
@@ -158,7 +160,7 @@ You can pass predefined CSS classes to the components using the `containerClasse
 
 Which results in:
 
-![bootstrap styling](./images/css_classes.png)
+![bootstrap styling](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/css_classes.png?raw=true)
 
 #### rainbows!
 

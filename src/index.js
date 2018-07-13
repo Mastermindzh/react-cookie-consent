@@ -42,6 +42,8 @@ class CookieConsent extends Component {
         margin: "15px"
       }
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
@@ -51,13 +53,48 @@ class CookieConsent extends Component {
     if (Cookies.get(cookieName) === undefined || debug) {
       this.setState({ visible: true });
     }
+
+    // if acceptOnScroll is set to true, add a listener
+    if (this.props.acceptOnScroll) {
+      window.addEventListener("scroll", this.handleScroll, { passive: true });
+    }
+  }
+
+  componentWillUnmount() {
+    // remove listener if still set
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  /**
+   * checks whether scroll has exceeded set amount and fire accept if so.
+   */
+  handleScroll() {
+    // (top / height) - height * 100
+    let rootNode = document.documentElement,
+      body = document.body,
+      top = "scrollTop",
+      height = "scrollHeight";
+
+    let percentage =
+      ((rootNode[top] || body[top]) /
+        ((rootNode[height] || body[height]) - rootNode.clientHeight)) *
+      100;
+
+    if (percentage > this.props.acceptOnScrollPercentage) {
+      this.accept();
+    }
   }
 
   /**
    * Set a persistent cookie
    */
   accept() {
-    const { cookieName, expires, hideOnAccept } = this.props;
+    const { cookieName, expires, hideOnAccept, onAccept } = this.props;
+
+    // fire onAccept
+    onAccept();
+    // remove listener if set
+    window.removeEventListener("scroll", this.handleScroll);
 
     Cookies.set(cookieName, true, { expires: expires });
     if (hideOnAccept) {
@@ -77,7 +114,6 @@ class CookieConsent extends Component {
       buttonStyle,
       contentStyle,
       disableStyles,
-      onAccept,
       buttonText,
       containerClasses,
       contentClasses,
@@ -123,7 +159,6 @@ class CookieConsent extends Component {
           className={buttonClasses}
           onClick={() => {
             this.accept();
-            onAccept();
           }}
         >
           {buttonText}
@@ -142,27 +177,35 @@ CookieConsent.propTypes = {
   disableStyles: PropTypes.bool,
   hideOnAccept: PropTypes.bool,
   onAccept: PropTypes.func,
-  buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
+  buttonText: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.element
+  ]),
   cookieName: PropTypes.string,
   debug: PropTypes.bool,
   expires: PropTypes.number,
   containerClasses: PropTypes.string,
   contentClasses: PropTypes.string,
-  buttonClasses: PropTypes.string
+  buttonClasses: PropTypes.string,
+  acceptOnScroll: PropTypes.bool,
+  acceptOnScrollPercentage: PropTypes.number
 };
 
 CookieConsent.defaultProps = {
   disableStyles: false,
   hideOnAccept: true,
+  acceptOnScroll: false,
+  acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
   onAccept: () => {},
   cookieName: "CookieConsent",
   buttonText: "I understand",
   debug: false,
   expires: 365,
-  containerClasses:"",
-  contentClasses:"",
-  buttonClasses:""
+  containerClasses: "",
+  contentClasses: "",
+  buttonClasses: ""
 };
 
 export default CookieConsent;

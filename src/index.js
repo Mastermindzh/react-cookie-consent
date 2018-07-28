@@ -169,7 +169,7 @@ class CookieConsent extends Component {
 }
 
 CookieConsent.propTypes = {
-  location: PropTypes.oneOf(Object.values(OPTIONS)),
+  location: PropTypes.oneOf(Object.keys(OPTIONS).map(key => OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   contentStyle: PropTypes.object,

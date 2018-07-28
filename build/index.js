@@ -725,7 +725,9 @@ var CookieConsent = function (_Component) {
 }(_react.Component);
 
 CookieConsent.propTypes = {
-  location: _propTypes2.default.oneOf(Object.values(OPTIONS)),
+  location: _propTypes2.default.oneOf(Object.keys(OPTIONS).map(function (key) {
+    return OPTIONS[key];
+  })),
   style: _propTypes2.default.object,
   buttonStyle: _propTypes2.default.object,
   contentStyle: _propTypes2.default.object,

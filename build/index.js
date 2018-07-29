@@ -634,7 +634,8 @@ var CookieConsent = function (_Component) {
           cookieName = _props2.cookieName,
           expires = _props2.expires,
           hideOnAccept = _props2.hideOnAccept,
-          onAccept = _props2.onAccept;
+          onAccept = _props2.onAccept,
+          extraCookieOptions = _props2.extraCookieOptions;
 
       // fire onAccept
 
@@ -642,7 +643,8 @@ var CookieConsent = function (_Component) {
       // remove listener if set
       window.removeEventListener("scroll", this.handleScroll);
 
-      _jsCookie2.default.set(cookieName, true, { expires: expires });
+      _jsCookie2.default.set(cookieName, true, _extends({ expires: expires }, extraCookieOptions));
+
       if (hideOnAccept) {
         this.setState({ visible: false });
       }
@@ -743,7 +745,8 @@ CookieConsent.propTypes = {
   contentClasses: _propTypes2.default.string,
   buttonClasses: _propTypes2.default.string,
   acceptOnScroll: _propTypes2.default.bool,
-  acceptOnScrollPercentage: _propTypes2.default.number
+  acceptOnScrollPercentage: _propTypes2.default.number,
+  extraCookieOptions: _propTypes2.default.object
 };
 
 CookieConsent.defaultProps = {
@@ -759,7 +762,8 @@ CookieConsent.defaultProps = {
   expires: 365,
   containerClasses: "",
   contentClasses: "",
-  buttonClasses: ""
+  buttonClasses: "",
+  extraCookieOptions: {}
 };
 
 exports.default = CookieConsent;

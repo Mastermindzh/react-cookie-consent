@@ -88,6 +88,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
 | expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |
+| extraCookieOptions  | object                           | `{}` | Extra info (apart from expiry date) to add to the cookie|
 | containerClasses| string                         | ""        | CSS classes to apply to the surrounding container                                                         |
 | buttonClasses | string                           | ""  | CSS classes to apply to the button                                                                              |
 | contentClasses| string                           | "" | CSS classes to apply to the content                                                                              |
@@ -161,6 +162,31 @@ You can pass predefined CSS classes to the components using the `containerClasse
 Which results in:
 
 ![bootstrap styling](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/css_classes.png?raw=true)
+
+
+#### Accept on scroll
+You can make the cookiebar disappear after scrolling a certain percentage using acceptOnScroll and acceptOnScrollPercentage.
+
+```js
+<CookieConsent 
+    acceptOnScroll={true} 
+    acceptOnScrollPercentage={50} 
+    onAccept={() => {alert("consent given")}}
+>
+    Hello scroller :)
+</CookieConsent>
+```
+
+#### Extra cookie options
+You can add more cookie options using the extraCookieOptions parameter like so:
+
+```js
+<CookieConsent 
+    extraCookieOptions={{domain: 'myexample.com'}}
+>
+    cookie bar
+</CookieConsent>
+```
 
 #### rainbows!
 

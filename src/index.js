@@ -89,14 +89,14 @@ class CookieConsent extends Component {
    * Set a persistent cookie
    */
   accept() {
-    const { cookieName, expires, hideOnAccept, onAccept, extraCookieOptions } = this.props;
+    const { cookieName, cookieValue, expires, hideOnAccept, onAccept, extraCookieOptions } = this.props;
 
     // fire onAccept
     onAccept();
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    Cookies.set(cookieName, true, { expires: expires, ...extraCookieOptions });
+    Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -184,6 +184,11 @@ CookieConsent.propTypes = {
     PropTypes.element
   ]),
   cookieName: PropTypes.string,
+  cookieValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.number
+  ]),
   debug: PropTypes.bool,
   expires: PropTypes.number,
   containerClasses: PropTypes.string,
@@ -202,6 +207,7 @@ CookieConsent.defaultProps = {
   location: OPTIONS.BOTTOM,
   onAccept: () => { },
   cookieName: "CookieConsent",
+  cookieValue: true,
   buttonText: "I understand",
   debug: false,
   expires: 365,

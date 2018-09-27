@@ -85,6 +85,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | acceptOnScrollPercentage  | number               | 25 | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled      |
 | buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                        |
 | cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                       |
+| cookieValue   | string or boolean or number      | true | Value to be saved under the cookieName.                                       |
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
 | expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |
@@ -168,9 +169,9 @@ Which results in:
 You can make the cookiebar disappear after scrolling a certain percentage using acceptOnScroll and acceptOnScrollPercentage.
 
 ```js
-<CookieConsent 
-    acceptOnScroll={true} 
-    acceptOnScrollPercentage={50} 
+<CookieConsent
+    acceptOnScroll={true}
+    acceptOnScrollPercentage={50}
     onAccept={() => {alert("consent given")}}
 >
     Hello scroller :)
@@ -181,7 +182,7 @@ You can make the cookiebar disappear after scrolling a certain percentage using 
 You can add more cookie options using the extraCookieOptions parameter like so:
 
 ```js
-<CookieConsent 
+<CookieConsent
     extraCookieOptions={{domain: 'myexample.com'}}
 >
     cookie bar

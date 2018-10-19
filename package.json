@@ -4,7 +4,7 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "dependencies": {

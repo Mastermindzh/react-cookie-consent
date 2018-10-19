@@ -669,7 +669,8 @@ var CookieConsent = function (_Component) {
           buttonText = _props3.buttonText,
           containerClasses = _props3.containerClasses,
           contentClasses = _props3.contentClasses,
-          buttonClasses = _props3.buttonClasses;
+          buttonClasses = _props3.buttonClasses,
+          buttonId = _props3.buttonId;
 
 
       var myStyle = {};
@@ -714,6 +715,7 @@ var CookieConsent = function (_Component) {
           {
             style: myButtonStyle,
             className: buttonClasses,
+            id: buttonId,
             onClick: function onClick() {
               _this2.accept();
             }
@@ -746,6 +748,7 @@ CookieConsent.propTypes = {
   containerClasses: _propTypes2.default.string,
   contentClasses: _propTypes2.default.string,
   buttonClasses: _propTypes2.default.string,
+  buttonId: _propTypes2.default.string,
   acceptOnScroll: _propTypes2.default.bool,
   acceptOnScrollPercentage: _propTypes2.default.number,
   extraCookieOptions: _propTypes2.default.object
@@ -766,6 +769,7 @@ CookieConsent.defaultProps = {
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
+  buttonId: "",
   extraCookieOptions: {}
 };
 

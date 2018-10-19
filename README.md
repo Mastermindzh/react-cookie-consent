@@ -92,6 +92,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | extraCookieOptions  | object                           | `{}` | Extra info (apart from expiry date) to add to the cookie|
 | containerClasses| string                         | ""        | CSS classes to apply to the surrounding container                                                         |
 | buttonClasses | string                           | ""  | CSS classes to apply to the button                                                                              |
+| buttonId      | string                           | ""  | Id to apply to the button                                                                              |
 | contentClasses| string                           | "" | CSS classes to apply to the content                                                                              |
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |

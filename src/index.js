@@ -118,7 +118,8 @@ class CookieConsent extends Component {
       buttonText,
       containerClasses,
       contentClasses,
-      buttonClasses
+      buttonClasses,
+      buttonId,
     } = this.props;
 
     let myStyle = {};
@@ -158,6 +159,7 @@ class CookieConsent extends Component {
         <button
           style={myButtonStyle}
           className={buttonClasses}
+          id={buttonId}
           onClick={() => {
             this.accept();
           }}
@@ -194,6 +196,7 @@ CookieConsent.propTypes = {
   containerClasses: PropTypes.string,
   contentClasses: PropTypes.string,
   buttonClasses: PropTypes.string,
+  buttonId: PropTypes.string,
   acceptOnScroll: PropTypes.bool,
   acceptOnScrollPercentage: PropTypes.number,
   extraCookieOptions: PropTypes.object
@@ -214,6 +217,7 @@ CookieConsent.defaultProps = {
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
+  buttonId: "",
   extraCookieOptions: {}
 };
 

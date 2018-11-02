@@ -214,3 +214,9 @@ If you're crazy enough you can even make a rainbow colored bar:
 [style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
 [buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
 [contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L39-L42
+
+## Projects using react-cookie-consent
+
+The list below features the projects which use react-cookie-consent (that I know off):
+
+- [bs-react-cookie-consent](https://github.com/ctbucha/bs-react-cookie-consent)

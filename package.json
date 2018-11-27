@@ -7,7 +7,9 @@
   "version": "1.9.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "dependencies": {
+    "copy-webpack-plugin": "^4.6.0",
     "js-cookie": "^2.2.0",
     "react": "^16.4.0"
   },

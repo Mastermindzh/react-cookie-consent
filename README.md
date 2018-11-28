@@ -220,3 +220,4 @@ If you're crazy enough you can even make a rainbow colored bar:
 The list below features the projects which use react-cookie-consent (that I know off):
 
 - [bs-react-cookie-consent](https://github.com/ctbucha/bs-react-cookie-consent)
+- [comicrelief's storybook](https://github.com/comicrelief/storybook)

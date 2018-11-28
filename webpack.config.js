@@ -1,4 +1,6 @@
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -23,5 +25,8 @@ module.exports = {
   },
   externals: {
     'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([{ from: 'src/index.d.ts', to: 'index.d.ts' }])
+  ]
 };

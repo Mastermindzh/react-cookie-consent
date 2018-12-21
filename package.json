@@ -9,7 +9,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
-    "js-cookie": "^2.2.0"
+    "hardtack": "^2.1.0"
   },
   "peerDependencies": {
     "react": "^16.4.0"

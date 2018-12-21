@@ -55,7 +55,7 @@ You can optionally set some props like this (next chapter will show all props):
     cookieName="myAwesomeCookieName2"
     style={{ background: "#2B373B" }}
     buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-    expires={150}
+    expires="Sat, 21 Dec 2019 09:12:59 GMT"
 >
     This website uses cookies to enhance the user experience.{" "}
     <span style={{ fontSize: "10px" }}>
@@ -88,7 +88,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | cookieValue   | string or boolean or number      | true | Value to be saved under the cookieName.                                       |
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
-| expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |
+| expires       | string                           | Date in 365 days     | Date in GMT format. See [Date.toUTCString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString) for help formatting this value.                                                                   |
 | extraCookieOptions  | object                           | `{}` | Extra info (apart from expiry date) to add to the cookie|
 | containerClasses| string                         | ""        | CSS classes to apply to the surrounding container                                                         |
 | buttonClasses | string                           | ""  | CSS classes to apply to the button                                                                              |

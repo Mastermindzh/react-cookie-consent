@@ -14,7 +14,7 @@ export interface CookieConsentProps {
   cookieName?: string;
   cookieValue?: string | boolean | number;
   debug?: boolean;
-  expires?: number;
+  expires?: string;
   containerClasses?: string;
   contentClasses?: string;
   buttonClasses?: string;

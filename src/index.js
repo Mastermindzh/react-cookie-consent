@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
+import hardtack from "hardtack";
 
 export const OPTIONS = {
   TOP: "top",
@@ -50,7 +50,7 @@ class CookieConsent extends Component {
     const { cookieName, debug } = this.props;
 
     // if cookie undefined or debug
-    if (Cookies.get(cookieName) === undefined || debug) {
+    if (hardtack.get(cookieName) === undefined || debug) {
       this.setState({ visible: true });
     }
 
@@ -96,7 +96,7 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
+    hardtack.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -192,7 +192,7 @@ CookieConsent.propTypes = {
     PropTypes.number
   ]),
   debug: PropTypes.bool,
-  expires: PropTypes.number,
+  expires: PropTypes.string,
   containerClasses: PropTypes.string,
   contentClasses: PropTypes.string,
   buttonClasses: PropTypes.string,
@@ -213,7 +213,7 @@ CookieConsent.defaultProps = {
   cookieValue: true,
   buttonText: "I understand",
   debug: false,
-  expires: 365,
+  expires: new Date(new Date() * 1 + 365 * 864e5).toUTCString(),
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
@@ -222,4 +222,4 @@ CookieConsent.defaultProps = {
 };
 
 export default CookieConsent;
-export { Cookies };
+export { hardtack as Cookies };

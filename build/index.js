@@ -641,6 +641,7 @@ var CookieConsent = function (_Component) {
       // fire onAccept
 
       onAccept();
+
       // remove listener if set
       window.removeEventListener("scroll", this.handleScroll);
 
@@ -670,7 +671,8 @@ var CookieConsent = function (_Component) {
           containerClasses = _props3.containerClasses,
           contentClasses = _props3.contentClasses,
           buttonClasses = _props3.buttonClasses,
-          buttonId = _props3.buttonId;
+          buttonId = _props3.buttonId,
+          disableButtonStyles = _props3.disableButtonStyles;
 
 
       var myStyle = {};
@@ -678,15 +680,21 @@ var CookieConsent = function (_Component) {
       var myContentStyle = {};
 
       if (disableStyles) {
-        // if styles are disabled use the provided styles (or non)
+        // if styles are disabled use the provided styles (or none)
         myStyle = _extends({}, style);
         myButtonStyle = _extends({}, buttonStyle);
         myContentStyle = _extends({}, contentStyle);
       } else {
         // if styles aren't disabled merge them with the styles that are provided (or use default styles)
         myStyle = _extends({}, _extends({}, this.state.style, style));
-        myButtonStyle = _extends({}, _extends({}, this.state.buttonStyle, buttonStyle));
         myContentStyle = _extends({}, _extends({}, this.state.contentStyle, contentStyle));
+
+        // switch to disable JUST the button styles
+        if (disableButtonStyles) {
+          myButtonStyle = _extends({}, buttonStyle);
+        } else {
+          myButtonStyle = _extends({}, _extends({}, this.state.buttonStyle, buttonStyle));
+        }
       }
 
       // syntactic sugar to enable user to easily select top / bottom
@@ -751,7 +759,8 @@ CookieConsent.propTypes = {
   buttonId: _propTypes2.default.string,
   acceptOnScroll: _propTypes2.default.bool,
   acceptOnScrollPercentage: _propTypes2.default.number,
-  extraCookieOptions: _propTypes2.default.object
+  extraCookieOptions: _propTypes2.default.object,
+  disableButtonStyles: _propTypes2.default.bool
 };
 
 CookieConsent.defaultProps = {
@@ -770,7 +779,8 @@ CookieConsent.defaultProps = {
   contentClasses: "",
   buttonClasses: "",
   buttonId: "",
-  extraCookieOptions: {}
+  extraCookieOptions: {},
+  disableButtonStyles: false
 };
 
 exports.default = CookieConsent;

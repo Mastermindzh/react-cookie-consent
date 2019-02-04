@@ -97,6 +97,7 @@ One of the props (onAccept) is a function, this function will be called after th
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
+| disableButtonStyles | boolean                    | false         | If enabled the button will have no default style. (you can still supply style through props)       |
 
 ## Debugging it
 

@@ -93,6 +93,7 @@ class CookieConsent extends Component {
 
     // fire onAccept
     onAccept();
+
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
@@ -120,6 +121,7 @@ class CookieConsent extends Component {
       contentClasses,
       buttonClasses,
       buttonId,
+      disableButtonStyles
     } = this.props;
 
     let myStyle = {};
@@ -127,15 +129,22 @@ class CookieConsent extends Component {
     let myContentStyle = {};
 
     if (disableStyles) {
-      // if styles are disabled use the provided styles (or non)
+      // if styles are disabled use the provided styles (or none)
       myStyle = Object.assign({}, style);
       myButtonStyle = Object.assign({}, buttonStyle);
       myContentStyle = Object.assign({}, contentStyle);
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
-      myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
       myContentStyle = Object.assign({}, { ...this.state.contentStyle, ...contentStyle });
+
+      // switch to disable JUST the button styles
+      if(disableButtonStyles){
+        myButtonStyle = Object.assign({}, buttonStyle);
+      }else{
+        myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
+      }
+
     }
 
     // syntactic sugar to enable user to easily select top / bottom
@@ -199,7 +208,8 @@ CookieConsent.propTypes = {
   buttonId: PropTypes.string,
   acceptOnScroll: PropTypes.bool,
   acceptOnScrollPercentage: PropTypes.number,
-  extraCookieOptions: PropTypes.object
+  extraCookieOptions: PropTypes.object,
+  disableButtonStyles: PropTypes.bool
 };
 
 CookieConsent.defaultProps = {
@@ -218,7 +228,8 @@ CookieConsent.defaultProps = {
   contentClasses: "",
   buttonClasses: "",
   buttonId: "",
-  extraCookieOptions: {}
+  extraCookieOptions: {},
+  disableButtonStyles: false
 };
 
 export default CookieConsent;

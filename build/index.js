@@ -681,7 +681,7 @@ var CookieConsent = function (_Component) {
           buttonClasses = _props3.buttonClasses,
           buttonId = _props3.buttonId,
           disableButtonStyles = _props3.disableButtonStyles,
-          ButtonComponent = _props3.ButtonComponent;
+          buttonComponent = _props3.buttonComponent;
 
 
       var myStyle = {};
@@ -728,7 +728,7 @@ var CookieConsent = function (_Component) {
           this.props.children
         ),
         _react2.default.createElement(
-          ButtonComponent,
+          "buttonComponent",
           {
             style: myButtonStyle,
             className: buttonClasses,
@@ -770,7 +770,7 @@ CookieConsent.propTypes = {
   acceptOnScrollPercentage: _propTypes2.default.number,
   extraCookieOptions: _propTypes2.default.object,
   disableButtonStyles: _propTypes2.default.bool,
-  ButtonComponent: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.element])
+  buttonComponent: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.element])
 };
 
 CookieConsent.defaultProps = {
@@ -791,7 +791,7 @@ CookieConsent.defaultProps = {
   buttonId: "",
   extraCookieOptions: {},
   disableButtonStyles: false,
-  ButtonComponent: function ButtonComponent(_ref) {
+  buttonComponent: function buttonComponent(_ref) {
     var children = _ref.children,
         props = _objectWithoutProperties(_ref, ["children"]);
 

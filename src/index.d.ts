@@ -23,7 +23,7 @@ export interface CookieConsentProps {
   acceptOnScrollPercentage?: number;
   extraCookieOptions?: object;
   disableButtonStyles ?: boolean;
-  ButtonComponent?: Function | React.ReactElement;
+  buttonComponent?: Function | React.ReactElement;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

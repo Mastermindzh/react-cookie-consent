@@ -572,6 +572,7 @@ var CookieConsent = function (_Component) {
         borderRadius: "0px",
         boxShadow: "none",
         color: "black",
+        cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
         margin: "15px"

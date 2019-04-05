@@ -577,6 +577,17 @@ var CookieConsent = function (_Component) {
         padding: "5px 10px",
         margin: "15px"
       },
+      declineButtonStyle: {
+        background: "#ffd42d",
+        border: "0",
+        borderRadius: "0px",
+        boxShadow: "none",
+        color: "black",
+        cursor: "pointer",
+        flex: "0 0 auto",
+        padding: "5px 10px",
+        margin: "15px"
+      },
       contentStyle: {
         flex: "1 0 300px",
         margin: "15px"
@@ -600,8 +611,8 @@ var CookieConsent = function (_Component) {
         this.setState({ visible: true });
       }
 
-      // if acceptOnScroll is set to true, add a listener
-      if (this.props.acceptOnScroll) {
+      // if acceptOnScroll is set to true and cookie is undefined or debug is set to true, add a listener.
+      if (this.props.acceptOnScroll && _jsCookie2.default.get(cookieName) === undefined || debug) {
         window.addEventListener("scroll", this.handleScroll, { passive: true });
       }
     }
@@ -633,7 +644,7 @@ var CookieConsent = function (_Component) {
     }
 
     /**
-     * Set a persistent cookie
+     * Set a persistent accept cookie
      */
 
   }, {
@@ -660,6 +671,35 @@ var CookieConsent = function (_Component) {
         this.setState({ visible: false });
       }
     }
+
+    /**
+     * Set a persistent decline cookie
+     */
+
+  }, {
+    key: "decline",
+    value: function decline() {
+      var _props3 = this.props,
+          cookieName = _props3.cookieName,
+          declineCookieValue = _props3.declineCookieValue,
+          expires = _props3.expires,
+          hideOnDecline = _props3.hideOnDecline,
+          onDecline = _props3.onDecline,
+          extraCookieOptions = _props3.extraCookieOptions;
+
+      // fire onDecline
+
+      onDecline();
+
+      // remove listener if set
+      window.removeEventListener("scroll", this.handleScroll);
+
+      _jsCookie2.default.set(cookieName, declineCookieValue, _extends({ expires: expires }, extraCookieOptions));
+
+      if (hideOnDecline) {
+        this.setState({ visible: false });
+      }
+    }
   }, {
     key: "render",
     value: function render() {
@@ -670,29 +710,36 @@ var CookieConsent = function (_Component) {
         return null;
       }
 
-      var _props3 = this.props,
-          location = _props3.location,
-          style = _props3.style,
-          buttonStyle = _props3.buttonStyle,
-          contentStyle = _props3.contentStyle,
-          disableStyles = _props3.disableStyles,
-          buttonText = _props3.buttonText,
-          containerClasses = _props3.containerClasses,
-          contentClasses = _props3.contentClasses,
-          buttonClasses = _props3.buttonClasses,
-          buttonId = _props3.buttonId,
-          disableButtonStyles = _props3.disableButtonStyles,
-          ButtonComponent = _props3.ButtonComponent;
+      var _props4 = this.props,
+          location = _props4.location,
+          style = _props4.style,
+          buttonStyle = _props4.buttonStyle,
+          declineButtonStyle = _props4.declineButtonStyle,
+          contentStyle = _props4.contentStyle,
+          disableStyles = _props4.disableStyles,
+          buttonText = _props4.buttonText,
+          declineButtonText = _props4.declineButtonText,
+          containerClasses = _props4.containerClasses,
+          contentClasses = _props4.contentClasses,
+          buttonClasses = _props4.buttonClasses,
+          declineButtonClasses = _props4.declineButtonClasses,
+          buttonId = _props4.buttonId,
+          declineButtonId = _props4.declineButtonId,
+          disableButtonStyles = _props4.disableButtonStyles,
+          enableDeclineButton = _props4.enableDeclineButton,
+          ButtonComponent = _props4.ButtonComponent;
 
 
       var myStyle = {};
       var myButtonStyle = {};
+      var myDeclineButtonStyle = {};
       var myContentStyle = {};
 
       if (disableStyles) {
         // if styles are disabled use the provided styles (or none)
         myStyle = _extends({}, style);
         myButtonStyle = _extends({}, buttonStyle);
+        myDeclineButtonStyle = _extends({}, declineButtonStyle);
         myContentStyle = _extends({}, contentStyle);
       } else {
         // if styles aren't disabled merge them with the styles that are provided (or use default styles)
@@ -702,8 +749,10 @@ var CookieConsent = function (_Component) {
         // switch to disable JUST the button styles
         if (disableButtonStyles) {
           myButtonStyle = _extends({}, buttonStyle);
+          myDeclineButtonStyle = _extends({}, declineButtonStyle);
         } else {
           myButtonStyle = _extends({}, _extends({}, this.state.buttonStyle, buttonStyle));
+          myDeclineButtonStyle = _extends({}, _extends({}, this.state.declineButtonStyle, declineButtonStyle));
         }
       }
 
@@ -739,6 +788,18 @@ var CookieConsent = function (_Component) {
             }
           },
           buttonText
+        ),
+        enableDeclineButton && _react2.default.createElement(
+          ButtonComponent,
+          {
+            style: myDeclineButtonStyle,
+            className: declineButtonClasses,
+            id: declineButtonId,
+            onClick: function onClick() {
+              _this2.decline();
+            }
+          },
+          declineButtonText
         )
       );
     }
@@ -753,45 +814,60 @@ CookieConsent.propTypes = {
   })),
   style: _propTypes2.default.object,
   buttonStyle: _propTypes2.default.object,
+  declineButtonStyle: _propTypes2.default.object,
   contentStyle: _propTypes2.default.object,
   children: _propTypes2.default.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: _propTypes2.default.bool,
   hideOnAccept: _propTypes2.default.bool,
+  hideOnDecline: _propTypes2.default.bool,
   onAccept: _propTypes2.default.func,
+  onDecline: _propTypes2.default.func,
   buttonText: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func, _propTypes2.default.element]),
+  declineButtonText: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func, _propTypes2.default.element]),
   cookieName: _propTypes2.default.string,
   cookieValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool, _propTypes2.default.number]),
+  declineCookieValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool, _propTypes2.default.number]),
   debug: _propTypes2.default.bool,
   expires: _propTypes2.default.number,
   containerClasses: _propTypes2.default.string,
   contentClasses: _propTypes2.default.string,
   buttonClasses: _propTypes2.default.string,
+  declineButtonClasses: _propTypes2.default.string,
   buttonId: _propTypes2.default.string,
+  declineButtonId: _propTypes2.default.string,
   acceptOnScroll: _propTypes2.default.bool,
   acceptOnScrollPercentage: _propTypes2.default.number,
   extraCookieOptions: _propTypes2.default.object,
   disableButtonStyles: _propTypes2.default.bool,
+  enableDeclineButton: _propTypes2.default.bool,
   ButtonComponent: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.element])
 };
 
 CookieConsent.defaultProps = {
   disableStyles: false,
   hideOnAccept: true,
+  hideOnDecline: true,
   acceptOnScroll: false,
   acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
   onAccept: function onAccept() {},
+  onDecline: function onDecline() {},
   cookieName: "CookieConsent",
   cookieValue: true,
+  declineCookieValue: false,
   buttonText: "I understand",
+  declineButtonText: "I decline",
   debug: false,
   expires: 365,
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
+  declineButtonClasses: "",
   buttonId: "",
+  declineButtonId: "",
   extraCookieOptions: {},
   disableButtonStyles: false,
+  enableDeclineButton: false,
   ButtonComponent: function ButtonComponent(_ref) {
     var children = _ref.children,
         props = _objectWithoutProperties(_ref, ["children"]);
@@ -1689,7 +1765,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.3
+/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -1924,7 +2000,7 @@ exports.isSuspense = isSuspense;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.3
+/** @license React v16.8.6
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.

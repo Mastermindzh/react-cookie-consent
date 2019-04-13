@@ -74,6 +74,17 @@ One of the props (onAccept) is a function, this function will be called after th
 </CookieConsent>
 ```
 
+If the decline button is enabled then the (onDecline) prop function can be used, this function will be called after the user has clicked the decline button. You can enable the button and provide a function like so:
+
+```js
+<CookieConsent
+    enableDeclineButton
+    onDecline={() => {alert("nay!")}}
+>
+
+</CookieConsent>
+```
+
 ## Props
 | Prop          |               Type               | Default value | Description                                                                                           |
 |---------------|:--------------------------------:|---------------|-------------------------------------------------------------------------------------------------------|
@@ -84,20 +95,27 @@ One of the props (onAccept) is a function, this function will be called after th
 | acceptOnScroll   | boolean                       | false | Defines whether "accept" should be fired after the user scrolls a certain distance (see acceptOnScrollPercentage)     |
 | acceptOnScrollPercentage  | number               | 25 | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled      |
 | buttonText    | string or React component        | "I understand"  | Text to appear on the button                                                                        |
+| declineButtonText | string or React component    | "I decline"  | Text to appear on the decline button                                                                        |
 | cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                       |
 | cookieValue   | string or boolean or number      | true | Value to be saved under the cookieName.                                       |
+| declineCookieValue   | string or boolean or number | false | Value to be saved under the cookieName when declined.                                       |
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
+| onDecline     | function                         | `() => {}`     | Function to be called after the decline button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
 | expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |
 | extraCookieOptions  | object                           | `{}` | Extra info (apart from expiry date) to add to the cookie|
 | containerClasses| string                         | ""        | CSS classes to apply to the surrounding container                                                         |
 | buttonClasses | string                           | ""  | CSS classes to apply to the button                                                                              |
+| declineButtonClasses | string                    | ""  | CSS classes to apply to the decline button                                                                              |
 | buttonId      | string                           | ""  | Id to apply to the button                                                                              |
+| declineButtonId | string                         | ""  | Id to apply to the decline button                                                                              |
 | contentClasses| string                           | "" | CSS classes to apply to the content                                                                              |
 | style         | object                           | [look at source][style]        | React styling object for the bar.                                                    |
 | buttonStyle   | object                           | [look at source][buttonStyle]  | React styling object for the button.                                                 |
+| declineButtonStyle   | object                    | [look at source][declineButtonStyle] | React styling object for the decline button.                                                 |
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
 | disableButtonStyles | boolean                    | false         | If enabled the button will have no default style. (you can still supply style through props)       |
+| enableDeclineButton | boolean                    | false         | If enabled the decline button will be rendered       |
 | ButtonComponent    | React component             | button | React Component to render as a button.
 
 ## Debugging it
@@ -213,9 +231,10 @@ If you're crazy enough you can even make a rainbow colored bar:
 ```
 
 <!-- links -->
-[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L17-L28
-[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L38
-[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L39-L42
+[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L18-L29
+[buttonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L30-L40
+[declineButtonStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L41-L51
+[contentStyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L52-L55
 
 ## Projects using react-cookie-consent
 

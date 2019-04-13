@@ -38,6 +38,17 @@ class CookieConsent extends Component {
         padding: "5px 10px",
         margin: "15px"
       },
+      declineButtonStyle: {
+        background: "#ffd42d",
+        border: "0",
+        borderRadius: "0px",
+        boxShadow: "none",
+        color: "black",
+        cursor: "pointer",
+        flex: "0 0 auto",
+        padding: "5px 10px",
+        margin: "15px"
+      },
       contentStyle: {
         flex: "1 0 300px",
         margin: "15px"
@@ -55,8 +66,8 @@ class CookieConsent extends Component {
       this.setState({ visible: true });
     }
 
-    // if acceptOnScroll is set to true, add a listener
-    if (this.props.acceptOnScroll) {
+    // if acceptOnScroll is set to true and cookie is undefined or debug is set to true, add a listener.
+    if ((this.props.acceptOnScroll && Cookies.get(cookieName) === undefined) || debug) {
       window.addEventListener("scroll", this.handleScroll, { passive: true });
     }
   }
@@ -87,7 +98,7 @@ class CookieConsent extends Component {
   }
 
   /**
-   * Set a persistent cookie
+   * Set a persistent accept cookie
    */
   accept() {
     const { cookieName, cookieValue, expires, hideOnAccept, onAccept, extraCookieOptions } = this.props;
@@ -105,6 +116,25 @@ class CookieConsent extends Component {
     }
   }
 
+  /**
+   * Set a persistent decline cookie
+   */
+  decline() {
+    const { cookieName, declineCookieValue, expires, hideOnDecline, onDecline, extraCookieOptions } = this.props;
+
+    // fire onDecline
+    onDecline();
+
+    // remove listener if set
+    window.removeEventListener("scroll", this.handleScroll);
+
+    Cookies.set(cookieName, declineCookieValue, { expires: expires, ...extraCookieOptions });
+
+    if (hideOnDecline) {
+      this.setState({ visible: false });
+    }
+  }
+
   render() {
     // If the bar shouldn't be visible don't render anything.
     if (!this.state.visible) {
@@ -115,25 +145,32 @@ class CookieConsent extends Component {
       location,
       style,
       buttonStyle,
+      declineButtonStyle,
       contentStyle,
       disableStyles,
       buttonText,
+      declineButtonText,
       containerClasses,
       contentClasses,
       buttonClasses,
+      declineButtonClasses,
       buttonId,
+      declineButtonId,
       disableButtonStyles,
+      enableDeclineButton,
       ButtonComponent
     } = this.props;
 
     let myStyle = {};
     let myButtonStyle = {};
+    let myDeclineButtonStyle = {};
     let myContentStyle = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or none)
       myStyle = Object.assign({}, style);
       myButtonStyle = Object.assign({}, buttonStyle);
+      myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
       myContentStyle = Object.assign({}, contentStyle);
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
@@ -143,8 +180,10 @@ class CookieConsent extends Component {
       // switch to disable JUST the button styles
       if(disableButtonStyles){
         myButtonStyle = Object.assign({}, buttonStyle);
+        myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
       }else{
         myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
+        myDeclineButtonStyle = Object.assign({}, { ...this.state.declineButtonStyle, ...declineButtonStyle });
       }
 
     }
@@ -177,6 +216,18 @@ class CookieConsent extends Component {
         >
           {buttonText}
         </ButtonComponent>
+        {enableDeclineButton &&
+          <ButtonComponent
+            style={myDeclineButtonStyle}
+            className={declineButtonClasses}
+            id={declineButtonId}
+            onClick={() => {
+              this.decline();
+            }}
+          >
+            {declineButtonText}
+          </ButtonComponent>
+        }
       </div>
     );
   }
@@ -186,12 +237,20 @@ CookieConsent.propTypes = {
   location: PropTypes.oneOf(Object.keys(OPTIONS).map(key => OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
+  declineButtonStyle: PropTypes.object,
   contentStyle: PropTypes.object,
   children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   disableStyles: PropTypes.bool,
   hideOnAccept: PropTypes.bool,
+  hideOnDecline: PropTypes.bool,
   onAccept: PropTypes.func,
+  onDecline: PropTypes.func,
   buttonText: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.element
+  ]),
+  declineButtonText: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
     PropTypes.element
@@ -202,16 +261,24 @@ CookieConsent.propTypes = {
     PropTypes.bool,
     PropTypes.number
   ]),
+  declineCookieValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.number
+  ]),
   debug: PropTypes.bool,
   expires: PropTypes.number,
   containerClasses: PropTypes.string,
   contentClasses: PropTypes.string,
   buttonClasses: PropTypes.string,
+  declineButtonClasses: PropTypes.string,
   buttonId: PropTypes.string,
+  declineButtonId: PropTypes.string,
   acceptOnScroll: PropTypes.bool,
   acceptOnScrollPercentage: PropTypes.number,
   extraCookieOptions: PropTypes.object,
   disableButtonStyles: PropTypes.bool,
+  enableDeclineButton: PropTypes.bool,
   ButtonComponent: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.element
@@ -221,21 +288,28 @@ CookieConsent.propTypes = {
 CookieConsent.defaultProps = {
   disableStyles: false,
   hideOnAccept: true,
+  hideOnDecline: true,
   acceptOnScroll: false,
   acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
   onAccept: () => { },
+  onDecline: () => { },
   cookieName: "CookieConsent",
   cookieValue: true,
+  declineCookieValue: false,
   buttonText: "I understand",
+  declineButtonText: "I decline",
   debug: false,
   expires: 365,
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
+  declineButtonClasses: "",
   buttonId: "",
+  declineButtonId: "",
   extraCookieOptions: {},
   disableButtonStyles: false,
+  enableDeclineButton: false,
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
 };
 

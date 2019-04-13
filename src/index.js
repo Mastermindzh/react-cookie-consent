@@ -172,6 +172,7 @@ class CookieConsent extends Component {
       declineButtonId,
       disableButtonStyles,
       enableDeclineButton,
+      flipButtons,
       ButtonComponent
     } = this.props;
 
@@ -217,33 +218,51 @@ class CookieConsent extends Component {
         break;
     }
 
+    const buttonsToRender = [];
+
+    // add decline button
+    enableDeclineButton &&
+      buttonsToRender.push(
+        <ButtonComponent
+          key="declineButton"
+          style={myDeclineButtonStyle}
+          className={declineButtonClasses}
+          id={declineButtonId}
+          onClick={() => {
+            this.decline();
+          }}
+        >
+          {declineButtonText}
+        </ButtonComponent>
+      );
+
+    // add accept button
+    buttonsToRender.push(
+      <ButtonComponent
+        key="acceptButton"
+        style={myButtonStyle}
+        className={buttonClasses}
+        id={buttonId}
+        onClick={() => {
+          this.accept();
+        }}
+      >
+        {buttonText}
+      </ButtonComponent>
+    );
+
+    if (flipButtons) {
+      buttonsToRender.reverse();
+    }
+
     return (
       <div className={`cookieConsent ${containerClasses}`} style={myStyle}>
         <div style={myContentStyle} className={contentClasses}>
           {this.props.children}
         </div>
-        <ButtonComponent
-          style={myButtonStyle}
-          className={buttonClasses}
-          id={buttonId}
-          onClick={() => {
-            this.accept();
-          }}
-        >
-          {buttonText}
-        </ButtonComponent>
-        {enableDeclineButton && (
-          <ButtonComponent
-            style={myDeclineButtonStyle}
-            className={declineButtonClasses}
-            id={declineButtonId}
-            onClick={() => {
-              this.decline();
-            }}
-          >
-            {declineButtonText}
-          </ButtonComponent>
-        )}
+        {buttonsToRender.map(button => {
+          return button;
+        })}
       </div>
     );
   }
@@ -279,6 +298,7 @@ CookieConsent.propTypes = {
   extraCookieOptions: PropTypes.object,
   disableButtonStyles: PropTypes.bool,
   enableDeclineButton: PropTypes.bool,
+  flipButtons: PropTypes.bool,
   ButtonComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
 };
 
@@ -307,6 +327,7 @@ CookieConsent.defaultProps = {
   extraCookieOptions: {},
   disableButtonStyles: false,
   enableDeclineButton: false,
+  flipButtons: false,
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>
 };
 

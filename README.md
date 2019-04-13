@@ -116,6 +116,7 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 | contentStyle  | object                           | [look at source][contentStyle] | React styling object for the content.                                                |
 | disableButtonStyles | boolean                    | false         | If enabled the button will have no default style. (you can still supply style through props)       |
 | enableDeclineButton | boolean                    | false         | If enabled the decline button will be rendered       |
+| flipButtons | boolean                    | false         | If enabled the accept and decline buttons will be flipped       |
 | ButtonComponent    | React component             | button | React Component to render as a button.
 
 ## Debugging it
@@ -198,6 +199,22 @@ You can make the cookiebar disappear after scrolling a certain percentage using 
     Hello scroller :)
 </CookieConsent>
 ```
+
+#### Flipping the buttons
+If you enable the decline button you can pass along the "flipButtons" property to turn the button around:
+
+```js
+<CookieConsent
+    enableDeclineButton
+    flipButtons
+>
+    Flipped buttons
+</CookieConsent>
+```
+
+Which results in:
+
+![flipped buttons](./images/flipped.png)
 
 #### Extra cookie options
 You can add more cookie options using the extraCookieOptions parameter like so:

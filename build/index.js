@@ -578,11 +578,11 @@ var CookieConsent = function (_Component) {
         margin: "15px"
       },
       declineButtonStyle: {
-        background: "#ffd42d",
+        background: "#c12a2a",
         border: "0",
         borderRadius: "0px",
         boxShadow: "none",
-        color: "black",
+        color: "#e5e5e5",
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
@@ -727,6 +727,7 @@ var CookieConsent = function (_Component) {
           declineButtonId = _props4.declineButtonId,
           disableButtonStyles = _props4.disableButtonStyles,
           enableDeclineButton = _props4.enableDeclineButton,
+          flipButtons = _props4.flipButtons,
           ButtonComponent = _props4.ButtonComponent;
 
 
@@ -769,6 +770,42 @@ var CookieConsent = function (_Component) {
           break;
       }
 
+      var buttonsToRender = [];
+
+      // add decline button
+      enableDeclineButton && buttonsToRender.push(_react2.default.createElement(
+        ButtonComponent,
+        {
+          key: "declineButton",
+          style: myDeclineButtonStyle,
+          className: declineButtonClasses,
+          id: declineButtonId,
+          onClick: function onClick() {
+            _this2.decline();
+          }
+        },
+        declineButtonText
+      ));
+
+      // add accept button
+      buttonsToRender.push(_react2.default.createElement(
+        ButtonComponent,
+        {
+          key: "acceptButton",
+          style: myButtonStyle,
+          className: buttonClasses,
+          id: buttonId,
+          onClick: function onClick() {
+            _this2.accept();
+          }
+        },
+        buttonText
+      ));
+
+      if (flipButtons) {
+        buttonsToRender.reverse();
+      }
+
       return _react2.default.createElement(
         "div",
         { className: "cookieConsent " + containerClasses, style: myStyle },
@@ -777,30 +814,9 @@ var CookieConsent = function (_Component) {
           { style: myContentStyle, className: contentClasses },
           this.props.children
         ),
-        _react2.default.createElement(
-          ButtonComponent,
-          {
-            style: myButtonStyle,
-            className: buttonClasses,
-            id: buttonId,
-            onClick: function onClick() {
-              _this2.accept();
-            }
-          },
-          buttonText
-        ),
-        enableDeclineButton && _react2.default.createElement(
-          ButtonComponent,
-          {
-            style: myDeclineButtonStyle,
-            className: declineButtonClasses,
-            id: declineButtonId,
-            onClick: function onClick() {
-              _this2.decline();
-            }
-          },
-          declineButtonText
-        )
+        buttonsToRender.map(function (button) {
+          return button;
+        })
       );
     }
   }]);
@@ -840,6 +856,7 @@ CookieConsent.propTypes = {
   extraCookieOptions: _propTypes2.default.object,
   disableButtonStyles: _propTypes2.default.bool,
   enableDeclineButton: _propTypes2.default.bool,
+  flipButtons: _propTypes2.default.bool,
   ButtonComponent: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.element])
 };
 
@@ -868,6 +885,7 @@ CookieConsent.defaultProps = {
   extraCookieOptions: {},
   disableButtonStyles: false,
   enableDeclineButton: false,
+  flipButtons: false,
   ButtonComponent: function ButtonComponent(_ref) {
     var children = _ref.children,
         props = _objectWithoutProperties(_ref, ["children"]);

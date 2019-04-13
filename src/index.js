@@ -39,11 +39,11 @@ class CookieConsent extends Component {
         margin: "15px"
       },
       declineButtonStyle: {
-        background: "#ffd42d",
+        background: "#c12a2a",
         border: "0",
         borderRadius: "0px",
         boxShadow: "none",
-        color: "black",
+        color: "#e5e5e5",
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",

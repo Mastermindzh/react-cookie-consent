@@ -4,7 +4,7 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -50,7 +50,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "copy-webpack-plugin": "^4.6.0",
-    "react": "^16.7.0",
+    "react": "^16.8.6",
     "webpack": "^2.6.1"
   }
 }

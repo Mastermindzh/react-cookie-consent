@@ -201,7 +201,7 @@ You can make the cookiebar disappear after scrolling a certain percentage using 
 ```
 
 #### Flipping the buttons
-If you enable the decline button you can pass along the "flipButtons" property to turn the button around:
+If you enable the decline button you can pass along the "flipButtons" property to turn the buttons around:
 
 ```js
 <CookieConsent

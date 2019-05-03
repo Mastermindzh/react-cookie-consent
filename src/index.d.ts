@@ -30,6 +30,7 @@ export interface CookieConsentProps {
   extraCookieOptions?: object;
   disableButtonStyles?: boolean;
   enableDeclineButton?: boolean;
+  flipButtons?: boolean;
   ButtonComponent?: Function | React.ReactElement;
 }
 

@@ -32,7 +32,7 @@ You can import the cookie bar like this:
 import CookieConsent from "react-cookie-consent";
 ```
 
-If you want to set/remove cookies yourself you can optionally import Cookie (straight from js-cookie) like this:
+If you want to set/remove cookies yourself you can optionally import `Cookies` (straight from js-cookie) like this:
 
 ``` js
 import CookieConsent, { Cookies } from "react-cookie-consent";

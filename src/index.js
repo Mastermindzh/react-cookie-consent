@@ -66,8 +66,8 @@ class CookieConsent extends Component {
       this.setState({ visible: true });
     }
 
-    // if acceptOnScroll is set to true and cookie is undefined or debug is set to true, add a listener.
-    if ((this.props.acceptOnScroll && Cookies.get(cookieName) === undefined) || debug) {
+    // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
+    if (this.props.acceptOnScroll && (Cookies.get(cookieName) === undefined || debug)) {
       window.addEventListener("scroll", this.handleScroll, { passive: true });
     }
   }

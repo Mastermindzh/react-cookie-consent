@@ -99,6 +99,7 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 | cookieName    | string                           | "CookieConsent" | Name of the cookie used to track whether the user has agreed.                                       |
 | cookieValue   | string or boolean or number      | true | Value to be saved under the cookieName.                                       |
 | declineCookieValue   | string or boolean or number | false | Value to be saved under the cookieName when declined.                                       |
+| setDeclineCookie   | boolean | true | Whether to set a cookie when the user clicks "decline"                                       |
 | onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
 | onDecline     | function                         | `() => {}`     | Function to be called after the decline button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |

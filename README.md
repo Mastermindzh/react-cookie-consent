@@ -32,7 +32,7 @@ You can import the cookie bar like this:
 import CookieConsent from "react-cookie-consent";
 ```
 
-If you want to set/remove cookies yourself you can optionally import Cookie (straight from js-cookie) like this:
+If you want to set/remove cookies yourself you can optionally import `Cookies` (straight from js-cookie) like this:
 
 ``` js
 import CookieConsent, { Cookies } from "react-cookie-consent";
@@ -261,3 +261,4 @@ The list below features the projects which use react-cookie-consent (that I know
 - [bs-react-cookie-consent](https://github.com/ctbucha/bs-react-cookie-consent)
 - [comicrelief's storybook](https://github.com/comicrelief/storybook)
 - [inici Gatsby theme](https://github.com/kuworking/gatsby-theme-inici#readme)
+- [Scrivito Example App](https://github.com/Scrivito/scrivito_example_app_js)

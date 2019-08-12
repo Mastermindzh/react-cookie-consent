@@ -685,7 +685,8 @@ var CookieConsent = function (_Component) {
           expires = _props3.expires,
           hideOnDecline = _props3.hideOnDecline,
           onDecline = _props3.onDecline,
-          extraCookieOptions = _props3.extraCookieOptions;
+          extraCookieOptions = _props3.extraCookieOptions,
+          setDeclineCookie = _props3.setDeclineCookie;
 
       // fire onDecline
 
@@ -694,7 +695,9 @@ var CookieConsent = function (_Component) {
       // remove listener if set
       window.removeEventListener("scroll", this.handleScroll);
 
-      _jsCookie2.default.set(cookieName, declineCookieValue, _extends({ expires: expires }, extraCookieOptions));
+      if (setDeclineCookie) {
+        _jsCookie2.default.set(cookieName, declineCookieValue, _extends({ expires: expires }, extraCookieOptions));
+      }
 
       if (hideOnDecline) {
         this.setState({ visible: false });
@@ -761,12 +764,10 @@ var CookieConsent = function (_Component) {
       switch (location) {
         case OPTIONS.TOP:
           myStyle.top = "0";
-          myStyle.position = "fixed";
           break;
 
         case OPTIONS.BOTTOM:
           myStyle.bottom = "0";
-          myStyle.position = "fixed";
           break;
       }
 
@@ -843,6 +844,7 @@ CookieConsent.propTypes = {
   cookieName: _propTypes2.default.string,
   cookieValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool, _propTypes2.default.number]),
   declineCookieValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool, _propTypes2.default.number]),
+  setDeclineCookie: _propTypes2.default.bool,
   debug: _propTypes2.default.bool,
   expires: _propTypes2.default.number,
   containerClasses: _propTypes2.default.string,
@@ -872,6 +874,7 @@ CookieConsent.defaultProps = {
   cookieName: "CookieConsent",
   cookieValue: true,
   declineCookieValue: false,
+  setDeclineCookie: true,
   buttonText: "I understand",
   declineButtonText: "I decline",
   debug: false,

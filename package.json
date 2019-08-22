@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/Mastermindzh/react-cookie-consent#readme",
   "devDependencies": {
+    "@types/js-cookie": "^2.2.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

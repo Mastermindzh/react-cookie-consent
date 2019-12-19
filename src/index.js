@@ -93,14 +93,14 @@ class CookieConsent extends Component {
       100;
 
     if (percentage > this.props.acceptOnScrollPercentage) {
-      this.accept();
+      this.accept({ acceptedByScrolling: true });
     }
   }
 
   /**
    * Set a persistent accept cookie
    */
-  accept() {
+  accept({ acceptedByScrolling = false }) {
     const {
       cookieName,
       cookieValue,
@@ -111,7 +111,7 @@ class CookieConsent extends Component {
     } = this.props;
 
     // fire onAccept
-    onAccept();
+    onAccept({ acceptedByScrolling });
 
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
@@ -245,7 +245,7 @@ class CookieConsent extends Component {
         className={buttonClasses}
         id={buttonId}
         onClick={() => {
-          this.accept();
+          this.accept({ acceptedByScrolling: false });
         }}
       >
         {buttonText}

@@ -10,7 +10,7 @@ export interface CookieConsentProps {
   children?: React.ReactNode;
   disableStyles?: boolean;
   hideOnAccept?: boolean;
-  onAccept?: Function;
+  onAccept?: ({ acceptedByScrolling }: { acceptedByScrolling?: boolean }) => void;
   onDecline?: Function;
   buttonText?: Function | React.ReactNode;
   declineButtonText?: Function | React.ReactNode;

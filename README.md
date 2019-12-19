@@ -64,11 +64,19 @@ You can optionally set some props like this (next chapter will show all props):
 </CookieConsent>
 ```
 
-One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. You can provide a function like so:
+One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. It is called with an object containing a boolean property `acceptedByScrolling` to indicate if the acceptance was triggered by the user scrolling. You can provide a function like so:
 
 ```js
 <CookieConsent
-    onAccept={() => {alert("yay!")}}
+    acceptOnScroll={true}
+    onAccept={({ acceptedByScrolling }) => {
+        if (acceptedByScrolling) {
+            // triggered if user scrolls past threshold
+            alert("Accept was triggered by user scrolling");
+        } else {
+            alert("Accept was triggered by clicking the Accept button");
+        }
+    }}
 >
 
 </CookieConsent>
@@ -100,7 +108,7 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 | cookieValue   | string or boolean or number      | true | Value to be saved under the cookieName.                                       |
 | declineCookieValue   | string or boolean or number | false | Value to be saved under the cookieName when declined.                                       |
 | setDeclineCookie   | boolean | true | Whether to set a cookie when the user clicks "decline"                                       |
-| onAccept      | function                         | `() => {}`     | Function to be called after the accept button has been clicked.                                      |
+| onAccept      | function                         | `({ acceptedByScrolling }) => {}`     | Function to be called after the accept button has been clicked.                                      |
 | onDecline     | function                         | `() => {}`     | Function to be called after the decline button has been clicked.                                      |
 | debug         | boolean                          | undefined     | Bar will be drawn regardless of cookie for debugging purposes.                                        |
 | expires       | number                           | 365     | Number of days before the cookie expires.                                                                   |

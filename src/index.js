@@ -301,7 +301,7 @@ CookieConsent.propTypes = {
   disableButtonStyles: PropTypes.bool,
   enableDeclineButton: PropTypes.bool,
   flipButtons: PropTypes.bool,
-  ButtonComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+  ButtonComponent: PropTypes.elementType
 };
 
 CookieConsent.defaultProps = {

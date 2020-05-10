@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 export const OPTIONS = {
   TOP: "top",
   BOTTOM: "bottom",
-  NONE: "none"
+  NONE: "none",
 };
 
 class CookieConsent extends Component {
@@ -25,7 +25,7 @@ class CookieConsent extends Component {
         left: "0",
         position: "fixed",
         width: "100%",
-        zIndex: "999"
+        zIndex: "999",
       },
       buttonStyle: {
         background: "#ffd42d",
@@ -36,7 +36,7 @@ class CookieConsent extends Component {
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
-        margin: "15px"
+        margin: "15px",
       },
       declineButtonStyle: {
         background: "#c12a2a",
@@ -47,12 +47,12 @@ class CookieConsent extends Component {
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
-        margin: "15px"
+        margin: "15px",
       },
       contentStyle: {
         flex: "1 0 300px",
-        margin: "15px"
-      }
+        margin: "15px",
+      },
     };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -107,7 +107,7 @@ class CookieConsent extends Component {
       expires,
       hideOnAccept,
       onAccept,
-      extraCookieOptions
+      extraCookieOptions,
     } = this.props;
 
     // fire onAccept
@@ -134,7 +134,7 @@ class CookieConsent extends Component {
       hideOnDecline,
       onDecline,
       extraCookieOptions,
-      setDeclineCookie
+      setDeclineCookie,
     } = this.props;
 
     // fire onDecline
@@ -170,13 +170,14 @@ class CookieConsent extends Component {
       containerClasses,
       contentClasses,
       buttonClasses,
+      buttonWrapperClasses,
       declineButtonClasses,
       buttonId,
       declineButtonId,
       disableButtonStyles,
       enableDeclineButton,
       flipButtons,
-      ButtonComponent
+      ButtonComponent,
     } = this.props;
 
     let myStyle = {};
@@ -257,20 +258,22 @@ class CookieConsent extends Component {
     }
 
     return (
-      <div className={`cookieConsent ${containerClasses}`} style={myStyle}>
+      <div className={`${containerClasses}`} style={myStyle}>
         <div style={myContentStyle} className={contentClasses}>
           {this.props.children}
         </div>
-        {buttonsToRender.map(button => {
-          return button;
-        })}
+        <div className={`${buttonWrapperClasses}`}>
+          {buttonsToRender.map((button) => {
+            return button;
+          })}
+        </div>
       </div>
     );
   }
 }
 
 CookieConsent.propTypes = {
-  location: PropTypes.oneOf(Object.keys(OPTIONS).map(key => OPTIONS[key])),
+  location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -292,6 +295,7 @@ CookieConsent.propTypes = {
   containerClasses: PropTypes.string,
   contentClasses: PropTypes.string,
   buttonClasses: PropTypes.string,
+  buttonWrapperClasses: PropTypes.string,
   declineButtonClasses: PropTypes.string,
   buttonId: PropTypes.string,
   declineButtonId: PropTypes.string,
@@ -301,7 +305,7 @@ CookieConsent.propTypes = {
   disableButtonStyles: PropTypes.bool,
   enableDeclineButton: PropTypes.bool,
   flipButtons: PropTypes.bool,
-  ButtonComponent: PropTypes.elementType
+  ButtonComponent: PropTypes.elementType,
 };
 
 CookieConsent.defaultProps = {
@@ -324,14 +328,15 @@ CookieConsent.defaultProps = {
   containerClasses: "",
   contentClasses: "",
   buttonClasses: "",
+  buttonWrapperClasses: "",
   declineButtonClasses: "",
-  buttonId: "",
-  declineButtonId: "",
+  buttonId: "rcc-confirm-button",
+  declineButtonId: "rcc-decline-button",
   extraCookieOptions: {},
   disableButtonStyles: false,
   enableDeclineButton: false,
   flipButtons: false,
-  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>
+  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
 };
 
 export default CookieConsent;

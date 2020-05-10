@@ -1,0 +1,39 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.0.0]
+
+I decided to update react-cookie-consent to version 4 because this version has a
+buttonWrapper which will break appearance. I consider appearance a major feature.
+
+### Added
+
+- Changelog :D
+- A wrapper around the buttons so they always stay together. (still possible to
+  change with css using buttonWrapperClasses)
+
+### Changed
+
+- Default ids for the buttons (rcc stands for react-cookie-consent,
+  cookie-consent is blocked by some adblockers nowadays so I abbreviated it)
+
+### Updated
+
+#### dependencies
+
+- js-cookie updated from `2.2.0` to `2.2.1`
+
+#### peer dependencies
+
+- react updated from `16.4.0` to `16.13.1`
+
+#### development dependencies
+
+- @types/js-cookie updated from `2.2.2` to `2.2.6`
+- babel-cli updated from `6.24.1` to `6.26.0`
+- babel-preset-env updated from `1.5.1` to `1.7.0`
+- react updated from `16.8.6` to `16.13.1`

@@ -325,7 +325,7 @@ CookieConsent.defaultProps = {
   declineButtonText: "I decline",
   debug: false,
   expires: 365,
-  containerClasses: "",
+  containerClasses: "CookieConsent",
   contentClasses: "",
   buttonClasses: "",
   buttonWrapperClasses: "",

@@ -8,6 +8,12 @@ export const OPTIONS = {
   NONE: "none",
 };
 
+export const SAMESITE_OPTIONS = {
+  STRICT: "strict",
+  LAX: "lax",
+  NONE: "none",
+}
+
 class CookieConsent extends Component {
   constructor(props) {
     super(props);
@@ -108,6 +114,7 @@ class CookieConsent extends Component {
       hideOnAccept,
       onAccept,
       extraCookieOptions,
+      samesite,
     } = this.props;
 
     // fire onAccept
@@ -116,7 +123,11 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
+    if (samesite === SAMESITE_OPTIONS.NONE) {
+      Cookies.set(cookieName, cookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+    } else {
+      Cookies.set(cookieName, cookieValue, { expires, samesite, ...extraCookieOptions });
+    }
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -135,6 +146,7 @@ class CookieConsent extends Component {
       onDecline,
       extraCookieOptions,
       setDeclineCookie,
+      samesite,
     } = this.props;
 
     // fire onDecline
@@ -143,8 +155,10 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    if (setDeclineCookie) {
-      Cookies.set(cookieName, declineCookieValue, { expires: expires, ...extraCookieOptions });
+    if (setDeclineCookie && samesite === SAMESITE_OPTIONS.NONE) {
+      Cookies.set(cookieName, declineCookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+    } else if (setDeclineCookie) {
+      Cookies.set(cookieName, declineCookieValue, { expires, samesite, ...extraCookieOptions });
     }
 
     if (hideOnDecline) {
@@ -274,6 +288,7 @@ class CookieConsent extends Component {
 
 CookieConsent.propTypes = {
   location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
+  samesite: PropTypes.oneOf(Object.keys(SAMESITE_OPTIONS).map((key) => SAMESITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -315,8 +330,9 @@ CookieConsent.defaultProps = {
   acceptOnScroll: false,
   acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
-  onAccept: () => {},
-  onDecline: () => {},
+  samesite: SAMESITE_OPTIONS.STRICT,
+  onAccept: () => { },
+  onDecline: () => { },
   cookieName: "CookieConsent",
   cookieValue: true,
   declineCookieValue: false,

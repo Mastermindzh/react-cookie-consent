@@ -125,6 +125,9 @@ class CookieConsent extends Component {
 
     if (samesite === SAMESITE_OPTIONS.NONE) {
       Cookies.set(cookieName, cookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+
+      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+      Cookies.set(cookieName, cookieValue, { expires, secure: true, ...extraCookieOptions });
     } else {
       Cookies.set(cookieName, cookieValue, { expires, samesite, ...extraCookieOptions });
     }
@@ -157,6 +160,9 @@ class CookieConsent extends Component {
 
     if (setDeclineCookie && samesite === SAMESITE_OPTIONS.NONE) {
       Cookies.set(cookieName, declineCookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+
+      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+      Cookies.set(cookieName, declineCookieValue, { expires, secure: true, ...extraCookieOptions });
     } else if (setDeclineCookie) {
       Cookies.set(cookieName, declineCookieValue, { expires, samesite, ...extraCookieOptions });
     }

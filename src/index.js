@@ -114,7 +114,7 @@ class CookieConsent extends Component {
       hideOnAccept,
       onAccept,
       extraCookieOptions,
-      samesite,
+      sameSite,
     } = this.props;
 
     // fire onAccept
@@ -123,13 +123,13 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    if (samesite === SAMESITE_OPTIONS.NONE) {
-      Cookies.set(cookieName, cookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+    if (sameSite === SAMESITE_OPTIONS.NONE) {
+      Cookies.set(cookieName, cookieValue, { expires, sameSite, secure: true, ...extraCookieOptions });
 
-      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/sameSite-cookie-recipes/#handling-incompatible-clients
       Cookies.set(cookieName, cookieValue, { expires, secure: true, ...extraCookieOptions });
     } else {
-      Cookies.set(cookieName, cookieValue, { expires, samesite, ...extraCookieOptions });
+      Cookies.set(cookieName, cookieValue, { expires, sameSite, ...extraCookieOptions });
     }
 
     if (hideOnAccept) {
@@ -149,7 +149,7 @@ class CookieConsent extends Component {
       onDecline,
       extraCookieOptions,
       setDeclineCookie,
-      samesite,
+      sameSite,
     } = this.props;
 
     // fire onDecline
@@ -158,13 +158,13 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    if (setDeclineCookie && samesite === SAMESITE_OPTIONS.NONE) {
-      Cookies.set(cookieName, declineCookieValue, { expires, samesite, secure: true, ...extraCookieOptions });
+    if (setDeclineCookie && sameSite === SAMESITE_OPTIONS.NONE) {
+      Cookies.set(cookieName, declineCookieValue, { expires, sameSite, secure: true, ...extraCookieOptions });
 
-      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/sameSite-cookie-recipes/#handling-incompatible-clients
       Cookies.set(cookieName, declineCookieValue, { expires, secure: true, ...extraCookieOptions });
     } else if (setDeclineCookie) {
-      Cookies.set(cookieName, declineCookieValue, { expires, samesite, ...extraCookieOptions });
+      Cookies.set(cookieName, declineCookieValue, { expires, sameSite, ...extraCookieOptions });
     }
 
     if (hideOnDecline) {
@@ -294,7 +294,7 @@ class CookieConsent extends Component {
 
 CookieConsent.propTypes = {
   location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
-  samesite: PropTypes.oneOf(Object.keys(SAMESITE_OPTIONS).map((key) => SAMESITE_OPTIONS[key])),
+  sameSite: PropTypes.oneOf(Object.keys(SAMESITE_OPTIONS).map((key) => SAMESITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -336,7 +336,7 @@ CookieConsent.defaultProps = {
   acceptOnScroll: false,
   acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
-  samesite: SAMESITE_OPTIONS.STRICT,
+  sameSite: SAMESITE_OPTIONS.STRICT,
   onAccept: () => { },
   onDecline: () => { },
   cookieName: "CookieConsent",

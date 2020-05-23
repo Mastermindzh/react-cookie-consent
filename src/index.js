@@ -8,6 +8,12 @@ export const OPTIONS = {
   NONE: "none",
 };
 
+export const SAME_SITE_OPTIONS = {
+  STRICT: "strict",
+  LAX: "lax",
+  NONE: "none",
+};
+
 class CookieConsent extends Component {
   constructor(props) {
     super(props);
@@ -59,16 +65,16 @@ class CookieConsent extends Component {
   }
 
   componentDidMount() {
-    const { cookieName, debug } = this.props;
+    const { debug } = this.props;
 
     // if cookie undefined or debug
-    if (Cookies.get(cookieName) === undefined || debug) {
+    if (this.getCookieValue() === undefined || debug) {
       this.setState({ visible: true });
-    }
 
-    // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
-    if (this.props.acceptOnScroll && (Cookies.get(cookieName) === undefined || debug)) {
-      window.addEventListener("scroll", this.handleScroll, { passive: true });
+      // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
+      if (this.props.acceptOnScroll) {
+        window.addEventListener("scroll", this.handleScroll, { passive: true });
+      }
     }
   }
 
@@ -101,14 +107,7 @@ class CookieConsent extends Component {
    * Set a persistent accept cookie
    */
   accept({ acceptedByScrolling = false }) {
-    const {
-      cookieName,
-      cookieValue,
-      expires,
-      hideOnAccept,
-      onAccept,
-      extraCookieOptions,
-    } = this.props;
+    const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
 
     // fire onAccept
     onAccept({ acceptedByScrolling });
@@ -116,7 +115,7 @@ class CookieConsent extends Component {
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
 
-    Cookies.set(cookieName, cookieValue, { expires: expires, ...extraCookieOptions });
+    this.setCookie(cookieName, cookieValue);
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -144,12 +143,56 @@ class CookieConsent extends Component {
     window.removeEventListener("scroll", this.handleScroll);
 
     if (setDeclineCookie) {
-      Cookies.set(cookieName, declineCookieValue, { expires: expires, ...extraCookieOptions });
+      this.setCookie(cookieName, declineCookieValue);
     }
 
     if (hideOnDecline) {
       this.setState({ visible: false });
     }
+  }
+
+  /**
+   * Get the legacy cookie name by the regular cookie name
+   * @param {string} name of cookie to get
+   */
+  getLegacyCookieName(name) {
+    return `${name}-legacy`;
+  }
+
+  /**
+   * Function to set the consent cookie based on the provided variables
+   * Sets two cookies to handle incompatible browsers, more details:
+   * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+   */
+  setCookie(cookieName, cookieValue) {
+    const { extraCookieOptions, expires, sameSite, cookieSecurity } = this.props;
+
+    let cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
+
+    // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+    if (sameSite === SAME_SITE_OPTIONS.NONE) {
+      Cookies.set(this.getLegacyCookieName(cookieName), cookieValue, cookieOptions);
+    }
+
+    // set the regular cookie
+    Cookies.set(cookieName, cookieValue, cookieOptions);
+  }
+
+  /**
+   * Returns the value of the consent cookie
+   * Retrieves the regular value first and if not found the legacy one according
+   * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+   */
+  getCookieValue() {
+    const { cookieName } = this.props;
+
+    let cookieValue = Cookies.get(cookieName);
+
+    // if the cookieValue is undefined check for the legacy cookie
+    if (cookieValue === undefined) {
+      cookieValue = Cookies.get(this.getLegacyCookieName(cookieName));
+    }
+    return cookieValue;
   }
 
   render() {
@@ -274,6 +317,7 @@ class CookieConsent extends Component {
 
 CookieConsent.propTypes = {
   location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
+  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map((key) => SAME_SITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -306,6 +350,7 @@ CookieConsent.propTypes = {
   enableDeclineButton: PropTypes.bool,
   flipButtons: PropTypes.bool,
   ButtonComponent: PropTypes.elementType,
+  cookieSecurity: PropTypes.bool,
 };
 
 CookieConsent.defaultProps = {
@@ -336,6 +381,8 @@ CookieConsent.defaultProps = {
   disableButtonStyles: false,
   enableDeclineButton: false,
   flipButtons: false,
+  sameSite: SAME_SITE_OPTIONS.NONE,
+  cookieSecurity: location ? location.protocol === "https:" : true,
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
 };
 

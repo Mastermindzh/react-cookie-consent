@@ -506,7 +506,7 @@ module.exports = require("react");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Cookies = exports.OPTIONS = undefined;
+exports.Cookies = exports.SAME_SITE_OPTIONS = exports.OPTIONS = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -537,6 +537,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var OPTIONS = exports.OPTIONS = {
   TOP: "top",
   BOTTOM: "bottom",
+  NONE: "none"
+};
+
+var SAME_SITE_OPTIONS = exports.SAME_SITE_OPTIONS = {
+  STRICT: "strict",
+  LAX: "lax",
   NONE: "none"
 };
 
@@ -599,19 +605,17 @@ var CookieConsent = function (_Component) {
   _createClass(CookieConsent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _props = this.props,
-          cookieName = _props.cookieName,
-          debug = _props.debug;
+      var debug = this.props.debug;
 
       // if cookie undefined or debug
 
-      if (_jsCookie2.default.get(cookieName) === undefined || debug) {
+      if (this.getCookieValue() === undefined || debug) {
         this.setState({ visible: true });
-      }
 
-      // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
-      if (this.props.acceptOnScroll && (_jsCookie2.default.get(cookieName) === undefined || debug)) {
-        window.addEventListener("scroll", this.handleScroll, { passive: true });
+        // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
+        if (this.props.acceptOnScroll) {
+          window.addEventListener("scroll", this.handleScroll, { passive: true });
+        }
       }
     }
   }, {
@@ -650,13 +654,11 @@ var CookieConsent = function (_Component) {
     value: function accept(_ref) {
       var _ref$acceptedByScroll = _ref.acceptedByScrolling,
           acceptedByScrolling = _ref$acceptedByScroll === undefined ? false : _ref$acceptedByScroll;
-      var _props2 = this.props,
-          cookieName = _props2.cookieName,
-          cookieValue = _props2.cookieValue,
-          expires = _props2.expires,
-          hideOnAccept = _props2.hideOnAccept,
-          onAccept = _props2.onAccept,
-          extraCookieOptions = _props2.extraCookieOptions;
+      var _props = this.props,
+          cookieName = _props.cookieName,
+          cookieValue = _props.cookieValue,
+          hideOnAccept = _props.hideOnAccept,
+          onAccept = _props.onAccept;
 
       // fire onAccept
 
@@ -665,7 +667,7 @@ var CookieConsent = function (_Component) {
       // remove listener if set
       window.removeEventListener("scroll", this.handleScroll);
 
-      _jsCookie2.default.set(cookieName, cookieValue, _extends({ expires: expires }, extraCookieOptions));
+      this.setCookie(cookieName, cookieValue);
 
       if (hideOnAccept) {
         this.setState({ visible: false });
@@ -679,14 +681,14 @@ var CookieConsent = function (_Component) {
   }, {
     key: "decline",
     value: function decline() {
-      var _props3 = this.props,
-          cookieName = _props3.cookieName,
-          declineCookieValue = _props3.declineCookieValue,
-          expires = _props3.expires,
-          hideOnDecline = _props3.hideOnDecline,
-          onDecline = _props3.onDecline,
-          extraCookieOptions = _props3.extraCookieOptions,
-          setDeclineCookie = _props3.setDeclineCookie;
+      var _props2 = this.props,
+          cookieName = _props2.cookieName,
+          declineCookieValue = _props2.declineCookieValue,
+          expires = _props2.expires,
+          hideOnDecline = _props2.hideOnDecline,
+          onDecline = _props2.onDecline,
+          extraCookieOptions = _props2.extraCookieOptions,
+          setDeclineCookie = _props2.setDeclineCookie;
 
       // fire onDecline
 
@@ -696,12 +698,71 @@ var CookieConsent = function (_Component) {
       window.removeEventListener("scroll", this.handleScroll);
 
       if (setDeclineCookie) {
-        _jsCookie2.default.set(cookieName, declineCookieValue, _extends({ expires: expires }, extraCookieOptions));
+        this.setCookie(cookieName, declineCookieValue);
       }
 
       if (hideOnDecline) {
         this.setState({ visible: false });
       }
+    }
+
+    /**
+     * Get the legacy cookie name by the regular cookie name
+     * @param {string} name of cookie to get
+     */
+
+  }, {
+    key: "getLegacyCookieName",
+    value: function getLegacyCookieName(name) {
+      return name + "-legacy";
+    }
+
+    /**
+     * Function to set the consent cookie based on the provided variables
+     * Sets two cookies to handle incompatible browsers, more details:
+     * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+     */
+
+  }, {
+    key: "setCookie",
+    value: function setCookie(cookieName, cookieValue) {
+      var _props3 = this.props,
+          extraCookieOptions = _props3.extraCookieOptions,
+          expires = _props3.expires,
+          sameSite = _props3.sameSite,
+          cookieSecurity = _props3.cookieSecurity;
+
+
+      var cookieOptions = _extends({ expires: expires }, extraCookieOptions, { sameSite: sameSite, secure: cookieSecurity });
+
+      // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+      if (sameSite === SAME_SITE_OPTIONS.NONE) {
+        _jsCookie2.default.set(this.getLegacyCookieName(cookieName), cookieValue, cookieOptions);
+      }
+
+      // set the regular cookie
+      _jsCookie2.default.set(cookieName, cookieValue, cookieOptions);
+    }
+
+    /**
+     * Returns the value of the consent cookie
+     * Retrieves the regular value first and if not found the legacy one according
+     * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+     */
+
+  }, {
+    key: "getCookieValue",
+    value: function getCookieValue() {
+      var cookieName = this.props.cookieName;
+
+
+      var cookieValue = _jsCookie2.default.get(cookieName);
+
+      // if the cookieValue is undefined check for the legacy cookie
+      if (cookieValue === undefined) {
+        cookieValue = _jsCookie2.default.get(this.getLegacyCookieName(cookieName));
+      }
+      return cookieValue;
     }
   }, {
     key: "render",
@@ -834,6 +895,9 @@ CookieConsent.propTypes = {
   location: _propTypes2.default.oneOf(Object.keys(OPTIONS).map(function (key) {
     return OPTIONS[key];
   })),
+  sameSite: _propTypes2.default.oneOf(Object.keys(SAME_SITE_OPTIONS).map(function (key) {
+    return SAME_SITE_OPTIONS[key];
+  })),
   style: _propTypes2.default.object,
   buttonStyle: _propTypes2.default.object,
   declineButtonStyle: _propTypes2.default.object,
@@ -865,7 +929,8 @@ CookieConsent.propTypes = {
   disableButtonStyles: _propTypes2.default.bool,
   enableDeclineButton: _propTypes2.default.bool,
   flipButtons: _propTypes2.default.bool,
-  ButtonComponent: _propTypes2.default.elementType
+  ButtonComponent: _propTypes2.default.elementType,
+  cookieSecurity: _propTypes2.default.bool
 };
 
 CookieConsent.defaultProps = {
@@ -896,6 +961,8 @@ CookieConsent.defaultProps = {
   disableButtonStyles: false,
   enableDeclineButton: false,
   flipButtons: false,
+  sameSite: SAME_SITE_OPTIONS.NONE,
+  cookieSecurity: location ? location.protocol === "https:" : true,
   ButtonComponent: function ButtonComponent(_ref2) {
     var children = _ref2.children,
         props = _objectWithoutProperties(_ref2, ["children"]);

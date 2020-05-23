@@ -3,6 +3,8 @@ import Cookies from "js-cookie";
 
 export interface CookieConsentProps {
   location?: "top" | "bottom" | "none";
+  sameSite?: "strict" | "lax" | "none";
+  cookieSecurity?: boolean;
   style?: object;
   buttonStyle?: object;
   declineButtonStyle?: object;

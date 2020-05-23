@@ -2,8 +2,9 @@ import * as React from "react";
 import Cookies from "js-cookie";
 
 export interface CookieConsentProps {
-  sameSite?: "strict" | "lax" | "none";
   location?: "top" | "bottom" | "none";
+  sameSite?: "strict" | "lax" | "none";
+  cookieSecurity?: boolean;
   style?: object;
   buttonStyle?: object;
   declineButtonStyle?: object;

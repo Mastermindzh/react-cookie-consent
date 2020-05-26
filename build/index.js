@@ -729,9 +729,13 @@ var CookieConsent = function (_Component) {
       var _props3 = this.props,
           extraCookieOptions = _props3.extraCookieOptions,
           expires = _props3.expires,
-          sameSite = _props3.sameSite,
-          cookieSecurity = _props3.cookieSecurity;
+          sameSite = _props3.sameSite;
+      var cookieSecurity = this.props.cookieSecurity;
 
+
+      if (cookieSecurity === undefined) {
+        cookieSecurity = location ? location.protocol === "https:" : true;
+      }
 
       var cookieOptions = _extends({ expires: expires }, extraCookieOptions, { sameSite: sameSite, secure: cookieSecurity });
 
@@ -962,7 +966,6 @@ CookieConsent.defaultProps = {
   enableDeclineButton: false,
   flipButtons: false,
   sameSite: SAME_SITE_OPTIONS.NONE,
-  cookieSecurity: location ? location.protocol === "https:" : true,
   ButtonComponent: function ButtonComponent(_ref2) {
     var children = _ref2.children,
         props = _objectWithoutProperties(_ref2, ["children"]);

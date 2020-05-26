@@ -165,7 +165,12 @@ class CookieConsent extends Component {
    * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
    */
   setCookie(cookieName, cookieValue) {
-    const { extraCookieOptions, expires, sameSite, cookieSecurity } = this.props;
+    const { extraCookieOptions, expires, sameSite } = this.props;
+    let { cookieSecurity } = this.props;
+
+    if (cookieSecurity === undefined) {
+      cookieSecurity = location ? location.protocol === "https:" : true;
+    }
 
     let cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
 
@@ -382,7 +387,6 @@ CookieConsent.defaultProps = {
   enableDeclineButton: false,
   flipButtons: false,
   sameSite: SAME_SITE_OPTIONS.NONE,
-  cookieSecurity: location ? location.protocol === "https:" : true,
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
 };
 

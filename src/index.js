@@ -5,13 +5,13 @@ import Cookies from "js-cookie";
 export const OPTIONS = {
   TOP: "top",
   BOTTOM: "bottom",
-  NONE: "none",
+  NONE: "none"
 };
 
 export const SAME_SITE_OPTIONS = {
   STRICT: "strict",
   LAX: "lax",
-  NONE: "none",
+  NONE: "none"
 };
 
 class CookieConsent extends Component {
@@ -31,7 +31,7 @@ class CookieConsent extends Component {
         left: "0",
         position: "fixed",
         width: "100%",
-        zIndex: "999",
+        zIndex: "999"
       },
       buttonStyle: {
         background: "#ffd42d",
@@ -42,7 +42,7 @@ class CookieConsent extends Component {
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
-        margin: "15px",
+        margin: "15px"
       },
       declineButtonStyle: {
         background: "#c12a2a",
@@ -53,12 +53,12 @@ class CookieConsent extends Component {
         cursor: "pointer",
         flex: "0 0 auto",
         padding: "5px 10px",
-        margin: "15px",
+        margin: "15px"
       },
       contentStyle: {
         flex: "1 0 300px",
-        margin: "15px",
-      },
+        margin: "15px"
+      }
     };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -133,7 +133,7 @@ class CookieConsent extends Component {
       hideOnDecline,
       onDecline,
       extraCookieOptions,
-      setDeclineCookie,
+      setDeclineCookie
     } = this.props;
 
     // fire onDecline
@@ -225,7 +225,7 @@ class CookieConsent extends Component {
       disableButtonStyles,
       enableDeclineButton,
       flipButtons,
-      ButtonComponent,
+      ButtonComponent
     } = this.props;
 
     let myStyle = {};
@@ -311,7 +311,7 @@ class CookieConsent extends Component {
           {this.props.children}
         </div>
         <div className={`${buttonWrapperClasses}`}>
-          {buttonsToRender.map((button) => {
+          {buttonsToRender.map(button => {
             return button;
           })}
         </div>
@@ -321,8 +321,8 @@ class CookieConsent extends Component {
 }
 
 CookieConsent.propTypes = {
-  location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
-  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map((key) => SAME_SITE_OPTIONS[key])),
+  location: PropTypes.oneOf(Object.keys(OPTIONS).map(key => OPTIONS[key])),
+  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map(key => SAME_SITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -355,7 +355,7 @@ CookieConsent.propTypes = {
   enableDeclineButton: PropTypes.bool,
   flipButtons: PropTypes.bool,
   ButtonComponent: PropTypes.elementType,
-  cookieSecurity: PropTypes.bool,
+  cookieSecurity: PropTypes.bool
 };
 
 CookieConsent.defaultProps = {
@@ -387,7 +387,7 @@ CookieConsent.defaultProps = {
   enableDeclineButton: false,
   flipButtons: false,
   sameSite: SAME_SITE_OPTIONS.NONE,
-  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
+  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>
 };
 
 export default CookieConsent;

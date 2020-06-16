@@ -595,6 +595,15 @@ var CookieConsent = function (_Component) {
       contentStyle: {
         flex: "1 0 300px",
         margin: "15px"
+      },
+      overlayStyle: {
+        position: "absolute",
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: "999",
+        backgroundColor: "rgba(0,0,0,0.3)"
       }
     };
 
@@ -797,13 +806,17 @@ var CookieConsent = function (_Component) {
           disableButtonStyles = _props4.disableButtonStyles,
           enableDeclineButton = _props4.enableDeclineButton,
           flipButtons = _props4.flipButtons,
-          ButtonComponent = _props4.ButtonComponent;
+          ButtonComponent = _props4.ButtonComponent,
+          overlay = _props4.overlay,
+          overlayClasses = _props4.overlayClasses,
+          overlayStyle = _props4.overlayStyle;
 
 
       var myStyle = {};
       var myButtonStyle = {};
       var myDeclineButtonStyle = {};
       var myContentStyle = {};
+      var myOverlayStyle = {};
 
       if (disableStyles) {
         // if styles are disabled use the provided styles (or none)
@@ -811,10 +824,12 @@ var CookieConsent = function (_Component) {
         myButtonStyle = _extends({}, buttonStyle);
         myDeclineButtonStyle = _extends({}, declineButtonStyle);
         myContentStyle = _extends({}, contentStyle);
+        myOverlayStyle = _extends({}, overlayStyle);
       } else {
         // if styles aren't disabled merge them with the styles that are provided (or use default styles)
         myStyle = _extends({}, _extends({}, this.state.style, style));
         myContentStyle = _extends({}, _extends({}, this.state.contentStyle, contentStyle));
+        myOverlayStyle = _extends({}, _extends({}, this.state.overlayStyle, overlayStyle));
 
         // switch to disable JUST the button styles
         if (disableButtonStyles) {
@@ -873,20 +888,30 @@ var CookieConsent = function (_Component) {
         buttonsToRender.reverse();
       }
 
+      var OverlayWrapper = !overlay ? function (props) {
+        return _react2.default.createElement(_react2.default.Fragment, props);
+      } : function (props) {
+        return _react2.default.createElement("div", props);
+      };
+
       return _react2.default.createElement(
-        "div",
-        { className: "" + containerClasses, style: myStyle },
+        OverlayWrapper,
+        { style: myOverlayStyle, className: overlayClasses },
         _react2.default.createElement(
           "div",
-          { style: myContentStyle, className: contentClasses },
-          this.props.children
-        ),
-        _react2.default.createElement(
-          "div",
-          { className: "" + buttonWrapperClasses },
-          buttonsToRender.map(function (button) {
-            return button;
-          })
+          { className: "" + containerClasses, style: myStyle },
+          _react2.default.createElement(
+            "div",
+            { style: myContentStyle, className: contentClasses },
+            this.props.children
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "" + buttonWrapperClasses },
+            buttonsToRender.map(function (button) {
+              return button;
+            })
+          )
         )
       );
     }

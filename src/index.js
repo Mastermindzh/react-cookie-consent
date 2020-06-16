@@ -57,8 +57,17 @@ class CookieConsent extends Component {
       },
       contentStyle: {
         flex: "1 0 300px",
-        margin: "15px",
+        margin: "15px"
       },
+      overlayStyle: {
+        position: "absolute",
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: "999",
+        backgroundColor: "rgba(0,0,0,0.3)"
+    },
     };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -226,12 +235,16 @@ class CookieConsent extends Component {
       enableDeclineButton,
       flipButtons,
       ButtonComponent,
+      overlay,
+      overlayClasses,
+      overlayStyle,
     } = this.props;
 
     let myStyle = {};
     let myButtonStyle = {};
     let myDeclineButtonStyle = {};
     let myContentStyle = {};
+    let myOverlayStyle = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or none)
@@ -239,10 +252,12 @@ class CookieConsent extends Component {
       myButtonStyle = Object.assign({}, buttonStyle);
       myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
       myContentStyle = Object.assign({}, contentStyle);
+      myOverlayStyle = Object.assign({}, overlayStyle);
     } else {
       // if styles aren't disabled merge them with the styles that are provided (or use default styles)
       myStyle = Object.assign({}, { ...this.state.style, ...style });
       myContentStyle = Object.assign({}, { ...this.state.contentStyle, ...contentStyle });
+      myOverlayStyle = Object.assign({}, { ...this.state.overlayStyle, ...overlayStyle });
 
       // switch to disable JUST the button styles
       if (disableButtonStyles) {
@@ -305,17 +320,23 @@ class CookieConsent extends Component {
       buttonsToRender.reverse();
     }
 
+    const OverlayWrapper = !overlay
+      ? props => <React.Fragment {...props} />
+      : props => <div {...props} />;
+
     return (
-      <div className={`${containerClasses}`} style={myStyle}>
-        <div style={myContentStyle} className={contentClasses}>
-          {this.props.children}
+      <OverlayWrapper style={myOverlayStyle} className={overlayClasses}>
+        <div className={`${containerClasses}`} style={myStyle}>
+          <div style={myContentStyle} className={contentClasses}>
+            {this.props.children}
+          </div>
+          <div className={`${buttonWrapperClasses}`}>
+            {buttonsToRender.map(button => {
+              return button;
+            })}
+          </div>
         </div>
-        <div className={`${buttonWrapperClasses}`}>
-          {buttonsToRender.map((button) => {
-            return button;
-          })}
-        </div>
-      </div>
+      </OverlayWrapper>
     );
   }
 }

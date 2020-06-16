@@ -12,6 +12,28 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 
 ![default look](https://raw.githubusercontent.com/Mastermindzh/react-cookie-consent/master/images/default.png)
 
+## Table of contents
+
+<!-- toc -->
+
+- [Installation](#installation)
+- [Using it](#using-it)
+- [Props](#props)
+- [Debugging it](#debugging-it)
+- [Styling it](#styling-it)
+  - [Examples](#examples)
+    - [changing the bar background to red](#changing-the-bar-background-to-red)
+    - [changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
+    - [Using predefined CSS classes](#using-predefined-css-classes)
+    - [Accept on scroll](#accept-on-scroll)
+    - [Flipping the buttons](#flipping-the-buttons)
+    - [Extra cookie options](#extra-cookie-options)
+    - [rainbows!](#rainbows)
+- [contributor information](#contributor-information)
+- [Projects using react-cookie-consent](#projects-using-react-cookie-consent)
+
+<!-- tocstop -->
+
 ## Installation
 
 ```shell
@@ -252,6 +274,14 @@ If you're crazy enough you can even make a rainbow colored bar:
 [buttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L30-L40
 [declinebuttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L41-L51
 [contentstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L52-L55
+
+## contributor information
+
+When making a PR please think about the following things:
+
+- Update the ChangeLog (or include what you did in the PR and I'll add it, up to you)
+- No need to build or update the package.json. I will do both on release.
+- Please don't change code convention / style
 
 ## Projects using react-cookie-consent
 

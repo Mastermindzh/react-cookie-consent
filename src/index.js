@@ -67,7 +67,7 @@ class CookieConsent extends Component {
         height: "100%",
         zIndex: "999",
         backgroundColor: "rgba(0,0,0,0.3)",
-    },
+      },
     };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -142,7 +142,7 @@ class CookieConsent extends Component {
       hideOnDecline,
       onDecline,
       extraCookieOptions,
-      setDeclineCookie,
+      setDeclineCookie
     } = this.props;
 
     // fire onDecline
@@ -342,8 +342,8 @@ class CookieConsent extends Component {
 }
 
 CookieConsent.propTypes = {
-  location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
-  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map((key) => SAME_SITE_OPTIONS[key])),
+  location: PropTypes.oneOf(Object.keys(OPTIONS).map(key => OPTIONS[key])),
+  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map(key => SAME_SITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,
   declineButtonStyle: PropTypes.object,
@@ -376,7 +376,7 @@ CookieConsent.propTypes = {
   enableDeclineButton: PropTypes.bool,
   flipButtons: PropTypes.bool,
   ButtonComponent: PropTypes.elementType,
-  cookieSecurity: PropTypes.bool,
+  cookieSecurity: PropTypes.bool
 };
 
 CookieConsent.defaultProps = {
@@ -408,7 +408,7 @@ CookieConsent.defaultProps = {
   enableDeclineButton: false,
   flipButtons: false,
   sameSite: SAME_SITE_OPTIONS.NONE,
-  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
+  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>
 };
 
 export default CookieConsent;

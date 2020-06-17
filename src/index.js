@@ -57,7 +57,7 @@ class CookieConsent extends Component {
       },
       contentStyle: {
         flex: "1 0 300px",
-        margin: "15px"
+        margin: "15px",
       },
       overlayStyle: {
         position: "absolute",
@@ -66,7 +66,7 @@ class CookieConsent extends Component {
         width: "100%",
         height: "100%",
         zIndex: "999",
-        backgroundColor: "rgba(0,0,0,0.3)"
+        backgroundColor: "rgba(0,0,0,0.3)",
     },
     };
 

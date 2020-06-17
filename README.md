@@ -121,7 +121,7 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 | buttonStyle              |              object               | [look at source][buttonstyle]                                                                                         | React styling object for the button.                                                                                                    |
 | declineButtonStyle       |              object               | [look at source][declinebuttonstyle]                                                                                  | React styling object for the decline button.                                                                                            |
 | contentStyle             |              object               | [look at source][contentstyle]                                                                                        | React styling object for the content.                                                                                                   |
-| overlayStyle             |              object               | `{position: "absolute",left: 0,top: 0,width: "100%",height: "100%",zIndex: "999",backgroundColor: "rgba(0,0,0,0.3)"}` | React styling object for the overlay.                                                                                                   |
+| overlayStyle             |              object               | [look at source][overlaystyle]                                                                                        | React styling object for the overlay.                                                                                                   |
 | disableButtonStyles      |              boolean              | false                                                                                                                 | If enabled the button will have no default style. (you can still supply style through props)                                            |
 | enableDeclineButton      |              boolean              | false                                                                                                                 | If enabled the decline button will be rendered                                                                                          |
 | flipButtons              |              boolean              | false                                                                                                                 | If enabled the accept and decline buttons will be flipped                                                                               |
@@ -235,17 +235,34 @@ If you're crazy enough you can even make a rainbow colored bar:
   cookieName="myAwesomeCookieName2"
   style={{
     background: "linear-gradient(to right, orange , yellow, green, cyan, blue, violet)",
-    textShadow: "2px 2px black"
+    textShadow: "2px 2px black",
   }}
   buttonStyle={{
     background: "linear-gradient(to left, orange , yellow, green, cyan, blue, violet)",
     color: "white",
     fontWeight: "bolder",
-    textShadow: "2px 2px black"
+    textShadow: "2px 2px black",
   }}
 >
   This website uses cookies to enhance the user experience.{" "}
   <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
+</CookieConsent>
+```
+
+#### Overlay
+
+![overlay](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/overlay.png?raw=true)
+
+You can also generate a page-obfuscating overlay that will prevent actions other than interacting with the cookie consent button(s).
+
+```js
+<CookieConsent
+  location="bottom"
+  cookieName="myAwesomeCookieName3"
+  expires={999}
+  overlay
+>
+  This website uses cookies to enhance the user experience.
 </CookieConsent>
 ```
 
@@ -255,6 +272,7 @@ If you're crazy enough you can even make a rainbow colored bar:
 [buttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L30-L40
 [declinebuttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L41-L51
 [contentstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L52-L55
+[overlaystyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L62-L69
 
 ## Projects using react-cookie-consent
 

@@ -35,6 +35,9 @@ export interface CookieConsentProps {
   enableDeclineButton?: boolean;
   flipButtons?: boolean;
   ButtonComponent?: React.ElementType;
+  overlay?: boolean;
+  overlayClasses?: string;
+  overlayStyle?: object;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

@@ -321,8 +321,8 @@ class CookieConsent extends Component {
     }
 
     const OverlayWrapper = !overlay
-      ? props => <React.Fragment {...props} />
-      : props => <div {...props} />;
+      ? (props) => <React.Fragment {...props} />
+      : (props) => <div {...props} />;
 
     return (
       <OverlayWrapper style={myOverlayStyle} className={overlayClasses}>
@@ -331,7 +331,7 @@ class CookieConsent extends Component {
             {this.props.children}
           </div>
           <div className={`${buttonWrapperClasses}`}>
-            {buttonsToRender.map(button => {
+            {buttonsToRender.map((button) => {
               return button;
             })}
           </div>

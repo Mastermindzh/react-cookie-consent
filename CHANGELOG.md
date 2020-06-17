@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0]
+
+A new feature! This time it's an "overlay" on the entire website to block access whilst the cookiebar is displayed.
+This is all opt-in of course and the README covers it nicely (just add overlay to the props and see what happens).
+
+We got an update picture, with a cute cat... unfortunately the cat won't be included by default:
+
+![overlay example image](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/overlay.png?raw=true)
+
 ## [5.0.1]
 
 - Fixed [Issue

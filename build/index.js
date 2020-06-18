@@ -986,17 +986,20 @@ module.exports = /******/ (function (modules) {
                 buttonsToRender.reverse();
               }
 
-              var OverlayWrapper = !overlay
+              var Wrapper = !overlay
                 ? function (props) {
-                    return _react2.default.createElement(_react2.default.Fragment, props);
+                    return _react2.default.createElement("div", props);
                   }
                 : function (props) {
-                    return _react2.default.createElement("div", props);
+                    return _react2.default.createElement(
+                      "div",
+                      _extends({}, props, { style: myOverlayStyle, className: overlayClasses })
+                    );
                   };
 
               return _react2.default.createElement(
-                OverlayWrapper,
-                { style: myOverlayStyle, className: overlayClasses },
+                Wrapper,
+                null,
                 _react2.default.createElement(
                   "div",
                   { className: "" + containerClasses, style: myStyle },

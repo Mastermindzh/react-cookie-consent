@@ -320,12 +320,12 @@ class CookieConsent extends Component {
       buttonsToRender.reverse();
     }
 
-    const OverlayWrapper = !overlay
-      ? (props) => <React.Fragment {...props} />
-      : (props) => <div {...props} />;
+    const Wrapper = !overlay
+      ? (props) => <div {...props} />
+      : (props) => <div {...props} style={myOverlayStyle} className={overlayClasses} />;
 
     return (
-      <OverlayWrapper style={myOverlayStyle} className={overlayClasses}>
+      <Wrapper>
         <div className={`${containerClasses}`} style={myStyle}>
           <div style={myContentStyle} className={contentClasses}>
             {this.props.children}
@@ -336,7 +336,7 @@ class CookieConsent extends Component {
             })}
           </div>
         </div>
-      </OverlayWrapper>
+      </Wrapper>
     );
   }
 }

@@ -352,8 +352,7 @@ CookieConsent.propTypes = {
   disableStyles: PropTypes.bool,
   hideOnAccept: PropTypes.bool,
   hideOnDecline: PropTypes.bool,
-  
-: PropTypes.func,
+  onAccept: PropTypes.func,
   onDecline: PropTypes.func,
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
   declineButtonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),

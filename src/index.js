@@ -14,6 +14,17 @@ export const SAME_SITE_OPTIONS = {
   NONE: "none",
 };
 
+/**
+ * A function to wrap elements with a "wrapper" on a condition
+ * @param {object} wrappingOptions
+ *  condition == boolean condition, when to wrap
+ *  wrapper == style to wrap. e.g <div>{children}</div>
+ *  children == react passes whatever is between tags as children. Don't supply this yourself.
+ */
+const ConditionalWrapper = ({ condition, wrapper, children }) => {
+  return condition ? wrapper(children) : children;
+};
+
 class CookieConsent extends Component {
   constructor(props) {
     super(props);
@@ -60,7 +71,7 @@ class CookieConsent extends Component {
         margin: "15px",
       },
       overlayStyle: {
-        position: "absolute",
+        position: "fixed",
         left: 0,
         top: 0,
         width: "100%",
@@ -117,7 +128,7 @@ class CookieConsent extends Component {
    */
   accept({ acceptedByScrolling = false }) {
     const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
-    
+
     this.setCookie(cookieName, cookieValue);
 
     // fire onAccept
@@ -144,11 +155,11 @@ class CookieConsent extends Component {
       extraCookieOptions,
       setDeclineCookie,
     } = this.props;
-    
+
     if (setDeclineCookie) {
       this.setCookie(cookieName, declineCookieValue);
     }
-    
+
     // fire onDecline
     onDecline();
 
@@ -320,12 +331,15 @@ class CookieConsent extends Component {
       buttonsToRender.reverse();
     }
 
-    const Wrapper = !overlay
-      ? (props) => <div {...props} />
-      : (props) => <div {...props} style={myOverlayStyle} className={overlayClasses} />;
-
     return (
-      <Wrapper>
+      <ConditionalWrapper
+        condition={overlay}
+        wrapper={(children) => (
+          <div style={myOverlayStyle} className={overlayClasses}>
+            {children}
+          </div>
+        )}
+      >
         <div className={`${containerClasses}`} style={myStyle}>
           <div style={myContentStyle} className={contentClasses}>
             {this.props.children}
@@ -336,7 +350,7 @@ class CookieConsent extends Component {
             })}
           </div>
         </div>
-      </Wrapper>
+      </ConditionalWrapper>
     );
   }
 }

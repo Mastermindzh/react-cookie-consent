@@ -622,6 +622,21 @@ module.exports = /******/ (function (modules) {
         NONE: "none",
       });
 
+      /**
+       * A function to wrap elements with a "wrapper" on a condition
+       * @param {object} wrappingOptions
+       *  condition == boolean condition, when to wrap
+       *  wrapper == style to wrap. e.g <div>{children}</div>
+       *  children == react passes whatever is between tags as children. Don't supply this yourself.
+       */
+      var ConditionalWrapper = function ConditionalWrapper(_ref) {
+        var condition = _ref.condition,
+          wrapper = _ref.wrapper,
+          children = _ref.children;
+
+        return condition ? wrapper(children) : children;
+      };
+
       var CookieConsent = (function (_Component) {
         _inherits(CookieConsent, _Component);
 
@@ -676,7 +691,7 @@ module.exports = /******/ (function (modules) {
               margin: "15px",
             },
             overlayStyle: {
-              position: "absolute",
+              position: "fixed",
               left: 0,
               top: 0,
               width: "100%",
@@ -744,24 +759,23 @@ module.exports = /******/ (function (modules) {
           },
           {
             key: "accept",
-            value: function accept(_ref) {
-              var _ref$acceptedByScroll = _ref.acceptedByScrolling,
+            value: function accept(_ref2) {
+              var _ref2$acceptedByScrol = _ref2.acceptedByScrolling,
                 acceptedByScrolling =
-                  _ref$acceptedByScroll === undefined ? false : _ref$acceptedByScroll;
+                  _ref2$acceptedByScrol === undefined ? false : _ref2$acceptedByScrol;
               var _props = this.props,
                 cookieName = _props.cookieName,
                 cookieValue = _props.cookieValue,
                 hideOnAccept = _props.hideOnAccept,
                 onAccept = _props.onAccept;
 
-              // fire onAccept
+              this.setCookie(cookieName, cookieValue);
 
+              // fire onAccept
               onAccept({ acceptedByScrolling: acceptedByScrolling });
 
               // remove listener if set
               window.removeEventListener("scroll", this.handleScroll);
-
-              this.setCookie(cookieName, cookieValue);
 
               if (hideOnAccept) {
                 this.setState({ visible: false });
@@ -784,16 +798,15 @@ module.exports = /******/ (function (modules) {
                 extraCookieOptions = _props2.extraCookieOptions,
                 setDeclineCookie = _props2.setDeclineCookie;
 
-              // fire onDecline
+              if (setDeclineCookie) {
+                this.setCookie(cookieName, declineCookieValue);
+              }
 
+              // fire onDecline
               onDecline();
 
               // remove listener if set
               window.removeEventListener("scroll", this.handleScroll);
-
-              if (setDeclineCookie) {
-                this.setCookie(cookieName, declineCookieValue);
-              }
 
               if (hideOnDecline) {
                 this.setState({ visible: false });
@@ -986,20 +999,18 @@ module.exports = /******/ (function (modules) {
                 buttonsToRender.reverse();
               }
 
-              var Wrapper = !overlay
-                ? function (props) {
-                    return _react2.default.createElement("div", props);
-                  }
-                : function (props) {
+              return _react2.default.createElement(
+                ConditionalWrapper,
+                {
+                  condition: overlay,
+                  wrapper: function wrapper(children) {
                     return _react2.default.createElement(
                       "div",
-                      _extends({}, props, { style: myOverlayStyle, className: overlayClasses })
+                      { style: myOverlayStyle, className: overlayClasses },
+                      children
                     );
-                  };
-
-              return _react2.default.createElement(
-                Wrapper,
-                null,
+                  },
+                },
                 _react2.default.createElement(
                   "div",
                   { className: "" + containerClasses, style: myStyle },
@@ -1118,9 +1129,9 @@ module.exports = /******/ (function (modules) {
         enableDeclineButton: false,
         flipButtons: false,
         sameSite: SAME_SITE_OPTIONS.NONE,
-        ButtonComponent: function ButtonComponent(_ref2) {
-          var children = _ref2.children,
-            props = _objectWithoutProperties(_ref2, ["children"]);
+        ButtonComponent: function ButtonComponent(_ref3) {
+          var children = _ref3.children,
+            props = _objectWithoutProperties(_ref3, ["children"]);
 
           return _react2.default.createElement("button", props, children);
         },

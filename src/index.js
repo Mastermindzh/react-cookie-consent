@@ -117,14 +117,14 @@ class CookieConsent extends Component {
    */
   accept({ acceptedByScrolling = false }) {
     const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
+    
+    this.setCookie(cookieName, cookieValue);
 
     // fire onAccept
     onAccept({ acceptedByScrolling });
 
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
-
-    this.setCookie(cookieName, cookieValue);
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -144,16 +144,16 @@ class CookieConsent extends Component {
       extraCookieOptions,
       setDeclineCookie,
     } = this.props;
-
+    
+    if (setDeclineCookie) {
+      this.setCookie(cookieName, declineCookieValue);
+    }
+    
     // fire onDecline
     onDecline();
 
     // remove listener if set
     window.removeEventListener("scroll", this.handleScroll);
-
-    if (setDeclineCookie) {
-      this.setCookie(cookieName, declineCookieValue);
-    }
 
     if (hideOnDecline) {
       this.setState({ visible: false });

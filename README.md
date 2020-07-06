@@ -22,6 +22,7 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 - [Using it](#using-it)
 - [Props](#props)
 - [Debugging it](#debugging-it)
+- [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies--one-of-which-named--legacy-)
 - [Styling it](#styling-it)
   - [Examples](#examples)
     - [changing the bar background to red](#changing-the-bar-background-to-red)
@@ -162,6 +163,23 @@ Because the cookie consent bar will be hidden once accepted, you will have to se
 ```
 
 **Note:** Don't forget to remove the `debug`-property for production.
+
+## Why are there two cookies? One of which named "Legacy"
+
+The short story is that some browsers don't support the SameSite=None attribute.
+The modern browsers force you to have SameSite set to something other than none.
+
+So react-cookie-consent fixes this like so:
+
+- set the fallback cookie (e.g -legacy) first, this will always succeed (on all browsers)
+- set the correct cookie second (this will work on modern browsers, fail on older ones)
+
+This happens on lines [186-192](https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L186-L192)
+
+When checking the cookie it'll do it in reverse. If the regular cookie exists, it'll use that. If no regular cookie exists it'll check whether the legacy cookie exists. If both are non-existent no consent was given.
+
+The long story can be found here: [pull-request#68](https://github.com/Mastermindzh/react-cookie-consent/pull/68)
+
 
 ## Styling it
 

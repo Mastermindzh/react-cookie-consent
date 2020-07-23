@@ -24,6 +24,7 @@ export interface CookieConsentProps {
   expires?: number;
   containerClasses?: string;
   contentClasses?: string;
+  buttonWrapperClasses?: string;
   buttonClasses?: string;
   declineButtonClasses?: string;
   buttonId?: string;

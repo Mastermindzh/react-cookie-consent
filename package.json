@@ -17,9 +17,9 @@
   "scripts": {
     "build": "webpack",
     "prettier": "prettier 'src/**/*.{js*,ts*,htm*,md,scss}' --write",
-    "patch": "npm --no-git-tag-version version patch",
-    "minor": "npm --no-git-tag-version version minor",
-    "major": "npm --no-git-tag-version version major",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
     "release": "npm run build && git add -A && git commit -m 'version bump and build' && git push && npm publish",
     "release-patch": "npm run patch && npm run release",
     "release-minor": "npm run minor && npm run release",

@@ -424,7 +424,7 @@ CookieConsent.defaultProps = {
   disableButtonStyles: false,
   enableDeclineButton: false,
   flipButtons: false,
-  sameSite: SAME_SITE_OPTIONS.NONE,
+  sameSite: SAME_SITE_OPTIONS.LAX,
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
   overlay: false,
   overlayClasses: "",

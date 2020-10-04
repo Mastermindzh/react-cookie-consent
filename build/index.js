@@ -1128,7 +1128,7 @@ module.exports = /******/ (function (modules) {
         disableButtonStyles: false,
         enableDeclineButton: false,
         flipButtons: false,
-        sameSite: SAME_SITE_OPTIONS.NONE,
+        sameSite: SAME_SITE_OPTIONS.LAX,
         ButtonComponent: function ButtonComponent(_ref3) {
           var children = _ref3.children,
             props = _objectWithoutProperties(_ref3, ["children"]);

@@ -62,7 +62,7 @@
   "prettier": "@mastermindzh/prettier-config",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged --allow-empty"
     }
   },
   "lint-staged": {

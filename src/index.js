@@ -249,6 +249,8 @@ class CookieConsent extends Component {
       overlay,
       overlayClasses,
       overlayStyle,
+      ariaAcceptLabel,
+      ariaDeclineLabel,
     } = this.props;
 
     let myStyle = {};
@@ -304,6 +306,7 @@ class CookieConsent extends Component {
           style={myDeclineButtonStyle}
           className={declineButtonClasses}
           id={declineButtonId}
+          aria-label={ariaDeclineLabel}
           onClick={() => {
             this.decline();
           }}
@@ -319,6 +322,7 @@ class CookieConsent extends Component {
         style={myButtonStyle}
         className={buttonClasses}
         id={buttonId}
+        aria-label={ariaAcceptLabel}
         onClick={() => {
           this.accept({ acceptedByScrolling: false });
         }}
@@ -394,6 +398,8 @@ CookieConsent.propTypes = {
   overlay: PropTypes.bool,
   overlayClasses: PropTypes.string,
   overlayStyle: PropTypes.object,
+  ariaAcceptLabel: PropTypes.string,
+  ariaDeclineLabel: PropTypes.string,
 };
 
 CookieConsent.defaultProps = {
@@ -428,6 +434,8 @@ CookieConsent.defaultProps = {
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
   overlay: false,
   overlayClasses: "",
+  ariaAcceptLabel: "Accept cookies",
+  ariaDeclineLabel: "Decline cookies",
 };
 
 export default CookieConsent;

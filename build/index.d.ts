@@ -39,6 +39,8 @@ export interface CookieConsentProps {
   overlay?: boolean;
   overlayClasses?: string;
   overlayStyle?: object;
+  ariaAcceptLabel?: string;
+  ariaDeclineLabel?: string;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

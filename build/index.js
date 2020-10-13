@@ -913,7 +913,9 @@ module.exports = /******/ (function (modules) {
                 ButtonComponent = _props4.ButtonComponent,
                 overlay = _props4.overlay,
                 overlayClasses = _props4.overlayClasses,
-                overlayStyle = _props4.overlayStyle;
+                overlayStyle = _props4.overlayStyle,
+                ariaAcceptLabel = _props4.ariaAcceptLabel,
+                ariaDeclineLabel = _props4.ariaDeclineLabel;
 
               var myStyle = {};
               var myButtonStyle = {};
@@ -970,6 +972,7 @@ module.exports = /******/ (function (modules) {
                       style: myDeclineButtonStyle,
                       className: declineButtonClasses,
                       id: declineButtonId,
+                      "aria-label": ariaDeclineLabel,
                       onClick: function onClick() {
                         _this2.decline();
                       },
@@ -987,6 +990,7 @@ module.exports = /******/ (function (modules) {
                     style: myButtonStyle,
                     className: buttonClasses,
                     id: buttonId,
+                    "aria-label": ariaAcceptLabel,
                     onClick: function onClick() {
                       _this2.accept({ acceptedByScrolling: false });
                     },
@@ -1098,6 +1102,8 @@ module.exports = /******/ (function (modules) {
         overlay: _propTypes2.default.bool,
         overlayClasses: _propTypes2.default.string,
         overlayStyle: _propTypes2.default.object,
+        ariaAcceptLabel: _propTypes2.default.string,
+        ariaDeclineLabel: _propTypes2.default.string,
       };
 
       CookieConsent.defaultProps = {
@@ -1137,6 +1143,8 @@ module.exports = /******/ (function (modules) {
         },
         overlay: false,
         overlayClasses: "",
+        ariaAcceptLabel: "Accept cookies",
+        ariaDeclineLabel: "Decline cookies",
       };
 
       exports.default = CookieConsent;

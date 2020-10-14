@@ -153,6 +153,8 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 | ButtonComponent          |          React component          | button                               | React Component to render as a button.                                                                                                  |
 | sameSite                 | string, "strict", "lax" or "none" | none                                 | Cookies sameSite attribute value                                                                                                        |
 | cookieSecurity           |              boolean              | undefined                            | Cookie security level. Defaults to true unless running on http.                                                                         |
+| ariaAcceptLabel          |              string               | Accept cookies                       | Aria label to set on the accept button                                                                                                  |
+| ariaDeclineLabel         |              string               | Decline cookies                      | Aria label to set on the decline button                                                                                                 |
 
 ## Debugging it
 
@@ -179,7 +181,6 @@ This happens on lines [186-192](https://github.com/Mastermindzh/react-cookie-con
 When checking the cookie it'll do it in reverse. If the regular cookie exists, it'll use that. If no regular cookie exists it'll check whether the legacy cookie exists. If both are non-existent no consent was given.
 
 The long story can be found here: [pull-request#68](https://github.com/Mastermindzh/react-cookie-consent/pull/68)
-
 
 ## Styling it
 

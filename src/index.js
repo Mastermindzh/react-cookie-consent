@@ -28,7 +28,6 @@ const ConditionalWrapper = ({ condition, wrapper, children }) => {
 class CookieConsent extends Component {
   constructor(props) {
     super(props);
-    this.accept.bind(this);
 
     this.state = {
       visible: false,
@@ -281,7 +280,9 @@ class CookieConsent extends Component {
         className={buttonClasses}
         id={buttonId}
         aria-label={ariaAcceptLabel}
-        onClick={this.accept}
+        onClick={() => {
+          this.accept();
+        }}
       >
         {buttonText}
       </ButtonComponent>

@@ -80,8 +80,6 @@ class CookieConsent extends Component {
         backgroundColor: "rgba(0,0,0,0.3)",
       },
     };
-
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
@@ -90,52 +88,18 @@ class CookieConsent extends Component {
     // if cookie undefined or debug
     if (this.getCookieValue() === undefined || debug) {
       this.setState({ visible: true });
-
-      // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
-      if (this.props.acceptOnScroll) {
-        window.addEventListener("scroll", this.handleScroll, { passive: true });
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    // remove listener if still set
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  /**
-   * checks whether scroll has exceeded set amount and fire accept if so.
-   */
-  handleScroll() {
-    // (top / height) - height * 100
-    let rootNode = document.documentElement,
-      body = document.body,
-      top = "scrollTop",
-      height = "scrollHeight";
-
-    let percentage =
-      ((rootNode[top] || body[top]) /
-        ((rootNode[height] || body[height]) - rootNode.clientHeight)) *
-      100;
-
-    if (percentage > this.props.acceptOnScrollPercentage) {
-      this.accept({ acceptedByScrolling: true });
     }
   }
 
   /**
    * Set a persistent accept cookie
    */
-  accept({ acceptedByScrolling = false }) {
+  accept() {
     const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
 
     this.setCookie(cookieName, cookieValue);
 
-    // fire onAccept
-    onAccept({ acceptedByScrolling });
-
-    // remove listener if set
-    window.removeEventListener("scroll", this.handleScroll);
+    onAccept();
 
     if (hideOnAccept) {
       this.setState({ visible: false });
@@ -149,10 +113,8 @@ class CookieConsent extends Component {
     const {
       cookieName,
       declineCookieValue,
-      expires,
       hideOnDecline,
       onDecline,
-      extraCookieOptions,
       setDeclineCookie,
     } = this.props;
 
@@ -160,11 +122,7 @@ class CookieConsent extends Component {
       this.setCookie(cookieName, declineCookieValue);
     }
 
-    // fire onDecline
     onDecline();
-
-    // remove listener if set
-    window.removeEventListener("scroll", this.handleScroll);
 
     if (hideOnDecline) {
       this.setState({ visible: false });
@@ -323,9 +281,7 @@ class CookieConsent extends Component {
         className={buttonClasses}
         id={buttonId}
         aria-label={ariaAcceptLabel}
-        onClick={() => {
-          this.accept({ acceptedByScrolling: false });
-        }}
+        onClick={this.accept}
       >
         {buttonText}
       </ButtonComponent>
@@ -387,8 +343,6 @@ CookieConsent.propTypes = {
   declineButtonClasses: PropTypes.string,
   buttonId: PropTypes.string,
   declineButtonId: PropTypes.string,
-  acceptOnScroll: PropTypes.bool,
-  acceptOnScrollPercentage: PropTypes.number,
   extraCookieOptions: PropTypes.object,
   disableButtonStyles: PropTypes.bool,
   enableDeclineButton: PropTypes.bool,
@@ -406,8 +360,6 @@ CookieConsent.defaultProps = {
   disableStyles: false,
   hideOnAccept: true,
   hideOnDecline: true,
-  acceptOnScroll: false,
-  acceptOnScrollPercentage: 25,
   location: OPTIONS.BOTTOM,
   onAccept: () => {},
   onDecline: () => {},

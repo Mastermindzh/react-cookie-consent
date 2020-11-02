@@ -28,7 +28,6 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
     - [changing the bar background to red](#changing-the-bar-background-to-red)
     - [changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
     - [Using predefined CSS classes](#using-predefined-css-classes)
-    - [Accept on scroll](#accept-on-scroll)
     - [Flipping the buttons](#flipping-the-buttons)
     - [Extra cookie options](#extra-cookie-options)
     - [rainbows!](#rainbows)
@@ -85,18 +84,12 @@ You can optionally set some props like this (next chapter will show all props):
 </CookieConsent>
 ```
 
-One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. It is called with an object containing a boolean property `acceptedByScrolling` to indicate if the acceptance was triggered by the user scrolling. You can provide a function like so:
+One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. You can provide a function like so:
 
 ```js
 <CookieConsent
-  acceptOnScroll={true}
-  onAccept={({ acceptedByScrolling }) => {
-    if (acceptedByScrolling) {
-      // triggered if user scrolls past threshold
-      alert("Accept was triggered by user scrolling");
-    } else {
-      alert("Accept was triggered by clicking the Accept button");
-    }
+  onAccept={() => {
+    alert("Accept was triggered by clicking the Accept button");
   }}
 ></CookieConsent>
 ```
@@ -114,47 +107,45 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 
 ## Props
 
-| Prop                     |               Type                | Default value                        | Description                                                                                                                             |
-| ------------------------ | :-------------------------------: | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| location                 | string, "top", "bottom" or "none" | "bottom"                             | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. Use "none" to disable.            |
-| children                 |     string or React component     |                                      | Content to appear inside the bar                                                                                                        |
-| disableStyles            |              boolean              | false                                | If enabled the component will have no default style. (you can still supply style through props)                                         |
-| hideOnAccept             |              boolean              | true                                 | If disabled the component will not hide it self after the accept button has been clicked. You will need to hide yourself (see onAccept) |
-| acceptOnScroll           |              boolean              | false                                | Defines whether "accept" should be fired after the user scrolls a certain distance (see acceptOnScrollPercentage)                       |
-| acceptOnScrollPercentage |              number               | 25                                   | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled                        |
-| buttonText               |     string or React component     | "I understand"                       | Text to appear on the button                                                                                                            |
-| declineButtonText        |     string or React component     | "I decline"                          | Text to appear on the decline button                                                                                                    |
-| cookieName               |              string               | "CookieConsent"                      | Name of the cookie used to track whether the user has agreed.                                                                           |
-| cookieValue              |    string or boolean or number    | true                                 | Value to be saved under the cookieName.                                                                                                 |
-| declineCookieValue       |    string or boolean or number    | false                                | Value to be saved under the cookieName when declined.                                                                                   |
-| setDeclineCookie         |              boolean              | true                                 | Whether to set a cookie when the user clicks "decline"                                                                                  |
-| onAccept                 |             function              | `({ acceptedByScrolling }) => {}`    | Function to be called after the accept button has been clicked.                                                                         |
-| onDecline                |             function              | `() => {}`                           | Function to be called after the decline button has been clicked.                                                                        |
-| debug                    |              boolean              | undefined                            | Bar will be drawn regardless of cookie for debugging purposes.                                                                          |
-| expires                  |              number               | 365                                  | Number of days before the cookie expires.                                                                                               |
-| extraCookieOptions       |              object               | `{}`                                 | Extra info (apart from expiry date) to add to the cookie                                                                                |
-| overlay                  |              boolean              | false                                | Whether to show a page obscuring overlay or not.                                                                                        |
-| containerClasses         |              string               | ""                                   | CSS classes to apply to the surrounding container                                                                                       |
-| buttonClasses            |              string               | ""                                   | CSS classes to apply to the button                                                                                                      |
-| buttonWrapperClasses     |              string               | ""                                   | CSS classes to apply to the div wrapping the buttons                                                                                    |
-| declineButtonClasses     |              string               | ""                                   | CSS classes to apply to the decline button                                                                                              |
-| buttonId                 |              string               | ""                                   | Id to apply to the button                                                                                                               |
-| declineButtonId          |              string               | ""                                   | Id to apply to the decline button                                                                                                       |
-| contentClasses           |              string               | ""                                   | CSS classes to apply to the content                                                                                                     |
-| overlayClasses           |              string               | ""                                   | CSS classes to apply to the surrounding overlay                                                                                         |
-| style                    |              object               | [look at source][style]              | React styling object for the bar.                                                                                                       |
-| buttonStyle              |              object               | [look at source][buttonstyle]        | React styling object for the button.                                                                                                    |
-| declineButtonStyle       |              object               | [look at source][declinebuttonstyle] | React styling object for the decline button.                                                                                            |
-| contentStyle             |              object               | [look at source][contentstyle]       | React styling object for the content.                                                                                                   |
-| overlayStyle             |              object               | [look at source][overlaystyle]       | React styling object for the overlay.                                                                                                   |
-| disableButtonStyles      |              boolean              | false                                | If enabled the button will have no default style. (you can still supply style through props)                                            |
-| enableDeclineButton      |              boolean              | false                                | If enabled the decline button will be rendered                                                                                          |
-| flipButtons              |              boolean              | false                                | If enabled the accept and decline buttons will be flipped                                                                               |
-| ButtonComponent          |          React component          | button                               | React Component to render as a button.                                                                                                  |
-| sameSite                 | string, "strict", "lax" or "none" | none                                 | Cookies sameSite attribute value                                                                                                        |
-| cookieSecurity           |              boolean              | undefined                            | Cookie security level. Defaults to true unless running on http.                                                                         |
-| ariaAcceptLabel          |              string               | Accept cookies                       | Aria label to set on the accept button                                                                                                  |
-| ariaDeclineLabel         |              string               | Decline cookies                      | Aria label to set on the decline button                                                                                                 |
+| Prop                 |               Type                | Default value                        | Description                                                                                                                             |
+| -------------------- | :-------------------------------: | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| location             | string, "top", "bottom" or "none" | "bottom"                             | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. Use "none" to disable.            |
+| children             |     string or React component     |                                      | Content to appear inside the bar                                                                                                        |
+| disableStyles        |              boolean              | false                                | If enabled the component will have no default style. (you can still supply style through props)                                         |
+| hideOnAccept         |              boolean              | true                                 | If disabled the component will not hide it self after the accept button has been clicked. You will need to hide yourself (see onAccept) |
+| buttonText           |     string or React component     | "I understand"                       | Text to appear on the button                                                                                                            |
+| declineButtonText    |     string or React component     | "I decline"                          | Text to appear on the decline button                                                                                                    |
+| cookieName           |              string               | "CookieConsent"                      | Name of the cookie used to track whether the user has agreed.                                                                           |
+| cookieValue          |    string or boolean or number    | true                                 | Value to be saved under the cookieName.                                                                                                 |
+| declineCookieValue   |    string or boolean or number    | false                                | Value to be saved under the cookieName when declined.                                                                                   |
+| setDeclineCookie     |              boolean              | true                                 | Whether to set a cookie when the user clicks "decline"                                                                                  |
+| onAccept             |             function              | `() => {}`                           | Function to be called after the accept button has been clicked.                                                                         |
+| onDecline            |             function              | `() => {}`                           | Function to be called after the decline button has been clicked.                                                                        |
+| debug                |              boolean              | undefined                            | Bar will be drawn regardless of cookie for debugging purposes.                                                                          |
+| expires              |              number               | 365                                  | Number of days before the cookie expires.                                                                                               |
+| extraCookieOptions   |              object               | `{}`                                 | Extra info (apart from expiry date) to add to the cookie                                                                                |
+| overlay              |              boolean              | false                                | Whether to show a page obscuring overlay or not.                                                                                        |
+| containerClasses     |              string               | ""                                   | CSS classes to apply to the surrounding container                                                                                       |
+| buttonClasses        |              string               | ""                                   | CSS classes to apply to the button                                                                                                      |
+| buttonWrapperClasses |              string               | ""                                   | CSS classes to apply to the div wrapping the buttons                                                                                    |
+| declineButtonClasses |              string               | ""                                   | CSS classes to apply to the decline button                                                                                              |
+| buttonId             |              string               | ""                                   | Id to apply to the button                                                                                                               |
+| declineButtonId      |              string               | ""                                   | Id to apply to the decline button                                                                                                       |
+| contentClasses       |              string               | ""                                   | CSS classes to apply to the content                                                                                                     |
+| overlayClasses       |              string               | ""                                   | CSS classes to apply to the surrounding overlay                                                                                         |
+| style                |              object               | [look at source][style]              | React styling object for the bar.                                                                                                       |
+| buttonStyle          |              object               | [look at source][buttonstyle]        | React styling object for the button.                                                                                                    |
+| declineButtonStyle   |              object               | [look at source][declinebuttonstyle] | React styling object for the decline button.                                                                                            |
+| contentStyle         |              object               | [look at source][contentstyle]       | React styling object for the content.                                                                                                   |
+| overlayStyle         |              object               | [look at source][overlaystyle]       | React styling object for the overlay.                                                                                                   |
+| disableButtonStyles  |              boolean              | false                                | If enabled the button will have no default style. (you can still supply style through props)                                            |
+| enableDeclineButton  |              boolean              | false                                | If enabled the decline button will be rendered                                                                                          |
+| flipButtons          |              boolean              | false                                | If enabled the accept and decline buttons will be flipped                                                                               |
+| ButtonComponent      |          React component          | button                               | React Component to render as a button.                                                                                                  |
+| sameSite             | string, "strict", "lax" or "none" | none                                 | Cookies sameSite attribute value                                                                                                        |
+| cookieSecurity       |              boolean              | undefined                            | Cookie security level. Defaults to true unless running on http.                                                                         |
+| ariaAcceptLabel      |              string               | Accept cookies                       | Aria label to set on the accept button                                                                                                  |
+| ariaDeclineLabel     |              string               | Decline cookies                      | Aria label to set on the decline button                                                                                                 |
 
 ## Debugging it
 
@@ -227,22 +218,6 @@ You can pass predefined CSS classes to the components using the `containerClasse
 Which results in:
 
 ![bootstrap styling](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/css_classes.png?raw=true)
-
-#### Accept on scroll
-
-You can make the cookiebar disappear after scrolling a certain percentage using acceptOnScroll and acceptOnScrollPercentage.
-
-```js
-<CookieConsent
-  acceptOnScroll={true}
-  acceptOnScrollPercentage={50}
-  onAccept={() => {
-    alert("consent given");
-  }}
->
-  Hello scroller :)
-</CookieConsent>
-```
 
 #### Flipping the buttons
 

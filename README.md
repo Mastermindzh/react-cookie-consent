@@ -25,13 +25,13 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 - [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies--one-of-which-named--legacy-)
 - [Styling it](#styling-it)
   - [Examples](#examples)
-    - [changing the bar background to red](#changing-the-bar-background-to-red)
-    - [changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
+    - [Changing the bar background to red](#changing-the-bar-background-to-red)
+    - [Changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
     - [Using predefined CSS classes](#using-predefined-css-classes)
     - [Flipping the buttons](#flipping-the-buttons)
     - [Extra cookie options](#extra-cookie-options)
-    - [rainbows!](#rainbows)
-- [contributor information](#contributor-information)
+    - [Rainbows!](#rainbows)
+- [Contributor information](#contributor-information)
 - [Projects using react-cookie-consent](#projects-using-react-cookie-consent)
 
 <!-- tocstop -->
@@ -186,13 +186,13 @@ You can use `disableStyles={true}` to disable any built-in styling.
 
 ### Examples
 
-#### changing the bar background to red
+#### Changing the bar background to red
 
 ```js
 <CookieConsent style={{ background: "red" }}></CookieConsent>
 ```
 
-#### changing the button font-weight to bold
+#### Changing the button font-weight to bold
 
 ```js
 <CookieConsent buttonStyle={{ fontWeight: "bold" }}></CookieConsent>
@@ -241,7 +241,7 @@ You can add more cookie options using the extraCookieOptions parameter like so:
 <CookieConsent extraCookieOptions={{ domain: "myexample.com" }}>cookie bar</CookieConsent>
 ```
 
-#### rainbows!
+#### Rainbows!
 
 ![rainbows!](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/rainbow.png?raw=true)
 
@@ -287,7 +287,7 @@ You can also generate a page-obfuscating overlay that will prevent actions other
 [contentstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L52-L55
 [overlaystyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L62-L69
 
-## contributor information
+## Contributor information
 
 When making a PR please think about the following things:
 

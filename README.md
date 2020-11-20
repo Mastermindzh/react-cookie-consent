@@ -22,7 +22,7 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 - [Using it](#using-it)
 - [Props](#props)
 - [Debugging it](#debugging-it)
-- [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies--one-of-which-named--legacy-)
+- [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies-one-of-which-named-legacy)
 - [Styling it](#styling-it)
   - [Examples](#examples)
     - [Changing the bar background to red](#changing-the-bar-background-to-red)

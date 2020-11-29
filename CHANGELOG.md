@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [[6.1.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.1.0)]
+
+Added support for React 17
+
+## [[6.0.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.0.0)]
+
+### removed
+
+Accepting by scrolling is no longer allowed and has thus been removed from the package.
+For details see [issue 88](https://github.com/Mastermindzh/react-cookie-consent/issues/88)
+
 ## [[5.2.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/5.2.0)]
 
 ### added

@@ -21,7 +21,8 @@
     "patch": "npm --no-git-tag-version version patch",
     "minor": "npm --no-git-tag-version version minor",
     "major": "npm --no-git-tag-version version major",
-    "release": "npm run build && git add -A && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag $PACKAGE_VERSION && git commit -m 'release $PACKAGE_VERSION' && git push && git push --tags && npm publish",
+    "preversion": "grep \"\\[$npm_package_version\\]\" CHANGELOG.md > /dev/null || ( echo 'You need to add an entry in CHANGELOG.md for this version.' && false )",
+    "release": "npm run build && git add -A && git tag $npm_package_version && git commit -m 'release $npm_package_version' && git push && git push --tags && npm publish",
     "release-patch": "npm run patch && npm run release",
     "release-minor": "npm run minor && npm run release",
     "release-major": "npm run major && npm run release"

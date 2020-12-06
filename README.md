@@ -105,6 +105,16 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 ></CookieConsent>
 ```
 
+### getting the cookies value in your own code
+
+react-cookie-consent exports a function called `getCookieConsentValue`. You can use it in your own code like so:
+
+```js
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
+
+console.log(getCookieConsentValue());
+```
+
 ## Props
 
 | Prop                 |               Type                | Default value                        | Description                                                                                                                             |

@@ -6,9 +6,10 @@ module.exports = (() => {
         n.r(t),
           n.d(t, {
             Cookies: () => s(),
-            OPTIONS: () => O,
-            SAME_SITE_OPTIONS: () => v,
-            default: () => S,
+            OPTIONS: () => h,
+            SAME_SITE_OPTIONS: () => m,
+            default: () => j,
+            getCookieConsentValue: () => g,
           });
         const o = require("react");
         var r = n.n(o),
@@ -59,7 +60,7 @@ module.exports = (() => {
             var n = null != arguments[t] ? arguments[t] : {};
             t % 2
               ? p(Object(n), !0).forEach(function (t) {
-                  y(e, t, n[t]);
+                  b(e, t, n[t]);
                 })
               : Object.getOwnPropertyDescriptors
               ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
@@ -69,7 +70,7 @@ module.exports = (() => {
           }
           return e;
         }
-        function y(e, t, n) {
+        function b(e, t, n) {
           return (
             t in e
               ? Object.defineProperty(e, t, {
@@ -82,7 +83,7 @@ module.exports = (() => {
             e
           );
         }
-        function b(e, t) {
+        function y(e, t) {
           for (var n = 0; n < t.length; n++) {
             var o = t[n];
             (o.enumerable = o.enumerable || !1),
@@ -98,7 +99,7 @@ module.exports = (() => {
               return (e.__proto__ = t), e;
             })(e, t);
         }
-        function m(e, t) {
+        function v(e, t) {
           return !t || ("object" !== l(t) && "function" != typeof t)
             ? (function (e) {
                 if (void 0 === e)
@@ -109,22 +110,31 @@ module.exports = (() => {
               })(e)
             : t;
         }
-        function h(e) {
-          return (h = Object.setPrototypeOf
+        function O(e) {
+          return (O = Object.setPrototypeOf
             ? Object.getPrototypeOf
             : function (e) {
                 return e.__proto__ || Object.getPrototypeOf(e);
               })(e);
         }
-        var O = { TOP: "top", BOTTOM: "bottom", NONE: "none" },
-          v = { STRICT: "strict", LAX: "lax", NONE: "none" },
-          g = function (e) {
+        var h = { TOP: "top", BOTTOM: "bottom", NONE: "none" },
+          m = { STRICT: "strict", LAX: "lax", NONE: "none" },
+          g = function () {
+            var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : C,
+              t = s().get(e);
+            return void 0 === t && (t = s().get(S(e))), t;
+          },
+          S = function (e) {
+            return "".concat(e, "-legacy");
+          },
+          C = "CookieConsent",
+          k = function (e) {
             var t = e.condition,
               n = e.wrapper,
               o = e.children;
             return t ? n(o) : o;
           },
-          C = (function (e) {
+          x = (function (e) {
             !(function (e, t) {
               if ("function" != typeof t && null !== t)
                 throw new TypeError("Super expression must either be null or a function");
@@ -153,12 +163,12 @@ module.exports = (() => {
                 })()),
                 function () {
                   var e,
-                    t = h(o);
+                    t = O(o);
                   if (i) {
-                    var n = h(this).constructor;
+                    var n = O(this).constructor;
                     e = Reflect.construct(t, arguments, n);
                   } else e = t.apply(this, arguments);
-                  return m(this, e);
+                  return v(this, e);
                 });
             function a(e) {
               var t;
@@ -251,12 +261,6 @@ module.exports = (() => {
                   },
                 },
                 {
-                  key: "getLegacyCookieName",
-                  value: function (e) {
-                    return "".concat(e, "-legacy");
-                  },
-                },
-                {
                   key: "setCookie",
                   value: function (e, t) {
                     var n = this.props,
@@ -266,15 +270,14 @@ module.exports = (() => {
                       c = this.props.cookieSecurity;
                     void 0 === c && (c = !location || "https:" === location.protocol);
                     var a = f(f({ expires: r }, o), {}, { sameSite: i, secure: c });
-                    i === v.NONE && s().set(this.getLegacyCookieName(e), t, a), s().set(e, t, a);
+                    i === m.NONE && s().set(S(e), t, a), s().set(e, t, a);
                   },
                 },
                 {
                   key: "getCookieValue",
                   value: function () {
-                    var e = this.props.cookieName,
-                      t = s().get(e);
-                    return void 0 === t && (t = s().get(this.getLegacyCookieName(e))), t;
+                    var e = this.props.cookieName;
+                    return g(e);
                   },
                 },
                 {
@@ -291,15 +294,15 @@ module.exports = (() => {
                       s = t.disableStyles,
                       l = t.buttonText,
                       p = t.declineButtonText,
-                      y = t.containerClasses,
-                      b = t.contentClasses,
+                      b = t.containerClasses,
+                      y = t.contentClasses,
                       d = t.buttonClasses,
-                      m = t.buttonWrapperClasses,
-                      h = t.declineButtonClasses,
-                      v = t.buttonId,
-                      C = t.declineButtonId,
+                      v = t.buttonWrapperClasses,
+                      O = t.declineButtonClasses,
+                      m = t.buttonId,
+                      g = t.declineButtonId,
                       S = t.disableButtonStyles,
-                      k = t.enableDeclineButton,
+                      C = t.enableDeclineButton,
                       x = t.flipButtons,
                       j = t.ButtonComponent,
                       T = t.overlay,
@@ -308,43 +311,43 @@ module.exports = (() => {
                       P = t.ariaAcceptLabel,
                       D = t.ariaDeclineLabel,
                       E = {},
-                      N = {},
                       I = {},
+                      N = {},
                       _ = {},
                       R = {};
                     switch (
                       (s
                         ? ((E = u({}, o)),
-                          (N = u({}, i)),
-                          (I = u({}, c)),
+                          (I = u({}, i)),
+                          (N = u({}, c)),
                           (_ = u({}, a)),
                           (R = u({}, B)))
                         : ((E = u({}, f(f({}, this.state.style), o))),
                           (_ = u({}, f(f({}, this.state.contentStyle), a))),
                           (R = u({}, f(f({}, this.state.overlayStyle), B))),
                           S
-                            ? ((N = u({}, i)), (I = u({}, c)))
-                            : ((N = u({}, f(f({}, this.state.buttonStyle), i))),
-                              (I = u({}, f(f({}, this.state.declineButtonStyle), c))))),
+                            ? ((I = u({}, i)), (N = u({}, c)))
+                            : ((I = u({}, f(f({}, this.state.buttonStyle), i))),
+                              (N = u({}, f(f({}, this.state.declineButtonStyle), c))))),
                       n)
                     ) {
-                      case O.TOP:
+                      case h.TOP:
                         E.top = "0";
                         break;
-                      case O.BOTTOM:
+                      case h.BOTTOM:
                         E.bottom = "0";
                     }
                     var A = [];
                     return (
-                      k &&
+                      C &&
                         A.push(
                           r().createElement(
                             j,
                             {
                               key: "declineButton",
-                              style: I,
-                              className: h,
-                              id: C,
+                              style: N,
+                              className: O,
+                              id: g,
                               "aria-label": D,
                               onClick: function () {
                                 e.decline();
@@ -358,9 +361,9 @@ module.exports = (() => {
                           j,
                           {
                             key: "acceptButton",
-                            style: N,
+                            style: I,
                             className: d,
-                            id: v,
+                            id: m,
                             "aria-label": P,
                             onClick: function () {
                               e.accept();
@@ -371,7 +374,7 @@ module.exports = (() => {
                       ),
                       x && A.reverse(),
                       r().createElement(
-                        g,
+                        k,
                         {
                           condition: T,
                           wrapper: function (e) {
@@ -380,11 +383,11 @@ module.exports = (() => {
                         },
                         r().createElement(
                           "div",
-                          { className: "".concat(y), style: E },
-                          r().createElement("div", { style: _, className: b }, this.props.children),
+                          { className: "".concat(b), style: E },
+                          r().createElement("div", { style: _, className: y }, this.props.children),
                           r().createElement(
                             "div",
-                            { className: "".concat(m) },
+                            { className: "".concat(v) },
                             A.map(function (e) {
                               return e;
                             })
@@ -394,19 +397,19 @@ module.exports = (() => {
                     );
                   },
                 },
-              ]) && b(t.prototype, n),
+              ]) && y(t.prototype, n),
               a
             );
           })(o.Component);
-        (C.propTypes = {
+        (x.propTypes = {
           location: c().oneOf(
-            Object.keys(O).map(function (e) {
-              return O[e];
+            Object.keys(h).map(function (e) {
+              return h[e];
             })
           ),
           sameSite: c().oneOf(
-            Object.keys(v).map(function (e) {
-              return v[e];
+            Object.keys(m).map(function (e) {
+              return m[e];
             })
           ),
           style: c().object,
@@ -446,14 +449,14 @@ module.exports = (() => {
           ariaAcceptLabel: c().string,
           ariaDeclineLabel: c().string,
         }),
-          (C.defaultProps = {
+          (x.defaultProps = {
             disableStyles: !1,
             hideOnAccept: !0,
             hideOnDecline: !0,
-            location: O.BOTTOM,
+            location: h.BOTTOM,
             onAccept: function () {},
             onDecline: function () {},
-            cookieName: "CookieConsent",
+            cookieName: C,
             cookieValue: !0,
             declineCookieValue: !1,
             setDeclineCookie: !0,
@@ -472,7 +475,7 @@ module.exports = (() => {
             disableButtonStyles: !1,
             enableDeclineButton: !1,
             flipButtons: !1,
-            sameSite: v.LAX,
+            sameSite: m.LAX,
             ButtonComponent: function (e) {
               var t = e.children,
                 n = (function (e, t) {
@@ -504,7 +507,7 @@ module.exports = (() => {
             ariaAcceptLabel: "Accept cookies",
             ariaDeclineLabel: "Decline cookies",
           });
-        const S = C;
+        const j = x;
       },
       808: (e, t, n) => {
         var o, r, i;

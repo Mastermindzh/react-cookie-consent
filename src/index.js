@@ -15,6 +15,35 @@ export const SAME_SITE_OPTIONS = {
 };
 
 /**
+ * Returns the value of the consent cookie
+ * Retrieves the regular value first and if not found the legacy one according
+ * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+ * @param {*} name optional name of the cookie
+ */
+export const getCookieConsentValue = (name = defaultCookieConsentName) => {
+  let cookieValue = Cookies.get(name);
+
+  // if the cookieValue is undefined check for the legacy cookie
+  if (cookieValue === undefined) {
+    cookieValue = Cookies.get(getLegacyCookieName(name));
+  }
+  return cookieValue;
+};
+
+/**
+ * Get the legacy cookie name by the regular cookie name
+ * @param {string} name of cookie to get
+ */
+const getLegacyCookieName = (name) => {
+  return `${name}-legacy`;
+};
+
+/**
+ * Default name of the cookie which is set by CookieConsent
+ */
+const defaultCookieConsentName = "CookieConsent";
+
+/**
  * A function to wrap elements with a "wrapper" on a condition
  * @param {object} wrappingOptions
  *  condition == boolean condition, when to wrap
@@ -129,14 +158,6 @@ class CookieConsent extends Component {
   }
 
   /**
-   * Get the legacy cookie name by the regular cookie name
-   * @param {string} name of cookie to get
-   */
-  getLegacyCookieName(name) {
-    return `${name}-legacy`;
-  }
-
-  /**
    * Function to set the consent cookie based on the provided variables
    * Sets two cookies to handle incompatible browsers, more details:
    * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
@@ -153,7 +174,7 @@ class CookieConsent extends Component {
 
     // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
     if (sameSite === SAME_SITE_OPTIONS.NONE) {
-      Cookies.set(this.getLegacyCookieName(cookieName), cookieValue, cookieOptions);
+      Cookies.set(getLegacyCookieName(cookieName), cookieValue, cookieOptions);
     }
 
     // set the regular cookie
@@ -167,14 +188,7 @@ class CookieConsent extends Component {
    */
   getCookieValue() {
     const { cookieName } = this.props;
-
-    let cookieValue = Cookies.get(cookieName);
-
-    // if the cookieValue is undefined check for the legacy cookie
-    if (cookieValue === undefined) {
-      cookieValue = Cookies.get(this.getLegacyCookieName(cookieName));
-    }
-    return cookieValue;
+    return getCookieConsentValue(cookieName);
   }
 
   render() {
@@ -364,7 +378,7 @@ CookieConsent.defaultProps = {
   location: OPTIONS.BOTTOM,
   onAccept: () => {},
   onDecline: () => {},
-  cookieName: "CookieConsent",
+  cookieName: defaultCookieConsentName,
   cookieValue: true,
   declineCookieValue: false,
   setDeclineCookie: true,

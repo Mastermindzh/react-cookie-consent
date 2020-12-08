@@ -43,4 +43,12 @@ export interface CookieConsentProps {
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}
 
+/**
+ * Returns the value of the consent cookie
+ * Retrieves the regular value first and if not found the legacy one according
+ * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+ * @param {*} name optional name of the cookie
+ */
+export function getCookieConsentValue(name?: string);
+
 export { Cookies };

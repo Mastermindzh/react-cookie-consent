@@ -49,6 +49,6 @@ export default class CookieConsent extends React.Component<CookieConsentProps, {
  * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
  * @param {*} name optional name of the cookie
  */
-export function getCookieConsentValue(name?: string);
+export function getCookieConsentValue(name?: string): string;
 
 export { Cookies };

@@ -1,15 +1,25 @@
 /*! For license information please see index.js.LICENSE.txt */
-module.exports = (() => {
+module.exports = (function () {
   var e = {
-      866: (e, t, n) => {
+      866: function (e, t, n) {
         "use strict";
         n.r(t),
           n.d(t, {
-            Cookies: () => s(),
-            OPTIONS: () => h,
-            SAME_SITE_OPTIONS: () => m,
-            default: () => j,
-            getCookieConsentValue: () => g,
+            Cookies: function () {
+              return s();
+            },
+            OPTIONS: function () {
+              return h;
+            },
+            SAME_SITE_OPTIONS: function () {
+              return m;
+            },
+            default: function () {
+              return j;
+            },
+            getCookieConsentValue: function () {
+              return g;
+            },
           });
         const o = require("react");
         var r = n.n(o),
@@ -509,7 +519,7 @@ module.exports = (() => {
           });
         const j = x;
       },
-      808: (e, t, n) => {
+      808: function (e, t, n) {
         var o, r, i;
         void 0 ===
           (r =
@@ -594,7 +604,7 @@ module.exports = (() => {
               : o) || (e.exports = r),
           (e.exports = i());
       },
-      703: (e, t, n) => {
+      703: function (e, t, n) {
         "use strict";
         var o = n(414);
         function r() {}
@@ -638,10 +648,10 @@ module.exports = (() => {
             return (n.PropTypes = n), n;
           });
       },
-      697: (e, t, n) => {
+      697: function (e, t, n) {
         e.exports = n(703)();
       },
-      414: (e) => {
+      414: function (e) {
         "use strict";
         e.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
       },
@@ -653,16 +663,25 @@ module.exports = (() => {
     return e[o](r, r.exports, n), r.exports;
   }
   return (
-    (n.n = (e) => {
-      var t = e && e.__esModule ? () => e.default : () => e;
+    (n.n = function (e) {
+      var t =
+        e && e.__esModule
+          ? function () {
+              return e.default;
+            }
+          : function () {
+              return e;
+            };
       return n.d(t, { a: t }), t;
     }),
-    (n.d = (e, t) => {
+    (n.d = function (e, t) {
       for (var o in t)
         n.o(t, o) && !n.o(e, o) && Object.defineProperty(e, o, { enumerable: !0, get: t[o] });
     }),
-    (n.o = (e, t) => Object.prototype.hasOwnProperty.call(e, t)),
-    (n.r = (e) => {
+    (n.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }),
+    (n.r = function (e) {
       "undefined" != typeof Symbol &&
         Symbol.toStringTag &&
         Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),

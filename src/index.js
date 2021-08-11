@@ -116,21 +116,31 @@ class CookieConsent extends Component {
     // if cookie undefined or debug
     if (this.getCookieValue() === undefined || debug) {
       this.setState({ visible: true });
+      // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
+      if (this.props.acceptOnScroll) {
+        window.addEventListener("scroll", this.handleScroll, { passive: true });
+      }
     }
+  }
+
+  componentWillUnmount() {
+    // remove listener if still set
+    this.removeScrollListener();
   }
 
   /**
    * Set a persistent accept cookie
    */
-  accept() {
+  accept(acceptedByScrolling = false) {
     const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
 
     this.setCookie(cookieName, cookieValue);
 
-    onAccept();
+    onAccept(acceptedByScrolling ?? false);
 
     if (hideOnAccept) {
       this.setState({ visible: false });
+      this.removeScrollListener();
     }
   }
 
@@ -138,13 +148,8 @@ class CookieConsent extends Component {
    * Set a persistent decline cookie
    */
   decline() {
-    const {
-      cookieName,
-      declineCookieValue,
-      hideOnDecline,
-      onDecline,
-      setDeclineCookie,
-    } = this.props;
+    const { cookieName, declineCookieValue, hideOnDecline, onDecline, setDeclineCookie } =
+      this.props;
 
     if (setDeclineCookie) {
       this.setCookie(cookieName, declineCookieValue);
@@ -190,6 +195,35 @@ class CookieConsent extends Component {
     const { cookieName } = this.props;
     return getCookieConsentValue(cookieName);
   }
+
+  /**
+   * checks whether scroll has exceeded set amount and fire accept if so.
+   */
+  handleScroll = () => {
+    const { acceptOnScrollPercentage } = this.props;
+
+    // (top / height) - height * 100
+    let rootNode = document.documentElement,
+      body = document.body,
+      top = "scrollTop",
+      height = "scrollHeight";
+
+    let percentage =
+      ((rootNode[top] || body[top]) /
+        ((rootNode[height] || body[height]) - rootNode.clientHeight)) *
+      100;
+
+    if (percentage > acceptOnScrollPercentage) {
+      this.accept(true);
+    }
+  };
+
+  removeScrollListener = () => {
+    const { acceptOnScroll } = this.props;
+    if (acceptOnScroll) {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
+  };
 
   render() {
     // If the bar shouldn't be visible don't render anything.
@@ -369,6 +403,8 @@ CookieConsent.propTypes = {
   overlayStyle: PropTypes.object,
   ariaAcceptLabel: PropTypes.string,
   ariaDeclineLabel: PropTypes.string,
+  acceptOnScroll: PropTypes.bool,
+  acceptOnScrollPercentage: PropTypes.number,
 };
 
 CookieConsent.defaultProps = {
@@ -403,6 +439,8 @@ CookieConsent.defaultProps = {
   overlayClasses: "",
   ariaAcceptLabel: "Accept cookies",
   ariaDeclineLabel: "Decline cookies",
+  acceptOnScroll: false,
+  acceptOnScrollPercentage: 25,
 };
 
 export default CookieConsent;

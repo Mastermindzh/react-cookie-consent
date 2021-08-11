@@ -12,7 +12,7 @@ export interface CookieConsentProps {
   children?: React.ReactNode;
   disableStyles?: boolean;
   hideOnAccept?: boolean;
-  onAccept?: Function;
+  onAccept?: (acceptedByScrolling?: boolean) => void;
   onDecline?: Function;
   buttonText?: Function | React.ReactNode;
   declineButtonText?: Function | React.ReactNode;
@@ -39,6 +39,8 @@ export interface CookieConsentProps {
   overlayStyle?: object;
   ariaAcceptLabel?: string;
   ariaDeclineLabel?: string;
+  acceptOnScroll?: boolean;
+  acceptOnScrollPercentage?: number;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

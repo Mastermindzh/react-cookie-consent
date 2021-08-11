@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added the (optional) scrolling effect back in as it is declared legal in some countries now.
 
+## [6.2.4]
+
+- version bumps :)
+
 ## [[6.2.3](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.3)]
 
 - Added support for IE11, the webpack generated runtime-code should not use arrow functions

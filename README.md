@@ -20,6 +20,7 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 
 - [Installation](#installation)
 - [Using it](#using-it)
+  - [getting the cookies value in your own code](#getting-the-cookies-value-in-your-own-code)
 - [Props](#props)
 - [Debugging it](#debugging-it)
 - [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies-one-of-which-named-legacy)
@@ -28,9 +29,11 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
     - [Changing the bar background to red](#changing-the-bar-background-to-red)
     - [Changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
     - [Using predefined CSS classes](#using-predefined-css-classes)
+    - [Accept on scroll](#accept-on-scroll)
     - [Flipping the buttons](#flipping-the-buttons)
     - [Extra cookie options](#extra-cookie-options)
     - [Rainbows!](#rainbows)
+    - [Overlay](#overlay)
 - [Contributor information](#contributor-information)
 - [Projects using react-cookie-consent](#projects-using-react-cookie-consent)
 

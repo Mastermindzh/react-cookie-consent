@@ -31,6 +31,15 @@ export const getCookieConsentValue = (name = defaultCookieConsentName) => {
 };
 
 /**
+ * Reset the consent cookie
+ * Remove the cookie on browser in order to allow user to change their consent
+ * @param {*} name optional name of the cookie
+ */
+export const resetCookieConsentValue = (name = defaultCookieConsentName) => {
+  Cookies.remove(name);
+};
+
+/**
  * Get the legacy cookie name by the regular cookie name
  * @param {string} name of cookie to get
  */
@@ -412,6 +421,7 @@ CookieConsent.defaultProps = {
   hideOnAccept: true,
   hideOnDecline: true,
   location: OPTIONS.BOTTOM,
+  visible: VISIBLE_OPTIONS.BY_COOKIE_VALUE,
   onAccept: () => {},
   onDecline: () => {},
   cookieName: defaultCookieConsentName,

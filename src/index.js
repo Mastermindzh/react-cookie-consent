@@ -14,6 +14,12 @@ export const SAME_SITE_OPTIONS = {
   NONE: "none",
 };
 
+export const VISIBLE_OPTIONS = {
+  HIDDEN: 'hidden',
+  SHOW: 'show',
+  BY_COOKIE_VALUE: 'byCookieValue'
+}
+
 /**
  * Returns the value of the consent cookie
  * Retrieves the regular value first and if not found the legacy one according
@@ -236,8 +242,16 @@ class CookieConsent extends Component {
 
   render() {
     // If the bar shouldn't be visible don't render anything.
-    if (!this.state.visible) {
-      return null;
+    switch (this.props.visible) {
+      case VISIBLE_OPTIONS.HIDDEN:
+        return null;
+      case VISIBLE_OPTIONS.BY_COOKIE_VALUE:
+        if (!this.state.visible) {
+          return null;
+        }
+        break;
+      default:
+        break;
     }
 
     const {
@@ -375,6 +389,7 @@ class CookieConsent extends Component {
 
 CookieConsent.propTypes = {
   location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
+  visible: PropTypes.oneOf(Object.keys(VISIBLE_OPTIONS).map((key) => VISIBLE_OPTIONS[key])),
   sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map((key) => SAME_SITE_OPTIONS[key])),
   style: PropTypes.object,
   buttonStyle: PropTypes.object,

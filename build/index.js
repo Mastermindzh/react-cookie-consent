@@ -179,16 +179,22 @@
           return l();
         },
         OPTIONS: function () {
-          return O;
+          return m;
         },
         SAME_SITE_OPTIONS: function () {
           return g;
         },
+        VISIBLE_OPTIONS: function () {
+          return S;
+        },
         default: function () {
-          return w;
+          return B;
         },
         getCookieConsentValue: function () {
-          return S;
+          return C;
+        },
+        resetCookieConsentValue: function () {
+          return k;
         },
       });
     const e = require("react");
@@ -278,8 +284,8 @@
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
       return e;
     }
-    function m(e) {
-      return (m = Object.setPrototypeOf
+    function O(e) {
+      return (O = Object.setPrototypeOf
         ? Object.getPrototypeOf
         : function (e) {
             return e.__proto__ || Object.getPrototypeOf(e);
@@ -298,24 +304,29 @@
         e
       );
     }
-    var O = { TOP: "top", BOTTOM: "bottom", NONE: "none" },
+    var m = { TOP: "top", BOTTOM: "bottom", NONE: "none" },
       g = { STRICT: "strict", LAX: "lax", NONE: "none" },
-      S = function () {
-        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : k,
+      S = { HIDDEN: "hidden", SHOW: "show", BY_COOKIE_VALUE: "byCookieValue" },
+      C = function () {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : w,
           t = l().get(e);
-        return void 0 === t && (t = l().get(C(e))), t;
+        return void 0 === t && (t = l().get(x(e))), t;
       },
-      C = function (e) {
+      k = function () {
+        var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : w;
+        l().remove(e);
+      },
+      x = function (e) {
         return "".concat(e, "-legacy");
       },
-      k = "CookieConsent",
-      x = function (e) {
+      w = "CookieConsent",
+      j = function (e) {
         var t = e.condition,
           n = e.wrapper,
           o = e.children;
         return t ? n(o) : o;
       },
-      j = (function (e) {
+      T = (function (e) {
         !(function (e, t) {
           if ("function" != typeof t && null !== t)
             throw new TypeError("Super expression must either be null or a function");
@@ -344,9 +355,9 @@
             })()),
             function () {
               var e,
-                t = m(r);
+                t = O(r);
               if (i) {
-                var n = m(this).constructor;
+                var n = O(this).constructor;
                 e = Reflect.construct(t, arguments, n);
               } else e = t.apply(this, arguments);
               return y(this, e);
@@ -474,21 +485,26 @@
                   c = this.props.cookieSecurity;
                 void 0 === c && (c = !location || "https:" === location.protocol);
                 var a = f(f({ expires: r }, o), {}, { sameSite: i, secure: c });
-                i === g.NONE && l().set(C(e), t, a), l().set(e, t, a);
+                i === g.NONE && l().set(x(e), t, a), l().set(e, t, a);
               },
             },
             {
               key: "getCookieValue",
               value: function () {
                 var e = this.props.cookieName;
-                return S(e);
+                return C(e);
               },
             },
             {
               key: "render",
               value: function () {
                 var e = this;
-                if (!this.state.visible) return null;
+                switch (this.props.visible) {
+                  case S.HIDDEN:
+                    return null;
+                  case S.BY_COOKIE_VALUE:
+                    if (!this.state.visible) return null;
+                }
                 var n = this.props,
                   o = n.location,
                   r = n.style,
@@ -502,57 +518,57 @@
                   b = n.contentClasses,
                   y = n.buttonClasses,
                   v = n.buttonWrapperClasses,
-                  m = n.declineButtonClasses,
+                  O = n.declineButtonClasses,
                   h = n.buttonId,
                   g = n.declineButtonId,
-                  S = n.disableButtonStyles,
-                  C = n.enableDeclineButton,
-                  k = n.flipButtons,
-                  j = n.ButtonComponent,
-                  w = n.overlay,
-                  T = n.overlayClasses,
-                  B = n.overlayStyle,
+                  C = n.disableButtonStyles,
+                  k = n.enableDeclineButton,
+                  x = n.flipButtons,
+                  w = n.ButtonComponent,
+                  T = n.overlay,
+                  B = n.overlayClasses,
+                  E = n.overlayStyle,
                   P = n.ariaAcceptLabel,
-                  E = n.ariaDeclineLabel,
-                  D = {},
+                  D = n.ariaDeclineLabel,
                   I = {},
-                  N = {},
                   _ = {},
-                  R = {};
+                  N = {},
+                  A = {},
+                  L = {};
                 switch (
                   (a
-                    ? ((D = u({}, r)),
-                      (I = u({}, i)),
+                    ? ((I = u({}, r)),
+                      (_ = u({}, i)),
                       (N = u({}, c)),
-                      (_ = u({}, l)),
-                      (R = u({}, B)))
-                    : ((D = u({}, f(f({}, this.state.style), r))),
-                      (_ = u({}, f(f({}, this.state.contentStyle), l))),
-                      (R = u({}, f(f({}, this.state.overlayStyle), B))),
-                      S
-                        ? ((I = u({}, i)), (N = u({}, c)))
-                        : ((I = u({}, f(f({}, this.state.buttonStyle), i))),
+                      (A = u({}, l)),
+                      (L = u({}, E)))
+                    : ((I = u({}, f(f({}, this.state.style), r))),
+                      (A = u({}, f(f({}, this.state.contentStyle), l))),
+                      (L = u({}, f(f({}, this.state.overlayStyle), E))),
+                      C
+                        ? ((_ = u({}, i)), (N = u({}, c)))
+                        : ((_ = u({}, f(f({}, this.state.buttonStyle), i))),
                           (N = u({}, f(f({}, this.state.declineButtonStyle), c))))),
                   o)
                 ) {
-                  case O.TOP:
-                    D.top = "0";
+                  case m.TOP:
+                    I.top = "0";
                     break;
-                  case O.BOTTOM:
-                    D.bottom = "0";
+                  case m.BOTTOM:
+                    I.bottom = "0";
                 }
-                var A = [];
+                var R = [];
                 return (
-                  C &&
-                    A.push(
+                  k &&
+                    R.push(
                       t().createElement(
-                        j,
+                        w,
                         {
                           key: "declineButton",
                           style: N,
-                          className: m,
+                          className: O,
                           id: g,
-                          "aria-label": E,
+                          "aria-label": D,
                           onClick: function () {
                             e.decline();
                           },
@@ -560,12 +576,12 @@
                         p
                       )
                     ),
-                  A.push(
+                  R.push(
                     t().createElement(
-                      j,
+                      w,
                       {
                         key: "acceptButton",
-                        style: I,
+                        style: _,
                         className: y,
                         id: h,
                         "aria-label": P,
@@ -576,23 +592,23 @@
                       s
                     )
                   ),
-                  k && A.reverse(),
+                  x && R.reverse(),
                   t().createElement(
-                    x,
+                    j,
                     {
-                      condition: w,
+                      condition: T,
                       wrapper: function (e) {
-                        return t().createElement("div", { style: R, className: T }, e);
+                        return t().createElement("div", { style: L, className: B }, e);
                       },
                     },
                     t().createElement(
                       "div",
-                      { className: "".concat(d), style: D },
-                      t().createElement("div", { style: _, className: b }, this.props.children),
+                      { className: "".concat(d), style: I },
+                      t().createElement("div", { style: A, className: b }, this.props.children),
                       t().createElement(
                         "div",
                         { className: "".concat(v) },
-                        A.map(function (e) {
+                        R.map(function (e) {
                           return e;
                         })
                       )
@@ -605,10 +621,15 @@
           a
         );
       })(e.Component);
-    (j.propTypes = {
+    (T.propTypes = {
       location: i().oneOf(
-        Object.keys(O).map(function (e) {
-          return O[e];
+        Object.keys(m).map(function (e) {
+          return m[e];
+        })
+      ),
+      visible: i().oneOf(
+        Object.keys(S).map(function (e) {
+          return S[e];
         })
       ),
       sameSite: i().oneOf(
@@ -655,14 +676,15 @@
       acceptOnScroll: i().bool,
       acceptOnScrollPercentage: i().number,
     }),
-      (j.defaultProps = {
+      (T.defaultProps = {
         disableStyles: !1,
         hideOnAccept: !0,
         hideOnDecline: !0,
-        location: O.BOTTOM,
+        location: m.BOTTOM,
+        visible: S.BY_COOKIE_VALUE,
         onAccept: function () {},
         onDecline: function () {},
-        cookieName: k,
+        cookieName: w,
         cookieValue: !0,
         declineCookieValue: !1,
         setDeclineCookie: !0,
@@ -715,7 +737,7 @@
         acceptOnScroll: !1,
         acceptOnScrollPercentage: 25,
       });
-    const w = j;
+    const B = T;
   })(),
     (module.exports = o);
 })();

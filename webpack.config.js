@@ -6,7 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "index.js",
-    libraryTarget: "commonjs2", // THIS IS THE MOST IMPORTANT LINE! :mindblow: I wasted more than 2 days until realize this was the line most important in all this guide.
+    library: {
+      name: "ReactCookieConsent",
+      type: "umd",
+    },
     environment: {
       arrowFunction: false, // the generated runtime-code should not use arrow functions
     },
@@ -16,7 +19,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),
-        exclude: /(node_modules|bower_components|build)/,
+        exclude: /(node_modules|build)/,
         use: {
           loader: "babel-loader",
           options: {

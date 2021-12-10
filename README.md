@@ -21,6 +21,8 @@ Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/exampl
 - [Installation](#installation)
 - [Using it](#using-it)
   - [getting the cookies value in your own code](#getting-the-cookies-value-in-your-own-code)
+- [Frameworks](#frameworks)
+  - [Next.js](#nextjs) 
 - [Props](#props)
 - [Debugging it](#debugging-it)
 - [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies-one-of-which-named-legacy)
@@ -134,6 +136,22 @@ console.log(resetCookieConsentValue());
 ```
 
 That option would be interesting if you want to allow user to change their consent. If you want to show again the consent bar, you must force "visible" prop to show again the bar.
+
+## Frameworks
+.. some need work... 
+
+### ssr issues
+
+because `self` isn't.... at ssr time .... we need to .... to make sure it loads in the client browser only
+
+### Next.js
+we can use dynamic import from nextjs https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr
+to overcome the self not undefined issue when building the project
+
+```tsx
+import dynamic from 'next/dynamic'
+const CookieConsent = dynamic(() => import('react-cookie-consent'), { ssr: false })
+```
 
 ## Props
 

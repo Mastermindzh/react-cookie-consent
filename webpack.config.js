@@ -13,6 +13,7 @@ module.exports = {
     environment: {
       arrowFunction: false, // the generated runtime-code should not use arrow functions
     },
+    globalObject: `typeof self !== 'undefined' ? self : this`,
   },
   module: {
     rules: [

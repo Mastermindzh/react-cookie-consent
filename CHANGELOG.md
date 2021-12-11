@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [[7.0.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.4.1)]
+## [[7.0.1](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.0.1)]
+
+- Configured webpack to remove self from build artefact. Should now work in Nextjs and Gatsby (only tested those..)
+
+## [[7.0.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.0.0)]
 
 - Switched from CommonJS to UMD module
 

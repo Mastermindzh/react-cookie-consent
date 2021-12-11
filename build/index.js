@@ -7,7 +7,7 @@
     : "object" == typeof exports
     ? (exports.ReactCookieConsent = t())
     : (e.ReactCookieConsent = t());
-})(self, function () {
+})("undefined" != typeof self ? self : this, function () {
   return (function () {
     var e = {
         808: function (e, t, n) {

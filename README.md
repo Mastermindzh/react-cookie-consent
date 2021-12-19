@@ -137,10 +137,10 @@ That option would be interesting if you want to allow user to change their conse
 
 ## Props
 
-| Prop                     |               Type                | Default value                        | Description                                                                                                                             |
+| Prop                     |                    Type                     | Default value                        | Description                                                                                                                             |
 | ------------------------ | :-----------------------------------------: | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
 | location                 |      string, "top", "bottom" or "none"      | "bottom"                             | Syntactic sugar to easily enable you to place the bar at the top or the bottom of the browser window. Use "none" to disable.            |
-| visible                  | string, "show", "hidden" or "byCookieValue" | "byCookieValue"                      | Force the consent bar visibility. If "byCookieValue", visibility are defined by cookie consent existence.                            |
+| visible                  | string, "show", "hidden" or "byCookieValue" | "byCookieValue"                      | Force the consent bar visibility. If "byCookieValue", visibility are defined by cookie consent existence.                               |
 | children                 |          string or React component          |                                      | Content to appear inside the bar                                                                                                        |
 | disableStyles            |                   boolean                   | false                                | If enabled the component will have no default style. (you can still supply style through props)                                         |
 | hideOnAccept             |                   boolean                   | true                                 | If disabled the component will not hide it self after the accept button has been clicked. You will need to hide yourself (see onAccept) |
@@ -150,8 +150,8 @@ That option would be interesting if you want to allow user to change their conse
 | cookieValue              |         string or boolean or number         | true                                 | Value to be saved under the cookieName.                                                                                                 |
 | declineCookieValue       |         string or boolean or number         | false                                | Value to be saved under the cookieName when declined.                                                                                   |
 | setDeclineCookie         |                   boolean                   | true                                 | Whether to set a cookie when the user clicks "decline"                                                                                  |
-| onAccept                 |                   function                  | `() => {}`                           | Function to be called after the accept button has been clicked.                                                                         |
-| onDecline                |                   function                  | `() => {}`                           | Function to be called after the decline button has been clicked.                                                                        |
+| onAccept                 |                  function                   | `() => {}`                           | Function to be called after the accept button has been clicked.                                                                         |
+| onDecline                |                  function                   | `() => {}`                           | Function to be called after the decline button has been clicked.                                                                        |
 | debug                    |                   boolean                   | undefined                            | Bar will be drawn regardless of cookie for debugging purposes.                                                                          |
 | expires                  |                   number                    | 365                                  | Number of days before the cookie expires.                                                                                               |
 | extraCookieOptions       |                   object                    | `{}`                                 | Extra info (apart from expiry date) to add to the cookie                                                                                |
@@ -173,12 +173,16 @@ That option would be interesting if you want to allow user to change their conse
 | enableDeclineButton      |                   boolean                   | false                                | If enabled the decline button will be rendered                                                                                          |
 | flipButtons              |                   boolean                   | false                                | If enabled the accept and decline buttons will be flipped                                                                               |
 | ButtonComponent          |               React component               | button                               | React Component to render as a button.                                                                                                  |
-| sameSite                 | string, "strict", "lax" or "none" | none                                 | Cookies sameSite attribute value                                                                                                        |
-| cookieSecurity           |                   boolean                    ¡| undefined                            | Cookie security level. Defaults to true unless running on http.                                                                         |
+| sameSite                 |      string, "strict", "lax" or "none"      | none                                 | Cookies sameSite attribute value                                                                                                        |
+| cookieSecurity           |                  boolean ¡                  | undefined                            | Cookie security level. Defaults to true unless running on http.                                                                         |
 | ariaAcceptLabel          |                   string                    | Accept cookies                       | Aria label to set on the accept button                                                                                                  |
 | ariaDeclineLabel         |                   string                    | Decline cookies                      | Aria label to set on the decline button                                                                                                 |
 | acceptOnScroll           |                   boolean                   | false                                | Defines whether "accept" should be fired after the user scrolls a certain distance (see acceptOnScrollPercentage)                       |
 | acceptOnScrollPercentage |                   number                    | 25                                   | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled                        |
+
+| customContentAttributes
+| object | {} | Allows you to set custom (data) attributes on the content div |
+| customContainerAttributes | object | {} | Allows you to set custom (data) attributes on the container div |
 
 ## Debugging it
 

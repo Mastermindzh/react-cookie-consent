@@ -15,10 +15,10 @@ export const SAME_SITE_OPTIONS = {
 };
 
 export const VISIBLE_OPTIONS = {
-  HIDDEN: 'hidden',
-  SHOW: 'show',
-  BY_COOKIE_VALUE: 'byCookieValue'
-}
+  HIDDEN: "hidden",
+  SHOW: "show",
+  BY_COOKIE_VALUE: "byCookieValue",
+};
 
 /**
  * Returns the value of the consent cookie
@@ -279,6 +279,8 @@ class CookieConsent extends Component {
       overlayStyle,
       ariaAcceptLabel,
       ariaDeclineLabel,
+      customContainerAttributes,
+      customContentAttributes,
     } = this.props;
 
     let myStyle = {};
@@ -372,8 +374,8 @@ class CookieConsent extends Component {
           </div>
         )}
       >
-        <div className={`${containerClasses}`} style={myStyle}>
-          <div style={myContentStyle} className={contentClasses}>
+        <div className={`${containerClasses}`} style={myStyle} {...customContainerAttributes}>
+          <div style={myContentStyle} className={contentClasses} {...customContentAttributes}>
             {this.props.children}
           </div>
           <div className={`${buttonWrapperClasses}`}>
@@ -429,6 +431,8 @@ CookieConsent.propTypes = {
   ariaDeclineLabel: PropTypes.string,
   acceptOnScroll: PropTypes.bool,
   acceptOnScrollPercentage: PropTypes.number,
+  customContentAttributes: PropTypes.object,
+  customContainerAttributes: PropTypes.object,
 };
 
 CookieConsent.defaultProps = {
@@ -466,6 +470,8 @@ CookieConsent.defaultProps = {
   ariaDeclineLabel: "Decline cookies",
   acceptOnScroll: false,
   acceptOnScrollPercentage: 25,
+  customContentAttributes: {},
+  customContainerAttributes: {},
 };
 
 export default CookieConsent;

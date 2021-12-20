@@ -179,10 +179,8 @@ That option would be interesting if you want to allow user to change their conse
 | ariaDeclineLabel         |                   string                    | Decline cookies                      | Aria label to set on the decline button                                                                                                 |
 | acceptOnScroll           |                   boolean                   | false                                | Defines whether "accept" should be fired after the user scrolls a certain distance (see acceptOnScrollPercentage)                       |
 | acceptOnScrollPercentage |                   number                    | 25                                   | Percentage of the page height the user has to scroll to trigger the accept function if acceptOnScroll is enabled                        |
-
-| customContentAttributes
-| object | {} | Allows you to set custom (data) attributes on the content div |
-| customContainerAttributes | object | {} | Allows you to set custom (data) attributes on the container div |
+| customContentAttributes | object | `{}` | Allows you to set custom (data) attributes on the content div |
+| customContainerAttributes | object | `{}` | Allows you to set custom (data) attributes on the container div |
 
 ## Debugging it
 

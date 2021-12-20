@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [[7.1.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.1.0)
+## [[7.2.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.2.0)
+
+- Added `onOverlayClick` which allows you to react to a click on the overlay
+- Added `acceptOnOverlayClick` which accepts the cookies when the overlay is clicked and runs `onOverlayClick`
+
+## [[7.1.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.1.1)
 
 - `customContentAttributes` and `customContainerAttributes` are now optional in the typing file as they should be
 

@@ -38,6 +38,8 @@ export interface CookieConsentProps {
   overlay?: boolean;
   overlayClasses?: string;
   overlayStyle?: object;
+  onOverlayClick?: () => void;
+  acceptOnOverlayClick?: boolean;
   ariaAcceptLabel?: string;
   ariaDeclineLabel?: string;
   acceptOnScroll?: boolean;

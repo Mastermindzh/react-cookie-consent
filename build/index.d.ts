@@ -42,8 +42,8 @@ export interface CookieConsentProps {
   ariaDeclineLabel?: string;
   acceptOnScroll?: boolean;
   acceptOnScrollPercentage?: number;
-  customContentAttributes: object;
-  customContainerAttributes: object;
+  customContentAttributes?: object;
+  customContainerAttributes?: object;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

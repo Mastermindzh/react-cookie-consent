@@ -38,12 +38,14 @@ export interface CookieConsentProps {
   overlay?: boolean;
   overlayClasses?: string;
   overlayStyle?: object;
+  onOverlayClick?: () => void;
+  acceptOnOverlayClick?: boolean;
   ariaAcceptLabel?: string;
   ariaDeclineLabel?: string;
   acceptOnScroll?: boolean;
   acceptOnScrollPercentage?: number;
-  customContentAttributes: object;
-  customContainerAttributes: object;
+  customContentAttributes?: object;
+  customContainerAttributes?: object;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

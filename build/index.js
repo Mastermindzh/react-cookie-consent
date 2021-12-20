@@ -48,8 +48,8 @@
                             .replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
                             .replace(/[\(\)]/g, escape));
                         var l = "";
-                        for (var s in i)
-                          i[s] && ((l += "; " + s), !0 !== i[s] && (l += "=" + i[s].split(";")[0]));
+                        for (var a in i)
+                          i[a] && ((l += "; " + a), !0 !== i[a] && (l += "=" + i[a].split(";")[0]));
                         return (document.cookie = t + "=" + n + l);
                       }
                     }
@@ -61,15 +61,15 @@
                           c++
                         ) {
                           var l = i[c].split("="),
-                            s = l.slice(1).join("=");
-                          n || '"' !== s.charAt(0) || (s = s.slice(1, -1));
+                            a = l.slice(1).join("=");
+                          n || '"' !== a.charAt(0) || (a = a.slice(1, -1));
                           try {
-                            var a = t(l[0]);
-                            if (((s = (o.read || o)(s, a) || t(s)), n))
+                            var s = t(l[0]);
+                            if (((a = (o.read || o)(a, s) || t(a)), n))
                               try {
-                                s = JSON.parse(s);
+                                a = JSON.parse(a);
                               } catch (e) {}
-                            if (((r[a] = s), e === a)) break;
+                            if (((r[s] = a), e === s)) break;
                           } catch (e) {}
                         }
                         return e ? r[e] : r;
@@ -192,10 +192,10 @@
               return h;
             },
             SAME_SITE_OPTIONS: function () {
-              return g;
+              return C;
             },
             VISIBLE_OPTIONS: function () {
-              return C;
+              return g;
             },
             default: function () {
               return B;
@@ -213,8 +213,8 @@
           i = n.n(r),
           c = n(808),
           l = n.n(c);
-        function s(e) {
-          return (s =
+        function a(e) {
+          return (a =
             "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
               ? function (e) {
                   return typeof e;
@@ -228,7 +228,7 @@
                     : typeof e;
                 })(e);
         }
-        var a = ["children"];
+        var s = ["children"];
         function u() {
           return (u =
             Object.assign ||
@@ -257,7 +257,7 @@
             var n = null != arguments[t] ? arguments[t] : {};
             t % 2
               ? p(Object(n), !0).forEach(function (t) {
-                  O(e, t, n[t]);
+                  m(e, t, n[t]);
                 })
               : Object.getOwnPropertyDescriptors
               ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
@@ -276,15 +276,15 @@
               Object.defineProperty(e, o.key, o);
           }
         }
-        function d(e, t) {
-          return (d =
+        function y(e, t) {
+          return (y =
             Object.setPrototypeOf ||
             function (e, t) {
               return (e.__proto__ = t), e;
             })(e, t);
         }
-        function y(e, t) {
-          if (t && ("object" === s(t) || "function" == typeof t)) return t;
+        function d(e, t) {
+          if (t && ("object" === a(t) || "function" == typeof t)) return t;
           if (void 0 !== t)
             throw new TypeError("Derived constructors may only return object or undefined");
           return v(e);
@@ -294,14 +294,14 @@
             throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
           return e;
         }
-        function m(e) {
-          return (m = Object.setPrototypeOf
+        function O(e) {
+          return (O = Object.setPrototypeOf
             ? Object.getPrototypeOf
             : function (e) {
                 return e.__proto__ || Object.getPrototypeOf(e);
               })(e);
         }
-        function O(e, t, n) {
+        function m(e, t, n) {
           return (
             t in e
               ? Object.defineProperty(e, t, {
@@ -315,8 +315,8 @@
           );
         }
         var h = { TOP: "top", BOTTOM: "bottom", NONE: "none" },
-          g = { STRICT: "strict", LAX: "lax", NONE: "none" },
-          C = { HIDDEN: "hidden", SHOW: "show", BY_COOKIE_VALUE: "byCookieValue" },
+          C = { STRICT: "strict", LAX: "lax", NONE: "none" },
+          g = { HIDDEN: "hidden", SHOW: "show", BY_COOKIE_VALUE: "byCookieValue" },
           S = function () {
             var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : j,
               t = l().get(e);
@@ -343,14 +343,14 @@
               (e.prototype = Object.create(t && t.prototype, {
                 constructor: { value: e, writable: !0, configurable: !0 },
               })),
-                t && d(e, t);
-            })(s, e);
+                t && y(e, t);
+            })(a, e);
             var n,
               o,
               r,
               i,
               c =
-                ((r = s),
+                ((r = a),
                 (i = (function () {
                   if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
                   if (Reflect.construct.sham) return !1;
@@ -368,20 +368,20 @@
                 })()),
                 function () {
                   var e,
-                    t = m(r);
+                    t = O(r);
                   if (i) {
-                    var n = m(this).constructor;
+                    var n = O(this).constructor;
                     e = Reflect.construct(t, arguments, n);
                   } else e = t.apply(this, arguments);
-                  return y(this, e);
+                  return d(this, e);
                 });
-            function s(e) {
+            function a(e) {
               var t;
               return (
                 (function (e, t) {
                   if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-                })(this, s),
-                O(v((t = c.call(this, e))), "handleScroll", function () {
+                })(this, a),
+                m(v((t = c.call(this, e))), "handleScroll", function () {
                   var e = t.props.acceptOnScrollPercentage,
                     n = document.documentElement,
                     o = document.body,
@@ -389,7 +389,7 @@
                     i = "scrollHeight";
                   ((n[r] || o[r]) / ((n[i] || o[i]) - n.clientHeight)) * 100 > e && t.accept(!0);
                 }),
-                O(v(t), "removeScrollListener", function () {
+                m(v(t), "removeScrollListener", function () {
                   t.props.acceptOnScroll && window.removeEventListener("scroll", t.handleScroll);
                 }),
                 (t.state = {
@@ -443,7 +443,7 @@
               );
             }
             return (
-              (n = s),
+              (n = a),
               (o = [
                 {
                   key: "componentDidMount",
@@ -476,6 +476,15 @@
                   },
                 },
                 {
+                  key: "overlayClick",
+                  value: function () {
+                    var e = this.props,
+                      t = e.acceptOnOverlayClick,
+                      n = e.onOverlayClick;
+                    t && this.accept(), n();
+                  },
+                },
+                {
                   key: "decline",
                   value: function () {
                     var e = this.props,
@@ -497,8 +506,8 @@
                       i = n.sameSite,
                       c = this.props.cookieSecurity;
                     void 0 === c && (c = !location || "https:" === location.protocol);
-                    var s = f(f({ expires: r }, o), {}, { sameSite: i, secure: c });
-                    i === g.NONE && l().set(x(e), t, s), l().set(e, t, s);
+                    var a = f(f({ expires: r }, o), {}, { sameSite: i, secure: c });
+                    i === C.NONE && l().set(x(e), t, a), l().set(e, t, a);
                   },
                 },
                 {
@@ -513,9 +522,9 @@
                   value: function () {
                     var e = this;
                     switch (this.props.visible) {
-                      case C.HIDDEN:
+                      case g.HIDDEN:
                         return null;
-                      case C.BY_COOKIE_VALUE:
+                      case g.BY_COOKIE_VALUE:
                         if (!this.state.visible) return null;
                     }
                     var n = this.props,
@@ -524,16 +533,16 @@
                       i = n.buttonStyle,
                       c = n.declineButtonStyle,
                       l = n.contentStyle,
-                      s = n.disableStyles,
-                      a = n.buttonText,
+                      a = n.disableStyles,
+                      s = n.buttonText,
                       p = n.declineButtonText,
                       b = n.containerClasses,
-                      d = n.contentClasses,
-                      y = n.buttonClasses,
+                      y = n.contentClasses,
+                      d = n.buttonClasses,
                       v = n.buttonWrapperClasses,
-                      m = n.declineButtonClasses,
-                      O = n.buttonId,
-                      g = n.declineButtonId,
+                      O = n.declineButtonClasses,
+                      m = n.buttonId,
+                      C = n.declineButtonId,
                       S = n.disableButtonStyles,
                       k = n.enableDeclineButton,
                       x = n.flipButtons,
@@ -551,7 +560,7 @@
                       L = {},
                       V = {};
                     switch (
-                      (s
+                      (a
                         ? ((A = u({}, r)),
                           (N = u({}, i)),
                           (R = u({}, c)),
@@ -581,8 +590,8 @@
                             {
                               key: "declineButton",
                               style: R,
-                              className: m,
-                              id: g,
+                              className: O,
+                              id: C,
                               "aria-label": D,
                               onClick: function () {
                                 e.decline();
@@ -597,14 +606,14 @@
                           {
                             key: "acceptButton",
                             style: N,
-                            className: y,
-                            id: O,
+                            className: d,
+                            id: m,
                             "aria-label": P,
                             onClick: function () {
                               e.accept();
                             },
                           },
-                          a
+                          s
                         )
                       ),
                       x && U.reverse(),
@@ -612,8 +621,18 @@
                         w,
                         {
                           condition: T,
-                          wrapper: function (e) {
-                            return t().createElement("div", { style: V, className: B }, e);
+                          wrapper: function (n) {
+                            return t().createElement(
+                              "div",
+                              {
+                                style: V,
+                                className: B,
+                                onClick: function () {
+                                  e.overlayClick();
+                                },
+                              },
+                              n
+                            );
                           },
                         },
                         t().createElement(
@@ -621,7 +640,7 @@
                           u({ className: "".concat(b), style: A }, I),
                           t().createElement(
                             "div",
-                            u({ style: L, className: d }, _),
+                            u({ style: L, className: y }, _),
                             this.props.children
                           ),
                           t().createElement(
@@ -637,7 +656,7 @@
                   },
                 },
               ]) && b(n.prototype, o),
-              s
+              a
             );
           })(e.Component);
         (T.propTypes = {
@@ -647,13 +666,13 @@
             })
           ),
           visible: i().oneOf(
-            Object.keys(C).map(function (e) {
-              return C[e];
+            Object.keys(g).map(function (e) {
+              return g[e];
             })
           ),
           sameSite: i().oneOf(
-            Object.keys(g).map(function (e) {
-              return g[e];
+            Object.keys(C).map(function (e) {
+              return C[e];
             })
           ),
           style: i().object,
@@ -690,6 +709,8 @@
           overlay: i().bool,
           overlayClasses: i().string,
           overlayStyle: i().object,
+          onOverlayClick: i().func,
+          acceptOnOverlayClick: i().bool,
           ariaAcceptLabel: i().string,
           ariaDeclineLabel: i().string,
           acceptOnScroll: i().bool,
@@ -702,7 +723,7 @@
             hideOnAccept: !0,
             hideOnDecline: !0,
             location: h.BOTTOM,
-            visible: C.BY_COOKIE_VALUE,
+            visible: g.BY_COOKIE_VALUE,
             onAccept: function () {},
             onDecline: function () {},
             cookieName: j,
@@ -724,7 +745,7 @@
             disableButtonStyles: !1,
             enableDeclineButton: !1,
             flipButtons: !1,
-            sameSite: g.LAX,
+            sameSite: C.LAX,
             ButtonComponent: function (e) {
               var n = e.children,
                 o = (function (e, t) {
@@ -748,11 +769,13 @@
                           (Object.prototype.propertyIsEnumerable.call(e, n) && (r[n] = e[n]));
                   }
                   return r;
-                })(e, a);
+                })(e, s);
               return t().createElement("button", o, n);
             },
             overlay: !1,
             overlayClasses: "",
+            onOverlayClick: function () {},
+            acceptOnOverlayClick: !1,
             ariaAcceptLabel: "Accept cookies",
             ariaDeclineLabel: "Decline cookies",
             acceptOnScroll: !1,

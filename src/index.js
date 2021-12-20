@@ -160,6 +160,17 @@ class CookieConsent extends Component {
   }
 
   /**
+   * Handle a click on the overlay
+   */
+  overlayClick() {
+    const { acceptOnOverlayClick, onOverlayClick } = this.props;
+    if (acceptOnOverlayClick) {
+      this.accept();
+    }
+    onOverlayClick();
+  }
+
+  /**
    * Set a persistent decline cookie
    */
   decline() {
@@ -369,7 +380,13 @@ class CookieConsent extends Component {
       <ConditionalWrapper
         condition={overlay}
         wrapper={(children) => (
-          <div style={myOverlayStyle} className={overlayClasses}>
+          <div
+            style={myOverlayStyle}
+            className={overlayClasses}
+            onClick={() => {
+              this.overlayClick();
+            }}
+          >
             {children}
           </div>
         )}
@@ -427,6 +444,8 @@ CookieConsent.propTypes = {
   overlay: PropTypes.bool,
   overlayClasses: PropTypes.string,
   overlayStyle: PropTypes.object,
+  onOverlayClick: PropTypes.func,
+  acceptOnOverlayClick: PropTypes.bool,
   ariaAcceptLabel: PropTypes.string,
   ariaDeclineLabel: PropTypes.string,
   acceptOnScroll: PropTypes.bool,
@@ -466,6 +485,8 @@ CookieConsent.defaultProps = {
   ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
   overlay: false,
   overlayClasses: "",
+  onOverlayClick: () => {},
+  acceptOnOverlayClick: false,
   ariaAcceptLabel: "Accept cookies",
   ariaDeclineLabel: "Decline cookies",
   acceptOnScroll: false,

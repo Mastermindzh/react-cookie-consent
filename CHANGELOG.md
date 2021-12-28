@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [[7.2.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.2.1)
+
+- hideOnDecline added to typescript files
+- Added .prettieringore
+
 ## [[7.2.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.2.0)
 
 - Added `onOverlayClick` which allows you to react to a click on the overlay

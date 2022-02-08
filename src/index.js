@@ -292,6 +292,7 @@ class CookieConsent extends Component {
       ariaDeclineLabel,
       customContainerAttributes,
       customContentAttributes,
+      customButtonProps,
     } = this.props;
 
     let myStyle = {};
@@ -359,6 +360,7 @@ class CookieConsent extends Component {
     // add accept button
     buttonsToRender.push(
       <ButtonComponent
+        {...customButtonProps}
         key="acceptButton"
         style={myButtonStyle}
         className={buttonClasses}
@@ -452,6 +454,7 @@ CookieConsent.propTypes = {
   acceptOnScrollPercentage: PropTypes.number,
   customContentAttributes: PropTypes.object,
   customContainerAttributes: PropTypes.object,
+  customButtonProps: PropTypes.object,
 };
 
 CookieConsent.defaultProps = {
@@ -493,6 +496,7 @@ CookieConsent.defaultProps = {
   acceptOnScrollPercentage: 25,
   customContentAttributes: {},
   customContainerAttributes: {},
+  customButtonProps: {},
 };
 
 export default CookieConsent;

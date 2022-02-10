@@ -205,7 +205,7 @@ So react-cookie-consent fixes this like so:
 - set the fallback cookie (e.g -legacy) first, this will always succeed (on all browsers)
 - set the correct cookie second (this will work on modern browsers, fail on older ones)
 
-This happens on lines [186-192](https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L186-L192)
+This happens on lines [29-37](https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L29-L37)
 
 When checking the cookie it'll do it in reverse. If the regular cookie exists, it'll use that. If no regular cookie exists it'll check whether the legacy cookie exists. If both are non-existent no consent was given.
 
@@ -336,11 +336,11 @@ You can also generate a page-obfuscating overlay that will prevent actions other
 
 <!-- links -->
 
-[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L18-L29
-[buttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L30-L40
-[declinebuttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L41-L51
-[contentstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L52-L55
-[overlaystyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L62-L69
+[style]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L78-L89
+[buttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L90-L100
+[declinebuttonstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L101-L111
+[contentstyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L112-L115
+[overlaystyle]: https://github.com/Mastermindzh/react-cookie-consent/blob/master/src/index.js#L116-L124
 
 ## Contributor information
 

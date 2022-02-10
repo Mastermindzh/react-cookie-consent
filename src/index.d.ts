@@ -65,7 +65,7 @@ export function getCookieConsentValue(name?: string): string;
  * Remove the cookie on browser in order to allow user to change their consent
  * @param {*} name optional name of the cookie
  */
-export function resetCookieConsentValue(name?: string): string;
+export function resetCookieConsentValue(name?: string): void;
 
 /**
  * Get the legacy cookie name by the regular cookie name

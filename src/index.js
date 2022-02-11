@@ -27,11 +27,11 @@ export const VISIBLE_OPTIONS = {
  * @param {*} name optional name of the cookie
  */
 export const getCookieConsentValue = (name = defaultCookieConsentName) => {
-  let cookieValue = Cookies.get(name);
+  const cookieValue = Cookies.get(name);
 
   // if the cookieValue is undefined check for the legacy cookie
   if (cookieValue === undefined) {
-    cookieValue = Cookies.get(getLegacyCookieName(name));
+    return Cookies.get(getLegacyCookieName(name));
   }
   return cookieValue;
 };
@@ -201,7 +201,7 @@ class CookieConsent extends Component {
       cookieSecurity = location ? location.protocol === "https:" : true;
     }
 
-    let cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
+    const cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
 
     // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
     if (sameSite === SAME_SITE_OPTIONS.NONE) {
@@ -229,12 +229,12 @@ class CookieConsent extends Component {
     const { acceptOnScrollPercentage } = this.props;
 
     // (top / height) - height * 100
-    let rootNode = document.documentElement,
+    const rootNode = document.documentElement,
       body = document.body,
       top = "scrollTop",
       height = "scrollHeight";
 
-    let percentage =
+    const percentage =
       ((rootNode[top] || body[top]) /
         ((rootNode[height] || body[height]) - rootNode.clientHeight)) *
       100;

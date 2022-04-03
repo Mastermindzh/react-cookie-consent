@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [[7.4.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.4.1)
+
+- Small version error in package.json that actually didn't make it work with React 18
+
 ## [[7.4.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.4.0)
 
 - Added support for React 18

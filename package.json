@@ -4,7 +4,7 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "version": "7.3.1",
+  "version": "7.4.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -13,7 +13,7 @@
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0"
+    "react": "^16.13.1 || ^17.0.0 | ^18.0.0"
   },
   "scripts": {
     "build": "webpack",
@@ -43,22 +43,22 @@
   },
   "homepage": "https://github.com/Mastermindzh/react-cookie-consent#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-transform-object-assign": "^7.12.1",
-    "@babel/plugin-transform-react-jsx": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/plugin-transform-object-assign": "^7.16.7",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
     "@mastermindzh/prettier-config": "^1.0.0",
     "@types/js-cookie": "^2.2.6",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.4",
     "copy-webpack-plugin": "^6.2.1",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
-    "prettier": "^2.1.2",
-    "react": "^16.13.1",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "prettier": "^2.6.2",
+    "react": "^18.0.0",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
   },
   "prettier": "@mastermindzh/prettier-config",
   "husky": {

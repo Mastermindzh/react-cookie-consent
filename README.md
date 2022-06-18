@@ -184,6 +184,7 @@ That option would be interesting if you want to allow user to change their conse
 | onOverlayClick            |                  function                   | `() => {}`                           | allows you to react to a click on the overlay                                                                                           |
 | acceptOnOverlayClick      |                   boolean                   | false                                | Determines whether the cookies should be accepted after clicking on the overlay                                                         |
 | customButtonProps         |                   object                    | `{}`                                 | Allows you to set custom props on the button component                                                                                  |
+| customDeclineButtonProps  |                   object                    | `{}`                                 | Allows you to set custom props on the decline button component                                                                          |
 
 ## Debugging it
 

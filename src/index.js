@@ -293,6 +293,7 @@ class CookieConsent extends Component {
       customContainerAttributes,
       customContentAttributes,
       customButtonProps,
+      customDeclineButtonProps,
     } = this.props;
 
     let myStyle = {};
@@ -352,6 +353,7 @@ class CookieConsent extends Component {
           onClick={() => {
             this.decline();
           }}
+          {...customDeclineButtonProps}
         >
           {declineButtonText}
         </ButtonComponent>
@@ -360,7 +362,6 @@ class CookieConsent extends Component {
     // add accept button
     buttonsToRender.push(
       <ButtonComponent
-        {...customButtonProps}
         key="acceptButton"
         style={myButtonStyle}
         className={buttonClasses}
@@ -369,6 +370,7 @@ class CookieConsent extends Component {
         onClick={() => {
           this.accept();
         }}
+        {...customButtonProps}
       >
         {buttonText}
       </ButtonComponent>
@@ -455,6 +457,7 @@ CookieConsent.propTypes = {
   customContentAttributes: PropTypes.object,
   customContainerAttributes: PropTypes.object,
   customButtonProps: PropTypes.object,
+  customDeclineButtonProps: PropTypes.object,
 };
 
 CookieConsent.defaultProps = {
@@ -497,6 +500,7 @@ CookieConsent.defaultProps = {
   customContentAttributes: {},
   customContainerAttributes: {},
   customButtonProps: {},
+  customDeclineButtonProps: {},
 };
 
 export default CookieConsent;

@@ -48,6 +48,7 @@ export interface CookieConsentProps {
   customContentAttributes?: object;
   customContainerAttributes?: object;
   customButtonProps?: object;
+  customDeclineButtonProps?: object;
 }
 
 export default class CookieConsent extends React.Component<CookieConsentProps, {}> {}

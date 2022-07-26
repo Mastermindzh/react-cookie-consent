@@ -294,6 +294,7 @@ class CookieConsent extends Component {
       customContentAttributes,
       customButtonProps,
       customDeclineButtonProps,
+      customButtonWrapperAttributes,
     } = this.props;
 
     let myStyle = {};
@@ -399,7 +400,7 @@ class CookieConsent extends Component {
           <div style={myContentStyle} className={contentClasses} {...customContentAttributes}>
             {this.props.children}
           </div>
-          <div className={`${buttonWrapperClasses}`}>
+          <div className={`${buttonWrapperClasses}`} {...customButtonWrapperAttributes}>
             {buttonsToRender.map((button) => {
               return button;
             })}
@@ -458,6 +459,7 @@ CookieConsent.propTypes = {
   customContainerAttributes: PropTypes.object,
   customButtonProps: PropTypes.object,
   customDeclineButtonProps: PropTypes.object,
+  customButtonWrapperAttributes: PropTypes.object,
 };
 
 CookieConsent.defaultProps = {
@@ -501,6 +503,7 @@ CookieConsent.defaultProps = {
   customContainerAttributes: {},
   customButtonProps: {},
   customDeclineButtonProps: {},
+  customButtonWrapperAttributes: {},
 };
 
 export default CookieConsent;

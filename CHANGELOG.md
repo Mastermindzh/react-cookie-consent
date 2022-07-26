@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [next]
+
+- Added `customButtonWrapperAttributes` prop which allows to add custom attributes to the button wrapper div
+
 ## [[7.5.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.5.0)
 
 - Added `customDeclineButtonProps` to add custom properties to the decline button

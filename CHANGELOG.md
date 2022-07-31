@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[8.0.1]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/8.0.1)]
 
-Second try of [np](https://github.com/sindresorhus/np)...
+~~Second try of [np](https://github.com/sindresorhus/np)...~~
 Removed postinstall
+np is not my thing.. reverted to old release strategy
 
 ## [[8.0.0]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/8.0.0)]
 

@@ -1,6 +1,6 @@
 {
   "name": "react-cookie-consent",
-  "version": "8.0.1",
+  "version": "8.0.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "keywords": [
     "react",
@@ -32,6 +32,7 @@
     "analyze": "size-limit --why",
     "build": "tsdx build",
     "build-storybook": "build-storybook",
+    "install-husky": "npx husky install",
     "lint": "tsdx lint",
     "major": "npm --no-git-tag-version version major",
     "minor": "npm --no-git-tag-version version minor",
@@ -39,8 +40,11 @@
     "patch": "npm --no-git-tag-version version patch",
     "prepare": "tsdx build",
     "prettier": "prettier 'src/**/*.{js*,ts*,htm*,md,scss}' --write",
-    "install-husky": "npx husky install",
     "publish": "npx np",
+    "release": "npm run build && git add -A && git tag $npm_package_version && git commit -m \"release $npm_package_version\" && git push && git push --tags && npm publish",
+    "release-major": "npm run major && npm run release",
+    "release-minor": "npm run minor && npm run release",
+    "release-patch": "npm run patch && npm run release",
     "size": "size-limit",
     "start": "tsdx watch",
     "storybook": "start-storybook -p 6006",

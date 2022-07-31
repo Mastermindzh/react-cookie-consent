@@ -1,6 +1,6 @@
 {
   "name": "react-cookie-consent",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "keywords": [
     "react",

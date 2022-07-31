@@ -4,9 +4,7 @@ A small, simple and customizable cookie consent bar for use in React application
 
 [![NPM](https://nodei.co/npm/react-cookie-consent.png)](https://npmjs.org/package/react-cookie-consent)
 
-Demo: https://mastermindzh.github.io/react-cookie-consent/
-
-Example branch: https://github.com/Mastermindzh/react-cookie-consent/tree/example
+Demo (storybook): https://mastermindzh.github.io/react-cookie-consent/
 
 ![Downloads](https://img.shields.io/npm/dm/react-cookie-consent) ![Dependent repos (via libraries.io)](https://img.shields.io/librariesio/dependent-repos/npm/react-cookie-consent) ![GitHub contributors](https://img.shields.io/github/contributors/mastermindzh/react-cookie-consent) ![Minified size](https://img.shields.io/bundlephobia/min/react-cookie-consent) ![npm type definitions](https://img.shields.io/npm/types/react-cookie-consent) ![license-mit](https://img.shields.io/badge/license-MIT-green)
 

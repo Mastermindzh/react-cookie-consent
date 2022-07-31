@@ -73,6 +73,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "prettier": "^2.6.2",
     "react": "^18.2.0",

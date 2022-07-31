@@ -1,129 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Cookies from "js-cookie";
+import React, { Component, CSSProperties } from "react";
+import { ConditionalWrapper } from "./components/ConditionalWrapper";
+import { CookieConsentProps, defaultCookieConsentProps } from "./CookieConsent.props";
+import { CookieConsentState, defaultState } from "./CookieConsent.state";
+import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./models/constants";
+import { getCookieConsentValue, getLegacyCookieName } from "./utilities";
 
-export const OPTIONS = {
-  TOP: "top",
-  BOTTOM: "bottom",
-  NONE: "none",
-};
+export class CookieConsent extends Component<CookieConsentProps, CookieConsentState> {
+  public static defaultProps = defaultCookieConsentProps;
 
-export const SAME_SITE_OPTIONS = {
-  STRICT: "strict",
-  LAX: "lax",
-  NONE: "none",
-};
-
-export const VISIBLE_OPTIONS = {
-  HIDDEN: "hidden",
-  SHOW: "show",
-  BY_COOKIE_VALUE: "byCookieValue",
-};
-
-/**
- * Returns the value of the consent cookie
- * Retrieves the regular value first and if not found the legacy one according
- * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
- * @param {*} name optional name of the cookie
- */
-export const getCookieConsentValue = (name = defaultCookieConsentName) => {
-  const cookieValue = Cookies.get(name);
-
-  // if the cookieValue is undefined check for the legacy cookie
-  if (cookieValue === undefined) {
-    return Cookies.get(getLegacyCookieName(name));
-  }
-  return cookieValue;
-};
-
-/**
- * Reset the consent cookie
- * Remove the cookie on browser in order to allow user to change their consent
- * @param {*} name optional name of the cookie
- */
-export const resetCookieConsentValue = (name = defaultCookieConsentName) => {
-  Cookies.remove(name);
-};
-
-/**
- * Get the legacy cookie name by the regular cookie name
- * @param {string} name of cookie to get
- */
-const getLegacyCookieName = (name) => {
-  return `${name}-legacy`;
-};
-
-/**
- * Default name of the cookie which is set by CookieConsent
- */
-const defaultCookieConsentName = "CookieConsent";
-
-/**
- * A function to wrap elements with a "wrapper" on a condition
- * @param {object} wrappingOptions
- *  condition == boolean condition, when to wrap
- *  wrapper == style to wrap. e.g <div>{children}</div>
- *  children == react passes whatever is between tags as children. Don't supply this yourself.
- */
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
-
-class CookieConsent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      visible: false,
-      style: {
-        alignItems: "baseline",
-        background: "#353535",
-        color: "white",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        left: "0",
-        position: "fixed",
-        width: "100%",
-        zIndex: "999",
-      },
-      buttonStyle: {
-        background: "#ffd42d",
-        border: "0",
-        borderRadius: "0px",
-        boxShadow: "none",
-        color: "black",
-        cursor: "pointer",
-        flex: "0 0 auto",
-        padding: "5px 10px",
-        margin: "15px",
-      },
-      declineButtonStyle: {
-        background: "#c12a2a",
-        border: "0",
-        borderRadius: "0px",
-        boxShadow: "none",
-        color: "#e5e5e5",
-        cursor: "pointer",
-        flex: "0 0 auto",
-        padding: "5px 10px",
-        margin: "15px",
-      },
-      contentStyle: {
-        flex: "1 0 300px",
-        margin: "15px",
-      },
-      overlayStyle: {
-        position: "fixed",
-        left: 0,
-        top: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: "999",
-        backgroundColor: "rgba(0,0,0,0.3)",
-      },
-    };
-  }
+  state: CookieConsentState = defaultState;
 
   componentDidMount() {
     const { debug } = this.props;
@@ -193,17 +79,18 @@ class CookieConsent extends Component {
    * Sets two cookies to handle incompatible browsers, more details:
    * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
    */
-  setCookie(cookieName, cookieValue) {
+  setCookie(cookieName: string, cookieValue: string | object) {
     const { extraCookieOptions, expires, sameSite } = this.props;
     let { cookieSecurity } = this.props;
 
     if (cookieSecurity === undefined) {
-      cookieSecurity = location ? location.protocol === "https:" : true;
+      cookieSecurity = window.location ? window.location.protocol === "https:" : true;
     }
 
     const cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
 
-    // Fallback for older browsers where can not set SameSite=None, SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
+    // Fallback for older browsers where can not set SameSite=None,
+    // SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
     if (sameSite === SAME_SITE_OPTIONS.NONE) {
       Cookies.set(getLegacyCookieName(cookieName), cookieValue, cookieOptions);
     }
@@ -229,10 +116,10 @@ class CookieConsent extends Component {
     const { acceptOnScrollPercentage } = this.props;
 
     // (top / height) - height * 100
-    const rootNode = document.documentElement,
-      body = document.body,
-      top = "scrollTop",
-      height = "scrollHeight";
+    const rootNode = document.documentElement;
+    const body = document.body;
+    const top = "scrollTop";
+    const height = "scrollHeight";
 
     const percentage =
       ((rootNode[top] || body[top]) /
@@ -254,9 +141,9 @@ class CookieConsent extends Component {
   render() {
     // If the bar shouldn't be visible don't render anything.
     switch (this.props.visible) {
-      case VISIBLE_OPTIONS.HIDDEN:
+      case VISIBILITY_OPTIONS.HIDDEN:
         return null;
-      case VISIBLE_OPTIONS.BY_COOKIE_VALUE:
+      case VISIBILITY_OPTIONS.BY_COOKIE_VALUE:
         if (!this.state.visible) {
           return null;
         }
@@ -297,11 +184,11 @@ class CookieConsent extends Component {
       customButtonWrapperAttributes,
     } = this.props;
 
-    let myStyle = {};
-    let myButtonStyle = {};
-    let myDeclineButtonStyle = {};
-    let myContentStyle = {};
-    let myOverlayStyle = {};
+    let myStyle: CSSProperties = {};
+    let myButtonStyle: CSSProperties = {};
+    let myDeclineButtonStyle: CSSProperties = {};
+    let myContentStyle: CSSProperties = {};
+    let myOverlayStyle: CSSProperties = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or none)
@@ -331,11 +218,11 @@ class CookieConsent extends Component {
 
     // syntactic sugar to enable user to easily select top / bottom
     switch (location) {
-      case OPTIONS.TOP:
+      case POSITION_OPTIONS.TOP:
         myStyle.top = "0";
         break;
 
-      case OPTIONS.BOTTOM:
+      case POSITION_OPTIONS.BOTTOM:
         myStyle.bottom = "0";
         break;
     }
@@ -411,100 +298,4 @@ class CookieConsent extends Component {
   }
 }
 
-CookieConsent.propTypes = {
-  location: PropTypes.oneOf(Object.keys(OPTIONS).map((key) => OPTIONS[key])),
-  visible: PropTypes.oneOf(Object.keys(VISIBLE_OPTIONS).map((key) => VISIBLE_OPTIONS[key])),
-  sameSite: PropTypes.oneOf(Object.keys(SAME_SITE_OPTIONS).map((key) => SAME_SITE_OPTIONS[key])),
-  style: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  declineButtonStyle: PropTypes.object,
-  contentStyle: PropTypes.object,
-  children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
-  disableStyles: PropTypes.bool,
-  hideOnAccept: PropTypes.bool,
-  hideOnDecline: PropTypes.bool,
-  onAccept: PropTypes.func,
-  onDecline: PropTypes.func,
-  buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
-  declineButtonText: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.element]),
-  cookieName: PropTypes.string,
-  cookieValue: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.number]),
-  declineCookieValue: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.number]),
-  setDeclineCookie: PropTypes.bool,
-  debug: PropTypes.bool,
-  expires: PropTypes.number,
-  containerClasses: PropTypes.string,
-  contentClasses: PropTypes.string,
-  buttonClasses: PropTypes.string,
-  buttonWrapperClasses: PropTypes.string,
-  declineButtonClasses: PropTypes.string,
-  buttonId: PropTypes.string,
-  declineButtonId: PropTypes.string,
-  extraCookieOptions: PropTypes.object,
-  disableButtonStyles: PropTypes.bool,
-  enableDeclineButton: PropTypes.bool,
-  flipButtons: PropTypes.bool,
-  ButtonComponent: PropTypes.elementType,
-  cookieSecurity: PropTypes.bool,
-  overlay: PropTypes.bool,
-  overlayClasses: PropTypes.string,
-  overlayStyle: PropTypes.object,
-  onOverlayClick: PropTypes.func,
-  acceptOnOverlayClick: PropTypes.bool,
-  ariaAcceptLabel: PropTypes.string,
-  ariaDeclineLabel: PropTypes.string,
-  acceptOnScroll: PropTypes.bool,
-  acceptOnScrollPercentage: PropTypes.number,
-  customContentAttributes: PropTypes.object,
-  customContainerAttributes: PropTypes.object,
-  customButtonProps: PropTypes.object,
-  customDeclineButtonProps: PropTypes.object,
-  customButtonWrapperAttributes: PropTypes.object,
-};
-
-CookieConsent.defaultProps = {
-  disableStyles: false,
-  hideOnAccept: true,
-  hideOnDecline: true,
-  location: OPTIONS.BOTTOM,
-  visible: VISIBLE_OPTIONS.BY_COOKIE_VALUE,
-  onAccept: () => {},
-  onDecline: () => {},
-  cookieName: defaultCookieConsentName,
-  cookieValue: true,
-  declineCookieValue: false,
-  setDeclineCookie: true,
-  buttonText: "I understand",
-  declineButtonText: "I decline",
-  debug: false,
-  expires: 365,
-  containerClasses: "CookieConsent",
-  contentClasses: "",
-  buttonClasses: "",
-  buttonWrapperClasses: "",
-  declineButtonClasses: "",
-  buttonId: "rcc-confirm-button",
-  declineButtonId: "rcc-decline-button",
-  extraCookieOptions: {},
-  disableButtonStyles: false,
-  enableDeclineButton: false,
-  flipButtons: false,
-  sameSite: SAME_SITE_OPTIONS.LAX,
-  ButtonComponent: ({ children, ...props }) => <button {...props}>{children}</button>,
-  overlay: false,
-  overlayClasses: "",
-  onOverlayClick: () => {},
-  acceptOnOverlayClick: false,
-  ariaAcceptLabel: "Accept cookies",
-  ariaDeclineLabel: "Decline cookies",
-  acceptOnScroll: false,
-  acceptOnScrollPercentage: 25,
-  customContentAttributes: {},
-  customContainerAttributes: {},
-  customButtonProps: {},
-  customDeclineButtonProps: {},
-  customButtonWrapperAttributes: {},
-};
-
 export default CookieConsent;
-export { Cookies };

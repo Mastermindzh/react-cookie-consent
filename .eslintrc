@@ -1,0 +1,68 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": ["import"],
+  "extends": [
+    "react-app",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": ["debug", "error"]
+      }
+    ],
+    "no-eval": "error",
+    "import/first": "error",
+    "camelcase": [
+      "error",
+      {
+        "ignoreImports": true,
+        "ignoreDestructuring": true
+      }
+    ],
+    "consistent-return": "warn",
+    "constructor-super": "error",
+    "curly": "error",
+    "eol-last": "warn",
+    "eqeqeq": ["error", "smart"],
+    "import/order": 1,
+    "new-parens": "error",
+    "no-debugger": "error",
+    "no-fallthrough": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 120
+      }
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "hoist": "all"
+      }
+    ],
+    "no-trailing-spaces": "warn",
+    "no-underscore-dangle": "error",
+    "no-unsafe-finally": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "one-var": ["error", "never"],
+    "prefer-arrow/prefer-arrow-functions": "off",
+    "prefer-const": "error",
+    "radix": "off",
+    "space-in-parens": ["off", "never"]
+  }
+}

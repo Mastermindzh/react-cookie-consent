@@ -39,7 +39,7 @@
     "patch": "npm --no-git-tag-version version patch",
     "prepare": "tsdx build",
     "prettier": "prettier 'src/**/*.{js*,ts*,htm*,md,scss}' --write",
-    "postinstall": "husky install",
+    "install-husky": "npx husky install",
     "publish": "npx np",
     "size": "size-limit",
     "start": "tsdx watch",

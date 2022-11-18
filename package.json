@@ -69,7 +69,7 @@
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addons": "^6.5.9",
     "@storybook/react": "^6.5.9",
-    "@types/js-cookie": "^2.2.6",
+    "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",

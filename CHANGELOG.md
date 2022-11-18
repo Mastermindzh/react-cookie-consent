@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [next]
 
 - Bump `js-cookie` from 2.2.1 to 3.0.1
+- Bump `@types/js-cookie` from 2.2.7 to 3.0.2
 
 ## [[8.0.1]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/8.0.1)]
 

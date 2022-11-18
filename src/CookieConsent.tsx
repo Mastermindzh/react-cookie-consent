@@ -88,15 +88,16 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
     }
 
     const cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
+    const value = typeof cookieValue === "string" ? cookieValue : JSON.stringify(cookieValue);
 
     // Fallback for older browsers where can not set SameSite=None,
     // SEE: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
     if (sameSite === SAME_SITE_OPTIONS.NONE) {
-      Cookies.set(getLegacyCookieName(cookieName), cookieValue, cookieOptions);
+      Cookies.set(getLegacyCookieName(cookieName), value, cookieOptions);
     }
 
     // set the regular cookie
-    Cookies.set(cookieName, cookieValue, cookieOptions);
+    Cookies.set(cookieName, value, cookieOptions);
   }
 
   /**

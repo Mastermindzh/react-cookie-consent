@@ -144,7 +144,7 @@ That option would be interesting if you want to allow user to change their conse
 | hideOnAccept                  |                   boolean                   | true                                 | If disabled the component will not hide it self after the accept button has been clicked. You will need to hide yourself (see onAccept) |
 | buttonText                    |          string or React component          | "I understand"                       | Text to appear on the button                                                                                                            |
 | declineButtonText             |          string or React component          | "I decline"                          | Text to appear on the decline button                                                                                                    |
-| cookieName                    |                   string                    | "CookieConsent"                      | Name of the cookie used to track whether the user has agreed.                                                                           |
+| cookieName                    |                   string                    | "CookieConsent"                      | Name of the cookie used to track whether the user has agreed. Note that you also have to pass this to the `getCookieConsentValue` and `resetCookieConsentValue` functions as they default to "CookieConsent" as well.                                                                         |
 | cookieValue                   |         string or boolean or number         | true                                 | Value to be saved under the cookieName.                                                                                                 |
 | declineCookieValue            |         string or boolean or number         | false                                | Value to be saved under the cookieName when declined.                                                                                   |
 | setDeclineCookie              |                   boolean                   | true                                 | Whether to set a cookie when the user clicks "decline"                                                                                  |
@@ -296,7 +296,7 @@ You can add more cookie options using the extraCookieOptions parameter like so:
 <CookieConsent extraCookieOptions={{ domain: "myexample.com" }}>cookie bar</CookieConsent>
 ```
 
-#### Rainbows!
+#### Rainbows
 
 ![rainbows!](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/rainbow.png?raw=true)
 

@@ -4,7 +4,7 @@ A small, simple and customizable cookie consent bar for use in React application
 
 [![NPM](https://nodei.co/npm/react-cookie-consent.png)](https://npmjs.org/package/react-cookie-consent)
 
-Demo (storybook): https://mastermindzh.github.io/react-cookie-consent/
+Demo (storybook): <https://mastermindzh.github.io/react-cookie-consent/>
 
 ![Downloads](https://img.shields.io/npm/dm/react-cookie-consent) ![Dependent repos (via libraries.io)](https://img.shields.io/librariesio/dependent-repos/npm/react-cookie-consent) ![GitHub contributors](https://img.shields.io/github/contributors/mastermindzh/react-cookie-consent) ![Minified size](https://img.shields.io/bundlephobia/min/react-cookie-consent) ![npm type definitions](https://img.shields.io/npm/types/react-cookie-consent) ![license-mit](https://img.shields.io/badge/license-MIT-green)
 
@@ -16,24 +16,28 @@ Demo (storybook): https://mastermindzh.github.io/react-cookie-consent/
 
 <!-- toc -->
 
-- [Installation](#installation)
-- [Using it](#using-it)
-  - [getting the cookies value in your own code](#getting-the-cookies-value-in-your-own-code)
-- [Props](#props)
-- [Debugging it](#debugging-it)
-- [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies-one-of-which-named-legacy)
-- [Styling it](#styling-it)
-  - [Examples](#examples)
-    - [Changing the bar background to red](#changing-the-bar-background-to-red)
-    - [Changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
-    - [Using predefined CSS classes](#using-predefined-css-classes)
-    - [Accept on scroll](#accept-on-scroll)
-    - [Flipping the buttons](#flipping-the-buttons)
-    - [Extra cookie options](#extra-cookie-options)
-    - [Rainbows!](#rainbows)
-    - [Overlay](#overlay)
-- [Contributor information](#contributor-information)
-- [Projects using react-cookie-consent](#projects-using-react-cookie-consent)
+- [:cookie: react-cookie-consent :cookie:](#cookie-react-cookie-consent-cookie)
+  - [Default look](#default-look)
+  - [Table of contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Using it](#using-it)
+    - [getting the cookies value in your own code](#getting-the-cookies-value-in-your-own-code)
+    - [reset the cookies value in your own code](#reset-the-cookies-value-in-your-own-code)
+  - [Props](#props)
+  - [Debugging it](#debugging-it)
+  - [Why are there two cookies? One of which named "Legacy"](#why-are-there-two-cookies-one-of-which-named-legacy)
+  - [Styling it](#styling-it)
+    - [Examples](#examples)
+      - [Changing the bar background to red](#changing-the-bar-background-to-red)
+      - [Changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
+      - [Using predefined CSS classes](#using-predefined-css-classes)
+      - [Accept on scroll](#accept-on-scroll)
+      - [Flipping the buttons](#flipping-the-buttons)
+      - [Extra cookie options](#extra-cookie-options)
+      - [Rainbows](#rainbows)
+      - [Overlay](#overlay)
+  - [Contributor information](#contributor-information)
+  - [Projects using react-cookie-consent](#projects-using-react-cookie-consent)
 
 <!-- tocstop -->
 
@@ -113,12 +117,12 @@ If the decline button is enabled then the (onDecline) prop function can be used,
 
 ### getting the cookies value in your own code
 
-react-cookie-consent exports a function called `getCookieConsentValue`. You can use it in your own code like so:
+react-cookie-consent exports a function called `getCookieConsentValue(cookieName: string)`. You can use it in your own code like so:
 
 ```js
 import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
 
-console.log(getCookieConsentValue());
+console.log(getCookieConsentValue("your_custom_cookie_name"));
 ```
 
 ### reset the cookies value in your own code

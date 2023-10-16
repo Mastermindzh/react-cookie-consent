@@ -33,7 +33,10 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * Set a persistent accept cookie
    */
   accept(acceptedByScrolling = false) {
-    const { cookieName, cookieValue, hideOnAccept, onAccept } = this.props;
+    const { cookieName, cookieValue, hideOnAccept, onAccept } = {
+      ...defaultCookieConsentProps,
+      ...this.props,
+    };
 
     this.setCookie(cookieName, cookieValue);
 
@@ -49,7 +52,10 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * Handle a click on the overlay
    */
   overlayClick() {
-    const { acceptOnOverlayClick, onOverlayClick } = this.props;
+    const { acceptOnOverlayClick, onOverlayClick } = {
+      ...defaultCookieConsentProps,
+      ...this.props,
+    };
     if (acceptOnOverlayClick) {
       this.accept();
     }
@@ -60,8 +66,10 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * Set a persistent decline cookie
    */
   decline() {
-    const { cookieName, declineCookieValue, hideOnDecline, onDecline, setDeclineCookie } =
-      this.props;
+    const { cookieName, declineCookieValue, hideOnDecline, onDecline, setDeclineCookie } = {
+      ...defaultCookieConsentProps,
+      ...this.props,
+    };
 
     if (setDeclineCookie) {
       this.setCookie(cookieName, declineCookieValue);
@@ -113,7 +121,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * checks whether scroll has exceeded set amount and fire accept if so.
    */
   handleScroll = () => {
-    const { acceptOnScrollPercentage } = this.props;
+    const { acceptOnScrollPercentage } = { ...defaultCookieConsentProps, ...this.props };
 
     // (top / height) - height * 100
     const rootNode = document.documentElement;

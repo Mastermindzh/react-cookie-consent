@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
 
 type Props = {
-  condition: boolean;
+  condition?: boolean;
   wrapper: (_: ReactNode) => any;
   children: ReactNode;
 };

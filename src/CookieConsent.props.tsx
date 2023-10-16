@@ -8,54 +8,54 @@ import {
 
 export interface CookieConsentProps {
   children?: ReactNode;
-  style: React.CSSProperties;
-  buttonStyle: React.CSSProperties;
-  declineButtonStyle: React.CSSProperties;
-  contentStyle: React.CSSProperties;
-  disableStyles: boolean;
-  hideOnAccept: boolean;
-  hideOnDecline: boolean;
-  onAccept: (acceptedByScrolling: boolean) => void;
-  onDecline: () => void;
-  buttonText: string | ReactNode | Function;
-  declineButtonText: string | ReactNode | Function;
-  cookieName: string;
-  cookieValue: string | object;
-  declineCookieValue: string | object;
-  setDeclineCookie: boolean;
-  debug: boolean;
-  expires: number;
-  containerClasses: string;
-  contentClasses: string;
-  buttonClasses: string;
-  buttonWrapperClasses: string;
-  declineButtonClasses: string;
-  buttonId: string;
-  declineButtonId: string;
-  overlayClasses: string;
-  ariaAcceptLabel: string;
-  ariaDeclineLabel: string;
-  disableButtonStyles: boolean;
-  enableDeclineButton: boolean;
-  flipButtons: boolean;
+  style?: React.CSSProperties;
+  buttonStyle?: React.CSSProperties;
+  declineButtonStyle?: React.CSSProperties;
+  contentStyle?: React.CSSProperties;
+  disableStyles?: boolean;
+  hideOnAccept?: boolean;
+  hideOnDecline?: boolean;
+  onAccept?: (acceptedByScrolling: boolean) => void;
+  onDecline?: () => void;
+  buttonText?: string | ReactNode | Function;
+  declineButtonText?: string | ReactNode | Function;
+  cookieName?: string;
+  cookieValue?: string | object;
+  declineCookieValue?: string | object;
+  setDeclineCookie?: boolean;
+  debug?: boolean;
+  expires?: number;
+  containerClasses?: string;
+  contentClasses?: string;
+  buttonClasses?: string;
+  buttonWrapperClasses?: string;
+  declineButtonClasses?: string;
+  buttonId?: string;
+  declineButtonId?: string;
+  overlayClasses?: string;
+  ariaAcceptLabel?: string;
+  ariaDeclineLabel?: string;
+  disableButtonStyles?: boolean;
+  enableDeclineButton?: boolean;
+  flipButtons?: boolean;
   cookieSecurity?: boolean;
-  overlay: boolean;
-  acceptOnOverlayClick: boolean;
-  acceptOnScroll: boolean;
-  acceptOnScrollPercentage: number;
-  ButtonComponent: any;
-  extraCookieOptions: Object;
-  overlayStyle: Object;
-  customContentAttributes: Object;
-  customContainerAttributes: Object;
-  customButtonProps: Object;
-  customDeclineButtonProps: Object;
-  customButtonWrapperAttributes: Object;
-  onOverlayClick: () => void;
+  overlay?: boolean;
+  acceptOnOverlayClick?: boolean;
+  acceptOnScroll?: boolean;
+  acceptOnScrollPercentage?: number;
+  ButtonComponent?: any;
+  extraCookieOptions?: Object;
+  overlayStyle?: Object;
+  customContentAttributes?: Object;
+  customContainerAttributes?: Object;
+  customButtonProps?: Object;
+  customDeclineButtonProps?: Object;
+  customButtonWrapperAttributes?: Object;
+  onOverlayClick?: () => void;
   // these should be enums
-  location: string;
-  visible: string;
-  sameSite: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" | undefined;
+  location?: string;
+  visible?: string;
+  sameSite?: "strict" | "Strict" | "lax" | "Lax" | "none" | "None";
 }
 
 const DefaultButtonComponent: FunctionComponent<{ children: ReactNode; [x: string]: any }> = ({
@@ -65,13 +65,13 @@ const DefaultButtonComponent: FunctionComponent<{ children: ReactNode; [x: strin
   return <button {...props}>{children}</button>;
 };
 
-export const defaultCookieConsentProps: CookieConsentProps = {
+export const defaultCookieConsentProps = {
   disableStyles: false,
   hideOnAccept: true,
   hideOnDecline: true,
   location: POSITION_OPTIONS.BOTTOM,
   visible: VISIBILITY_OPTIONS.BY_COOKIE_VALUE,
-  onAccept: (_acceptedByScrolling) => {},
+  onAccept: (_acceptedByScrolling: boolean) => {},
   onDecline: () => {},
   cookieName: defaultCookieConsentName,
   cookieValue: "true",

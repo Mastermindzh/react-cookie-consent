@@ -1,6 +1,6 @@
 {
     "sonarlint.connectedMode.project": {
         "connectionId": "public-sonarcloud",
-        "projectKey": "Mastermindzh_react-cookie-consent"
+        "projectKey": "TPN-Labs_react-cookie-tailor"
     }
 }

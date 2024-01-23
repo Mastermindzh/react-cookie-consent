@@ -5,82 +5,82 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [[9.0.0]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/9.0.0)]
+## [[9.0.0]((https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/9.0.0)]
 
 Made all props optional and fixed documentation.
-Fixes [#191](https://github.com/Mastermindzh/react-cookie-consent/issues/191) and [#193](https://github.com/Mastermindzh/react-cookie-consent/issues/193)
+Fixes [#191](https://github.com/TPN-Labs/react-cookie-tailor/issues/191) and [#193](https://github.com/TPN-Labs/react-cookie-tailor/issues/193)
 
-## [[8.0.1]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/8.0.1)]
+## [[8.0.1]((https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/8.0.1)]
 
 ~~Second try of [np](https://github.com/sindresorhus/np)...~~
 Removed postinstall
 np is not my thing.. reverted to old release strategy
 
-## [[8.0.0]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/8.0.0)]
+## [[8.0.0]((https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/8.0.0)]
 
 - Switched to tsdx and Typescript
 - Added storybook with examples from readme
 
-## [[7.6.0]](<https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.6.0>]
+## [[7.6.0]](<https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.6.0>]
 
 - Added `customButtonWrapperAttributes` prop which allows to add custom attributes to the button wrapper div
 
-## [[7.5.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.5.0)
+## [[7.5.0]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.5.0)
 
 - Added `customDeclineButtonProps` to add custom properties to the decline button
 
-## [[7.4.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.4.1)
+## [[7.4.1]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.4.1)
 
 - Small version error in package.json that actually didn't make it work with React 18
 
-## [[7.4.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.4.0)
+## [[7.4.0]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.4.0)
 
 - Added support for React 18
 - Updated example and codebase to use React 18
 
-## [[7.3.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.3.1)
+## [[7.3.1]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.3.1)
 
 - Added type annotations on public functions
 
-## [[7.3.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.3.0)
+## [[7.3.0]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.3.0)
 
 - added `customButtonProps` that allows to use custom props with the button component. Specifically useful for library buttons components, for e.g. MUI Button.
 
-## [[7.2.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.2.1)
+## [[7.2.1]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.2.1)
 
 - hideOnDecline added to typescript files
 - Added .prettieringore
 
-## [[7.2.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.2.0)
+## [[7.2.0]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.2.0)
 
 - Added `onOverlayClick` which allows you to react to a click on the overlay
 - Added `acceptOnOverlayClick` which accepts the cookies when the overlay is clicked and runs `onOverlayClick`
 
-## [[7.1.1]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.1.1)
+## [[7.1.1]](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.1.1)
 
 - `customContentAttributes` and `customContainerAttributes` are now optional in the typing file as they should be
 
-## [[7.1.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.1.0)]
+## [[7.1.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.1.0)]
 
 - Added custom attribute props for content and container
 
-## [[7.0.1](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.0.1)]
+## [[7.0.1](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.0.1)]
 
 - Configured webpack to remove self from build artefact. Should now work in Nextjs and Gatsby (only tested those..)
 
-## [[7.0.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/7.0.0)]
+## [[7.0.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/7.0.0)]
 
 - Switched from CommonJS to UMD module
 
-## [[6.4.1](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.4.1))]
+## [[6.4.1](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.4.1))]
 
 - Added missing typing
 
-## [[6.4.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.4.0))]
+## [[6.4.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.4.0))]
 
 - Added visible prop
 
-## [[6.3.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.3))]
+## [[6.3.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.2.3))]
 
 - Added the (optional) scrolling effect back in as it is declared legal in some countries now.
 
@@ -88,46 +88,46 @@ np is not my thing.. reverted to old release strategy
 
 - version bumps :)
 
-## [[6.2.3](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.3)]
+## [[6.2.3](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.2.3)]
 
 - Added support for IE11, the webpack generated runtime-code should not use arrow functions
 
-## [[6.2.2](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.2)]
+## [[6.2.2](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.2.2)]
 
 - Fixed the return type of getCookieConsentValue in the dts file.
 
-## [[6.2.1](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.1)]
+## [[6.2.1](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.2.1)]
 
 Added the `getCookieConsentValue` to the dts file.
 
-## [[6.2.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.2.0)]
+## [[6.2.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.2.0)]
 
 Added the exported function `getCookieConsentValue` to get the cookie value from custom code
 
-## [[6.1.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.1.0)]
+## [[6.1.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.1.0)]
 
 Added support for React 17
 
-## [[6.0.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/6.0.0)]
+## [[6.0.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/6.0.0)]
 
 ### removed
 
 Accepting by scrolling is no longer allowed and has thus been removed from the package.
-For details see [issue 88](https://github.com/Mastermindzh/react-cookie-consent/issues/88)
+For details see [issue 88](https://github.com/TPN-Labs/react-cookie-tailor/issues/88)
 
-## [[5.2.0](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/5.2.0)]
+## [[5.2.0](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/5.2.0)]
 
 ### added
 
 Added aria labels for both the decline and accept button
 
-## [[5.1.4](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/5.1.4)]
+## [[5.1.4](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/5.1.4)]
 
 ### changed
 
 - set default SameSite attribute to "lax" because browsers are already implementing the cookie policy changes.
 
-## [[5.1.3](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/5.1.3)]
+## [[5.1.3](https://github.com/TPN-Labs/react-cookie-tailor/releases/tag/5.1.3)]
 
 ### changed
 
@@ -147,12 +147,12 @@ This is all opt-in of course and the README covers it nicely (just add overlay t
 
 We got an update picture, with a cute cat... unfortunately the cat won't be included by default:
 
-![overlay example image](https://github.com/Mastermindzh/react-cookie-consent/blob/master/images/overlay.png?raw=true)
+![overlay example image](https://github.com/TPN-Labs/react-cookie-tailor/blob/master/images/overlay.png?raw=true)
 
 ## [5.0.1]
 
 - Fixed [Issue
-  69](https://github.com/Mastermindzh/react-cookie-consent/issues/69) by
+  69](https://github.com/TPN-Labs/react-cookie-tailor/issues/69) by
   removing location from the proptypes to avoid build-time issues
 
 ## [5.0.0]
@@ -171,7 +171,7 @@ We got an update picture, with a cute cat... unfortunately the cat won't be incl
 
 ## [4.0.0]
 
-I decided to update react-cookie-consent to version 4 because this version has a
+I decided to update react-cookie-tailor to version 4 because this version has a
 buttonWrapper which will break appearance. I consider appearance a major feature.
 
 ### Added
@@ -182,8 +182,8 @@ buttonWrapper which will break appearance. I consider appearance a major feature
 
 ### Changed
 
-- Default ids for the buttons (rcc stands for react-cookie-consent,
-  cookie-consent is blocked by some adblockers nowadays so I abbreviated it)
+- Default ids for the buttons (rcc stands for react-cookie-tailor,
+  cookie-tailor is blocked by some adblockers nowadays so I abbreviated it)
 
 ### Updated
 

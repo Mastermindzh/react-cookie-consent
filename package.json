@@ -1,28 +1,28 @@
 {
-  "name": "react-cookie-consent",
-  "version": "9.0.0",
-  "description": "A small, simple and customizable cookie consent bar for use in React applications.",
+  "name": "react-cookie-tailor",
+  "version": "0.5.0",
+  "description": "A small, customizable, and fully compliant cookie consent bar for React.",
   "keywords": [
     "react",
     "cookie",
     "consent",
     "cookiebar"
   ],
-  "homepage": "https://github.com/Mastermindzh/react-cookie-consent#readme",
+  "homepage": "https://github.com/TPN-Labs/react-cookie-tailor#readme",
   "bugs": {
-    "url": "https://github.com/Mastermindzh/react-cookie-consent/issues"
+    "url": "https://github.com/TPN-Labs/react-cookie-tailor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mastermindzh/react-cookie-consent.git"
+    "url": "git+https://github.com/TPN-Labs/react-cookie-tailor.git"
   },
   "license": "MIT",
   "author": {
-    "name": "Rick van Lieshout",
-    "email": "info@rickvanlieshout.com"
+    "name": "TPN Labs",
+    "email": "office@tpn-labs.com"
   },
   "main": "dist/index.js",
-  "module": "dist/react-cookie-consent.esm.js",
+  "module": "dist/react-cookie-tailor.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -92,11 +92,11 @@
   },
   "size-limit": [
     {
-      "path": "dist/react-cookie-consent.cjs.production.min.js",
+      "path": "dist/react-cookie-tailor.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/react-cookie-consent.esm.js",
+      "path": "dist/react-cookie-tailor.esm.js",
       "limit": "10 KB"
     }
   ]

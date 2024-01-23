@@ -1,1 +1,1 @@
-export const defaultCookieConsentName = "CookieConsent";
+export const defaultCookieTailorName = "CookieTailor";

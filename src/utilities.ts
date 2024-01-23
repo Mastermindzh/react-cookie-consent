@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { defaultCookieConsentName } from "./models/constants";
+import { defaultCookieTailorName } from "./models/constants";
 
 /**
  * Returns the value of the consent cookie
@@ -7,7 +7,7 @@ import { defaultCookieConsentName } from "./models/constants";
  * to: https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
  * @param {*} name optional name of the cookie
  */
-export const getCookieConsentValue = (name = defaultCookieConsentName) => {
+export const getCookieTailorValue = (name = defaultCookieTailorName) => {
   const cookieValue = Cookies.get(name);
 
   // if the cookieValue is undefined check for the legacy cookie
@@ -22,7 +22,7 @@ export const getCookieConsentValue = (name = defaultCookieConsentName) => {
  * Remove the cookie on browser in order to allow user to change their consent
  * @param {*} name optional name of the cookie
  */
-export const resetCookieConsentValue = (name = defaultCookieConsentName) => {
+export const resetCookieTailorValue = (name = defaultCookieTailorName) => {
   Cookies.remove(name);
 };
 

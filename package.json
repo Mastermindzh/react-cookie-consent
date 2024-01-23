@@ -1,11 +1,12 @@
 {
   "name": "react-cookie-tailor",
-  "version": "0.5.0",
+  "version": "0.6.7",
   "description": "A small, customizable, and fully compliant cookie consent bar for React.",
   "keywords": [
     "react",
     "cookie",
     "consent",
+    "gdpr",
     "cookiebar"
   ],
   "homepage": "https://github.com/TPN-Labs/react-cookie-tailor#readme",

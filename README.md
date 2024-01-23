@@ -1,4 +1,7 @@
-# React Cookie Tailor 👔
+# 👔 React Cookie Tailor 👔
+
+> ℹ️ This is a fork of [react-cookie-consent](https://github.com/Mastermindzh/react-cookie-consent)
+
 ## Default look
 
 ![default look](https://raw.githubusercontent.com/TPN-Labs/react-cookie-tailor/master/images/default.png)
@@ -20,19 +23,19 @@ yarn add react-cookie-tailor
 You can import the cookie bar like this:
 
 ```js
-import CookieConsent from "react-cookie-tailor";
+import CookieTailor from "react-cookie-tailor";
 ```
 
 Then you can use the component anywhere in your React app like so:
 
 ```jsx
-<CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
+<CookieTailor>This website uses cookies to enhance the user experience.</CookieTailor>
 ```
 
 You can optionally set some props like this (next chapter will show all props):
 
 ```js
-<CookieConsent
+<CookieTailor
   location="bottom"
   buttonText="Sure man!!"
   cookieName="myAwesomeCookieName2"
@@ -42,13 +45,13 @@ You can optionally set some props like this (next chapter will show all props):
 >
   This website uses cookies to enhance the user experience.{" "}
   <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
-</CookieConsent>
+</CookieTailor>
 ```
 
 One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. It is called with an object containing a boolean property `acceptedByScrolling` to indicate if the acceptance was triggered by the user scrolling You can provide a function like so:
 
 ```js
-<CookieConsent
+<CookieTailor
   onAccept={(acceptedByScrolling) => {
     if (acceptedByScrolling) {
       // triggered if user scrolls past threshold
@@ -57,18 +60,18 @@ One of the props (onAccept) is a function, this function will be called after th
       alert("Accept was triggered by clicking the Accept button");
     }
   }}
-></CookieConsent>
+></CookieTailor>
 ```
 
 If the decline button is enabled then the (onDecline) prop function can be used, this function will be called after the user has clicked the decline button. You can enable the button and provide a function like so:
 
 ```js
-<CookieConsent
+<CookieTailor
   enableDeclineButton
   onDecline={() => {
     alert("nay!");
   }}
-></CookieConsent>
+></CookieTailor>
 ```
 
 ## Contributor information

@@ -1,4 +1,4 @@
-export interface CookieConsentState {
+export interface CookieTailorState {
   visible: boolean;
   style: React.CSSProperties;
   buttonStyle: React.CSSProperties;
@@ -7,7 +7,7 @@ export interface CookieConsentState {
   overlayStyle: React.CSSProperties;
 }
 
-export const defaultState: CookieConsentState = {
+export const defaultState: CookieTailorState = {
   visible: false,
   style: {
     alignItems: "baseline",

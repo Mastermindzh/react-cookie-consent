@@ -1,4 +1,4 @@
-import { CookieConsentProps } from "../../src/CookieConsent.props";
+import { CookieTailorProps } from "../../src/CookieTailor.props";
 import { defaultStoryProps } from "../defaults/storyProps";
 import { DefaultTemplate } from "../defaults/template";
 
@@ -7,6 +7,6 @@ CustomStyling.args = {
   ...defaultStoryProps,
   style: { background: "red" },
   buttonStyle: { fontWeight: "bold" },
-} as CookieConsentProps;
+} as CookieTailorProps;
 
 export { CustomStyling };

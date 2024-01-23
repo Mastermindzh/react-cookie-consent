@@ -1,11 +1,11 @@
 import { Meta } from "@storybook/react";
-import { CookieConsent } from "../src";
+import { CookieTailor } from "../src";
 import { defaultStoryProps } from "./defaults/storyProps";
 import { DefaultTemplate } from "./defaults/template";
 
 const meta: Meta = {
-  title: "CookieConsent",
-  component: CookieConsent,
+  title: "CookieTailor",
+  component: CookieTailor,
   argTypes: {
     children: {
       control: {

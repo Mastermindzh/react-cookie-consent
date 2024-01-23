@@ -1,3 +1,3 @@
-import { CookieConsentProps, defaultCookieConsentProps } from "../../src/CookieConsent.props";
+import { CookieTailorProps, defaultCookieTailorProps } from "../../src/CookieTailor.props";
 
-export const defaultStoryProps: CookieConsentProps = { ...defaultCookieConsentProps, debug: true };
+export const defaultStoryProps: CookieTailorProps = { ...defaultCookieTailorProps, debug: true };

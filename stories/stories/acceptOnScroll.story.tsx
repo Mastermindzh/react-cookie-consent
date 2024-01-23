@@ -1,6 +1,6 @@
 import { Story } from "@storybook/react";
-import CookieConsent from "../../src";
-import { CookieConsentProps } from "../../src/CookieConsent.props";
+import CookieTailor from "../../src";
+import { CookieTailorProps } from "../../src/CookieTailor.props";
 import { Intro } from "../defaults/intro";
 import { defaultStoryProps } from "../defaults/storyProps";
 
@@ -15,9 +15,9 @@ const AcceptOnScrollTemplate: Story<any> = (args) => (
       </p>
     ))}
 
-    <CookieConsent {...args}>
+    <CookieTailor {...args}>
       Scroll for {args.acceptOnScrollPercentage}% and the onAccept will trigger
-    </CookieConsent>
+    </CookieTailor>
   </>
 );
 
@@ -29,6 +29,6 @@ AcceptOnScroll.args = {
   },
   acceptOnScroll: true,
   acceptOnScrollPercentage: 25,
-} as CookieConsentProps;
+} as CookieTailorProps;
 
 export { AcceptOnScroll };

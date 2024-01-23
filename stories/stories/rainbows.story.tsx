@@ -1,4 +1,4 @@
-import { CookieConsentProps } from "../../src/CookieConsent.props";
+import { CookieTailorProps } from "../../src/CookieTailor.props";
 import { defaultStoryProps } from "../defaults/storyProps";
 import { DefaultTemplate } from "../defaults/template";
 
@@ -17,6 +17,6 @@ Rainbows.args = {
     fontWeight: "bolder",
     textShadow: "2px 2px black",
   },
-} as CookieConsentProps;
+} as CookieTailorProps;
 
 export { Rainbows };

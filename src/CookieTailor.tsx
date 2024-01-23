@@ -1,15 +1,15 @@
 import Cookies from "js-cookie";
 import React, { Component, CSSProperties } from "react";
 import { ConditionalWrapper } from "./components/ConditionalWrapper";
-import { CookieConsentProps, defaultCookieConsentProps } from "./CookieConsent.props";
-import { CookieConsentState, defaultState } from "./CookieConsent.state";
+import { CookieTailorProps, defaultCookieTailorProps } from "./CookieTailor.props";
+import { CookieTailorState, defaultState } from "./CookieTailor.state";
 import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./models/constants";
-import { getCookieConsentValue, getLegacyCookieName } from "./utilities";
+import { getCookieTailorValue, getLegacyCookieName } from "./utilities";
 
-export class CookieConsent extends Component<CookieConsentProps, CookieConsentState> {
-  public static defaultProps = defaultCookieConsentProps;
+export class CookieTailor extends Component<CookieTailorProps, CookieTailorState> {
+  public static defaultProps = defaultCookieTailorProps;
 
-  state: CookieConsentState = defaultState;
+  state: CookieTailorState = defaultState;
 
   componentDidMount() {
     const { debug } = this.props;
@@ -34,7 +34,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    */
   accept(acceptedByScrolling = false) {
     const { cookieName, cookieValue, hideOnAccept, onAccept } = {
-      ...defaultCookieConsentProps,
+      ...defaultCookieTailorProps,
       ...this.props,
     };
 
@@ -53,7 +53,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    */
   overlayClick() {
     const { acceptOnOverlayClick, onOverlayClick } = {
-      ...defaultCookieConsentProps,
+      ...defaultCookieTailorProps,
       ...this.props,
     };
     if (acceptOnOverlayClick) {
@@ -67,7 +67,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    */
   decline() {
     const { cookieName, declineCookieValue, hideOnDecline, onDecline, setDeclineCookie } = {
-      ...defaultCookieConsentProps,
+      ...defaultCookieTailorProps,
       ...this.props,
     };
 
@@ -114,14 +114,14 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    */
   getCookieValue() {
     const { cookieName } = this.props;
-    return getCookieConsentValue(cookieName);
+    return getCookieTailorValue(cookieName);
   }
 
   /**
    * checks whether scroll has exceeded set amount and fire accept if so.
    */
   handleScroll = () => {
-    const { acceptOnScrollPercentage } = { ...defaultCookieConsentProps, ...this.props };
+    const { acceptOnScrollPercentage } = { ...defaultCookieTailorProps, ...this.props };
 
     // (top / height) - height * 100
     const rootNode = document.documentElement;
@@ -306,4 +306,4 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
   }
 }
 
-export default CookieConsent;
+export default CookieTailor;

@@ -1,12 +1,12 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import {
-  defaultCookieConsentName,
+  defaultCookieTailorName,
   POSITION_OPTIONS,
   SAME_SITE_OPTIONS,
   VISIBILITY_OPTIONS,
 } from "./models/constants";
 
-export interface CookieConsentProps {
+export interface CookieTailorProps {
   children?: ReactNode;
   style?: React.CSSProperties;
   buttonStyle?: React.CSSProperties;
@@ -65,7 +65,7 @@ const DefaultButtonComponent: FunctionComponent<{ children: ReactNode; [x: strin
   return <button {...props}>{children}</button>;
 };
 
-export const defaultCookieConsentProps = {
+export const defaultCookieTailorProps = {
   disableStyles: false,
   hideOnAccept: true,
   hideOnDecline: true,
@@ -73,7 +73,7 @@ export const defaultCookieConsentProps = {
   visible: VISIBILITY_OPTIONS.BY_COOKIE_VALUE,
   onAccept: (_acceptedByScrolling: boolean) => {},
   onDecline: () => {},
-  cookieName: defaultCookieConsentName,
+  cookieName: defaultCookieTailorName,
   cookieValue: "true",
   declineCookieValue: "false",
   setDeclineCookie: true,
@@ -81,7 +81,7 @@ export const defaultCookieConsentProps = {
   declineButtonText: "I decline",
   debug: false,
   expires: 365,
-  containerClasses: "CookieConsent",
+  containerClasses: "CookieTailor",
   contentClasses: "",
   buttonClasses: "",
   buttonWrapperClasses: "",

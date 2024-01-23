@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { CookieConsentProps } from "../../src/CookieConsent.props";
+import { CookieTailorProps } from "../../src/CookieTailor.props";
 import { defaultStoryProps } from "../defaults/storyProps";
 import { DefaultTemplate } from "../defaults/template";
 
@@ -9,6 +9,6 @@ CustomMuiButton.args = {
   disableButtonStyles: true,
   ButtonComponent: Button,
   customButtonProps: { variant: "contained", style: { marginRight: "10px" } },
-} as CookieConsentProps;
+} as CookieTailorProps;
 
 export { CustomMuiButton };

@@ -1,4 +1,4 @@
-import { CookieConsentProps } from "../../src/CookieConsent.props";
+import { CookieTailorProps } from "../../src/CookieTailor.props";
 import { defaultStoryProps } from "../defaults/storyProps";
 import { DefaultTemplate } from "../defaults/template";
 
@@ -8,6 +8,6 @@ CustomOnAccept.args = {
   onAccept: (acceptedByScrolling) => {
     alert(`ACCEPTED! By scrolling? ${JSON.stringify(acceptedByScrolling)}`);
   },
-} as CookieConsentProps;
+} as CookieTailorProps;
 
 export { CustomOnAccept };

@@ -11,7 +11,8 @@ export const defaultState: CookieTailorState = {
   visible: false,
   style: {
     alignItems: "baseline",
-    background: "#353535",
+    borderTop: "2px solid #2B567D",
+    background: "#FFF",
     color: "white",
     display: "flex",
     flexWrap: "wrap",

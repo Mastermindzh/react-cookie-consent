@@ -1,9 +1,9 @@
 import Cookies from "js-cookie";
 import { ConditionalWrapper } from "./components/ConditionalWrapper";
 import { CookieTailor } from "./CookieTailor";
-import { POSITION_OPTIONS, VISIBILITY_OPTIONS } from "./models/constants";
+import { POSITION_OPTIONS, VISIBILITY_OPTIONS } from "./types";
 
-export * from "./models/constants";
+export * from "./types";
 export * from "./utilities";
 export { Cookies, CookieTailor, ConditionalWrapper };
 // backwards compatibility exports

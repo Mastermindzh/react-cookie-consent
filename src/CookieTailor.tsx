@@ -1,9 +1,10 @@
 import Cookies from "js-cookie";
 import React, { Component, CSSProperties } from "react";
+import FooterTailor from "./components/FooterTailor";
 import { ConditionalWrapper } from "./components/ConditionalWrapper";
 import { CookieTailorProps, defaultCookieTailorProps } from "./CookieTailor.props";
 import { CookieTailorState, defaultState } from "./CookieTailor.state";
-import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./models/constants";
+import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./types";
 import { getCookieTailorValue, getLegacyCookieName } from "./utilities";
 
 export class CookieTailor extends Component<CookieTailorProps, CookieTailorState> {
@@ -161,48 +162,27 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
     }
 
     const {
-      location,
-      style,
-      buttonStyle,
-      declineButtonStyle,
-      contentStyle,
-      disableStyles,
-      buttonText,
-      declineButtonText,
       containerClasses,
       contentClasses,
-      buttonClasses,
-      buttonWrapperClasses,
-      declineButtonClasses,
-      buttonId,
-      declineButtonId,
-      disableButtonStyles,
-      enableDeclineButton,
-      flipButtons,
-      ButtonComponent,
+      contentStyle,
+      customContainerAttributes,
+      customContentAttributes,
+      disableStyles,
+      labels,
+      location,
       overlay,
       overlayClasses,
       overlayStyle,
-      ariaAcceptLabel,
-      ariaDeclineLabel,
-      customContainerAttributes,
-      customContentAttributes,
-      customButtonProps,
-      customDeclineButtonProps,
-      customButtonWrapperAttributes,
+      style,
     } = this.props;
 
     let myStyle: CSSProperties = {};
-    let myButtonStyle: CSSProperties = {};
-    let myDeclineButtonStyle: CSSProperties = {};
     let myContentStyle: CSSProperties = {};
     let myOverlayStyle: CSSProperties = {};
 
     if (disableStyles) {
       // if styles are disabled use the provided styles (or none)
       myStyle = Object.assign({}, style);
-      myButtonStyle = Object.assign({}, buttonStyle);
-      myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
       myContentStyle = Object.assign({}, contentStyle);
       myOverlayStyle = Object.assign({}, overlayStyle);
     } else {
@@ -210,18 +190,6 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
       myStyle = Object.assign({}, { ...this.state.style, ...style });
       myContentStyle = Object.assign({}, { ...this.state.contentStyle, ...contentStyle });
       myOverlayStyle = Object.assign({}, { ...this.state.overlayStyle, ...overlayStyle });
-
-      // switch to disable JUST the button styles
-      if (disableButtonStyles) {
-        myButtonStyle = Object.assign({}, buttonStyle);
-        myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
-      } else {
-        myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
-        myDeclineButtonStyle = Object.assign(
-          {},
-          { ...this.state.declineButtonStyle, ...declineButtonStyle }
-        );
-      }
     }
 
     // syntactic sugar to enable user to easily select top / bottom
@@ -233,47 +201,6 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
       case POSITION_OPTIONS.BOTTOM:
         myStyle.bottom = "0";
         break;
-    }
-
-    const buttonsToRender = [];
-
-    // add decline button
-    enableDeclineButton &&
-      buttonsToRender.push(
-        <ButtonComponent
-          key="declineButton"
-          style={myDeclineButtonStyle}
-          className={declineButtonClasses}
-          id={declineButtonId}
-          aria-label={ariaDeclineLabel}
-          onClick={() => {
-            this.decline();
-          }}
-          {...customDeclineButtonProps}
-        >
-          {declineButtonText}
-        </ButtonComponent>
-      );
-
-    // add accept button
-    buttonsToRender.push(
-      <ButtonComponent
-        key="acceptButton"
-        style={myButtonStyle}
-        className={buttonClasses}
-        id={buttonId}
-        aria-label={ariaAcceptLabel}
-        onClick={() => {
-          this.accept();
-        }}
-        {...customButtonProps}
-      >
-        {buttonText}
-      </ButtonComponent>
-    );
-
-    if (flipButtons) {
-      buttonsToRender.reverse();
     }
 
     return (
@@ -293,12 +220,9 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
       >
         <div className={`${containerClasses}`} style={myStyle} {...customContainerAttributes}>
           <div style={myContentStyle} className={contentClasses} {...customContentAttributes}>
-            {this.props.children}
-          </div>
-          <div className={`${buttonWrapperClasses}`} {...customButtonWrapperAttributes}>
-            {buttonsToRender.map((button) => {
-              return button;
-            })}
+            <div>
+              <FooterTailor labels={labels || defaultCookieTailorProps.labels} />
+            </div>
           </div>
         </div>
       </ConditionalWrapper>

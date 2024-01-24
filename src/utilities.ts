@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { defaultCookieTailorName } from "./models/constants";
+import { defaultCookieTailorName } from "./types";
 
 /**
  * Returns the value of the consent cookie

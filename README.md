@@ -4,7 +4,7 @@
 
 ## Default look
 
-![default look](https://raw.githubusercontent.com/TPN-Labs/react-cookie-tailor/master/images/default.png)
+![default look](https://raw.githubusercontent.com/TPN-Labs/react-cookie-tailor/main/images/default.png)
 
 ## Installation
 
@@ -18,60 +18,75 @@ or use yarn:
 yarn add react-cookie-tailor
 ```
 
+## About
+
+Our teem was looking for a cookie consent solution that was easy to use and looked good. We initially found
+[react-cookie-consent,](https://github.com/Mastermindzh/react-cookie-consent) but it was not suitable for our needs.
+More precisely, we wanted to comply with the GDPR and CPRA regulations, which require that the user must be able to
+decline cookies.
+
+To summarize what these regulations require, you need to:
+- provide a compliant cookie policy
+- display a cookie consent banner at the user's first visit
+- store the proof of consent
+- block non-exempt cookies before obtaining the user's consent
+- release the cookies only after the user has given their consent
+
 ## Using it
 
 You can import the cookie bar like this:
 
 ```js
-import CookieTailor from "react-cookie-tailor";
+import { CookieTailor } from "react-cookie-tailor";
 ```
 
 Then you can use the component anywhere in your React app like so:
 
 ```jsx
-<CookieTailor>This website uses cookies to enhance the user experience.</CookieTailor>
+<CookieTailor/>
 ```
 
-You can optionally set some props like this (next chapter will show all props):
+### Translations
+
+You can provide translations for the text using the `labels` property. By default, the library will use the English
+translations. The default values can be found in `src/constants/defaultLabels.ts`.
+
+You can provide your own translations like so:
 
 ```js
-<CookieTailor
-  location="bottom"
-  buttonText="Sure man!!"
-  cookieName="myAwesomeCookieName2"
-  style={{ background: "#2B373B" }}
-  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-  expires={150}
->
-  This website uses cookies to enhance the user experience.{" "}
-  <span style={{ fontSize: "10px" }}>This bit of text is smaller :O</span>
-</CookieTailor>
+const labels = {
+  // ...
+  main: {
+    buttonAllow: "Allow all",
+    buttonDefault: "Allow default",
+    moreSettings: "More settings",
+    title: "This website uses cookies"
+  }
+  // ...
+};
+
+<CookieTailor labels={labels}/>
 ```
 
-One of the props (onAccept) is a function, this function will be called after the user has clicked the accept button. It is called with an object containing a boolean property `acceptedByScrolling` to indicate if the acceptance was triggered by the user scrolling You can provide a function like so:
+### Cookie categories
+
+By default, the library will use the following cookie categories:
+- `MANDATORY` for cookies that are necessary for the website to function
+- `MARKETING` for marketing cookies
+- `PREFRENCES` for cookies that store user preferences
+- `STATISTICS` for cookies that analyzes user statistics
+- `UNCLASSIFIED` for cookies that do not fall into any of the above categories
+
+You can enable/disable the categories by using the `categories` property. By default, all categories are enabled.
 
 ```js
-<CookieTailor
-  onAccept={(acceptedByScrolling) => {
-    if (acceptedByScrolling) {
-      // triggered if user scrolls past threshold
-      alert("Accept was triggered by user scrolling");
-    } else {
-      alert("Accept was triggered by clicking the Accept button");
-    }
-  }}
-></CookieTailor>
-```
+const categories = [
+  CookieCategory.PREFRENCES,
+  CookieCategory.STATISTICS,
+  CookieCategory.MARKETING,
+];
 
-If the decline button is enabled then the (onDecline) prop function can be used, this function will be called after the user has clicked the decline button. You can enable the button and provide a function like so:
-
-```js
-<CookieTailor
-  enableDeclineButton
-  onDecline={() => {
-    alert("nay!");
-  }}
-></CookieTailor>
+<CookieTailor categories={categories}/>
 ```
 
 ## Contributor information

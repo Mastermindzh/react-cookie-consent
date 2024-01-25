@@ -1,6 +1,5 @@
 import React from "react";
 import { Labels } from "../../types";
-import { defaultFontFamily } from "../../constants";
 
 interface FooterMainProps {
   labels: Labels;
@@ -8,31 +7,35 @@ interface FooterMainProps {
 
 export const FooterMain = ({ labels }: FooterMainProps) => {
   return (
-    <div>
-      <span
-        style={{
-          color: "#000",
-          fontFamily: defaultFontFamily,
-          fontWeight: 600,
-          letterSpacing: 0.25,
-          lineHeight: "1.6em",
-          marginBottom: "0.5em",
-        }}
-      >
-        {labels.main.title}
-      </span>{" "}
-      <br />
-      <span
-        style={{
-          color: "#000",
-          fontFamily: defaultFontFamily,
-          fontSize: "16px",
-          fontWeight: 300,
-          lineHeight: "1.6em",
-        }}
-      >
-        {labels.main.description}
-      </span>
-    </div>
+    <>
+      <div className={"rct-grid rct-grid-cols-1 rct-mb-2"}>
+        <div className={"rct-mb-2"}>
+          <span
+            className={
+              "rct-font-sans rct-text-black rct-font-bold rct-text-xl " +
+              "rct-tracking-wide rct-mb-2"
+            }
+          >
+            {labels.main.title}
+          </span>
+        </div>
+        <div>
+          <span
+            className={
+              "rct-font-sans rct-text-black rct-font-light rct-text-md rct-tracking-wide " +
+              "rct-leading-7"
+            }
+          >
+            {labels.main.descriptionStart}
+            &nbsp;
+            <a href={labels.main.descriptionPrivacyLink} className={"rct-font-bold"}>
+              {labels.main.descriptionPrivacyTitle}
+            </a>
+            &nbsp;
+            {labels.main.descriptionEnd}
+          </span>
+        </div>
+      </div>
+    </>
   );
 };

@@ -1,4 +1,4 @@
-export * from "../constants/defaultCookieName";
+export * from "./category";
 export * from "./labels";
 export * from "./positionOptions";
 export * from "./sameSiteOptions";

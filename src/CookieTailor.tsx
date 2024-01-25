@@ -6,6 +6,7 @@ import { CookieTailorProps, defaultCookieTailorProps } from "./CookieTailor.prop
 import { CookieTailorState, defaultState } from "./CookieTailor.state";
 import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./types";
 import { getCookieTailorValue, getLegacyCookieName } from "./utilities";
+import "./css/out/rct_style.css";
 
 export class CookieTailor extends Component<CookieTailorProps, CookieTailorState> {
   public static defaultProps = defaultCookieTailorProps;
@@ -169,6 +170,7 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
       customContentAttributes,
       disableStyles,
       labels,
+      cookiesCategories,
       location,
       overlay,
       overlayClasses,
@@ -220,8 +222,11 @@ export class CookieTailor extends Component<CookieTailorProps, CookieTailorState
       >
         <div className={`${containerClasses}`} style={myStyle} {...customContainerAttributes}>
           <div style={myContentStyle} className={contentClasses} {...customContentAttributes}>
-            <div>
-              <FooterTailor labels={labels || defaultCookieTailorProps.labels} />
+            <div className={"rct-container rct-place-self-center"}>
+              <FooterTailor
+                labels={labels || defaultCookieTailorProps.labels}
+                categories={cookiesCategories || defaultCookieTailorProps.cookiesCategories}
+              />
             </div>
           </div>
         </div>

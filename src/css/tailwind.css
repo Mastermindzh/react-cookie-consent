@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  [type="checkbox"] {
+    @apply rct-w-11 rct-h-0 rct-cursor-pointer rct-inline-block;
+    @apply focus:rct-outline-0 dark:focus:rct-outline-0;
+    @apply rct-border-0 dark:rct-border-0;
+    @apply focus:rct-ring-offset-transparent dark:focus:rct-ring-offset-transparent;
+    @apply focus:rct-ring-transparent dark:focus:rct-ring-transparent;
+    @apply focus-within:rct-ring-0 dark:focus-within:rct-ring-0;
+    @apply focus:rct-shadow-none dark:focus:rct-shadow-none;
+
+    @apply after:rct-absolute before:rct-absolute;
+    @apply after:rct-top-0 before:rct-top-0;
+    @apply after:rct-block before:rct-inline-block;
+    @apply before:rct-rounded-full after:rct-rounded-full;
+
+    @apply after:rct-content-[''] after:rct-w-5 after:rct-h-5 after:rct-mt-0.5 after:rct-ml-0.5;
+    @apply after:rct-shadow-md after:rct-duration-100;
+
+    @apply before:rct-content-[''] before:rct-w-10 before:rct-h-full;
+    @apply before:rct-shadow-[inset_0_0_#000];
+
+    @apply after:rct-bg-white dark:after:rct-bg-gray-50;
+    @apply before:rct-bg-gray-300 dark:before:rct-bg-gray-600;
+    @apply before:checked:rct-bg-lime-500 dark:before:checked:rct-bg-lime-500;
+    @apply checked:after:rct-duration-300 checked:after:rct-translate-x-4;
+
+    @apply disabled:after:rct-bg-opacity-75 disabled:rct-cursor-not-allowed;
+    @apply disabled:checked:before:rct-bg-opacity-40;
+  }
+}
+

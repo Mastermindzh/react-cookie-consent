@@ -1,12 +1,12 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import {
-  defaultCookieTailorName,
+  CookieCategory,
   Labels,
   POSITION_OPTIONS,
   SAME_SITE_OPTIONS,
   VISIBILITY_OPTIONS,
 } from "./types";
-import { defaultLabels } from "./constants";
+import { defaultCookieTailorName, defaultLabels } from "./constants";
 
 export interface CookieTailorProps {
   ButtonComponent?: any;
@@ -27,6 +27,7 @@ export interface CookieTailorProps {
   cookieName?: string;
   cookieSecurity?: boolean;
   cookieValue?: string | object;
+  cookiesCategories?: CookieCategory[];
   customButtonProps?: Object;
   customButtonWrapperAttributes?: Object;
   customContainerAttributes?: Object;
@@ -79,6 +80,11 @@ export const defaultCookieTailorProps = {
   contentStyle: {},
   cookieName: defaultCookieTailorName,
   cookieValue: "true",
+  cookiesCategories: [
+    CookieCategory.PREFRENCES,
+    CookieCategory.STATISTICS,
+    CookieCategory.MARKETING,
+  ],
   customContainerAttributes: {},
   customContentAttributes: {},
   customDeclineButtonProps: {},

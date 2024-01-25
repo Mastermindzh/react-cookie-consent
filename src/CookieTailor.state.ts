@@ -31,7 +31,7 @@ export const defaultState: CookieTailorState = {
     cursor: "pointer",
     flex: "0 0 auto",
     padding: "5px 10px",
-    margin: "15px",
+    margin: "25px",
   },
   declineButtonStyle: {
     background: "#c12a2a",
@@ -45,8 +45,10 @@ export const defaultState: CookieTailorState = {
     margin: "15px",
   },
   contentStyle: {
+    display: "flex",
     flex: "1 0 300px",
     margin: "15px",
+    justifyContent: "center",
   },
   overlayStyle: {
     position: "fixed",

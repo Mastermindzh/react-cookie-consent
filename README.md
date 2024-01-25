@@ -1,10 +1,18 @@
 # 👔 React Cookie Tailor 👔
 
-> ℹ️ This is a fork of [react-cookie-consent](https://github.com/Mastermindzh/react-cookie-consent)
+![Downloads](https://img.shields.io/npm/dm/react-cookie-tailor) ![Dependent repos (via libraries.io)](https://img.shields.io/librariesio/dependent-repos/npm/react-cookie-tailor) ![GitHub contributors](https://img.shields.io/github/contributors/TPN-Labs/react-cookie-tailor) ![Minified size](https://img.shields.io/bundlephobia/min/react-cookie-tailor) ![npm type definitions](https://img.shields.io/npm/types/react-cookie-tailor) ![license-mit](https://img.shields.io/badge/license-MIT-green)
+
+[![NPM](https://nodei.co/npm/react-cookie-tailor.png)](https://npmjs.org/package/react-cookie-tailor)
+
+> ℹ️ This is a fork of [react-cookie-tailor](https://github.com/Mastermindzh/react-cookie-tailor)
 
 ## Default look
 
 ![default look](https://raw.githubusercontent.com/TPN-Labs/react-cookie-tailor/main/images/default.png)
+
+## Demo
+
+You can find a demo [here](https://tpn-labs.github.io/react-cookie-tailor/).
 
 ## Installation
 
@@ -21,7 +29,7 @@ yarn add react-cookie-tailor
 ## About
 
 Our teem was looking for a cookie consent solution that was easy to use and looked good. We initially found
-[react-cookie-consent,](https://github.com/Mastermindzh/react-cookie-consent) but it was not suitable for our needs.
+[react-cookie-tailor,](https://github.com/Mastermindzh/react-cookie-tailor) but it was not suitable for our needs.
 More precisely, we wanted to comply with the GDPR and CPRA regulations, which require that the user must be able to
 decline cookies.
 

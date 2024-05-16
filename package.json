@@ -76,7 +76,7 @@
     "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "prettier": "^2.6.2",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "size-limit": "^7.0.8",

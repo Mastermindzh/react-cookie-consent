@@ -3,7 +3,7 @@ import { CookieConsentProps } from './CookieConsent.props';
 import { CookieConsentState } from './CookieConsent.state';
 import { SAME_SITE_OPTIONS } from './models/constants';
 export declare class CookieConsent extends Component<CookieConsentProps, CookieConsentState> {
-    static defaultProps: {
+    static readonly defaultProps: {
         disableStyles: boolean;
         hideOnAccept: boolean;
         hideOnDecline: boolean;

@@ -87,7 +87,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * Sets two cookies to handle incompatible browsers, more details:
    * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
    */
-  setCookie(cookieName: string, cookieValue: string | object) {
+  setCookie(cookieName: string, cookieValue: string) {
     const { extraCookieOptions, expires, sameSite } = this.props;
     let { cookieSecurity } = this.props;
 
@@ -219,7 +219,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
         myDeclineButtonStyle = Object.assign(
           {},
-          { ...this.state.declineButtonStyle, ...declineButtonStyle }
+          { ...this.state.declineButtonStyle, ...declineButtonStyle },
         );
       }
     }
@@ -252,7 +252,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
           {...customDeclineButtonProps}
         >
           {declineButtonText}
-        </ButtonComponent>
+        </ButtonComponent>,
       );
 
     // add accept button
@@ -269,7 +269,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         {...customButtonProps}
       >
         {buttonText}
-      </ButtonComponent>
+      </ButtonComponent>,
     );
 
     if (flipButtons) {

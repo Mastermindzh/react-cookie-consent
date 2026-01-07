@@ -63,16 +63,16 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mastermindzh/prettier-config": "^1.1.0",
-    "@mui/material": "^5.18.0",
+    "@mui/material": "^7.3.6",
     "@size-limit/preset-small-lib": "^12.0.0",
     "@storybook/addon-essentials": "^8.6.15",
     "@storybook/react": "^8.6.15",
-    "@storybook/react-vite": "^8.6.14",
+    "@storybook/react-vite": "^8.6.15",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^24.10.4",
+    "@types/node": "^25.0.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^5.1.2",
     "gh-pages": "^6.3.0",
     "husky": "^9.1.7",
     "prettier": "^3.7.4",
@@ -87,11 +87,11 @@
     "vite-plugin-dts": "^4.3.0"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "react-dom": ">=16"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20.16"
   },
   "size-limit": [
     {

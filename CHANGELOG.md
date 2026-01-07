@@ -5,6 +5,48 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [[10.0.0]](https://github.com/Mastermindzh/react-cookie-consent/releases/tag/10.0.0)
+
+**Major infrastructure modernization and migration to Vite:**
+
+### Breaking Changes
+
+- **BREAKING**: Updated minimum Node.js requirement from >=10 to >=20.16
+- **BREAKING**: Updated React peer dependencies from >=16 to >=18
+- **BREAKING**: Migrated build system from TSDX to Vite
+- **BREAKING**: Changed output bundle names from `cjs.production.min.js`/`esm.js` to `umd.js`/`es.js`
+- **BREAKING**: Updated `cookieValue` and `declineCookieValue` props to only accept string values (removed object support)
+
+### New Features
+
+- Added accessibility improvements: keyboard navigation, ARIA labels, and proper focus management for overlay
+- Improved browser compatibility by replacing `window` references with `globalThis`
+- Enhanced TypeScript support with updated type definitions
+
+### Dependencies
+
+- **Major**: Upgraded React from 18.x to 19.x
+- **Major**: Upgraded js-cookie from 2.2.1 to 3.0.5
+- **Major**: Upgraded Storybook from 6.x to 8.6.15 with new story format (CSF 3.0)
+- **Major**: Upgraded TypeScript from 3.9.10 to 5.9.3
+- Updated @mui/material from 5.9.2 to 7.3.6 (dev dependency only)
+- Updated numerous dev dependencies to latest versions
+
+### Infrastructure
+
+- **Migration**: Complete migration from TSDX to Vite for faster builds and modern tooling
+- **CI/CD**: Updated GitHub Actions workflows to use Node.js 20/22 instead of 10/12/14
+- **CI/CD**: Improved workflow efficiency with proper npm caching and `npm ci`
+- **Security**: Fixed GitHub Actions to use full commit SHA hashes instead of tag references
+- **Build**: Added proper Vite configuration for library builds with TypeScript declarations
+- **Storybook**: Migrated to modern Storybook 8.x with Vite integration and updated story format
+
+### Code Quality
+
+- Modernized all Storybook stories to use CSF 3.0 format with proper TypeScript types
+- Improved code consistency with readonly static props and better formatting
+- Enhanced accessibility with proper event handling and ARIA attributes
+
 ## [[9.0.0]((https://github.com/Mastermindzh/react-cookie-consent/releases/tag/9.0.0)]
 
 Made all props optional and fixed documentation.

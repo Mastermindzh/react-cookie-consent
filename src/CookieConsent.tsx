@@ -7,7 +7,7 @@ import { POSITION_OPTIONS, SAME_SITE_OPTIONS, VISIBILITY_OPTIONS } from "./model
 import { getCookieConsentValue, getLegacyCookieName } from "./utilities";
 
 export class CookieConsent extends Component<CookieConsentProps, CookieConsentState> {
-  public static defaultProps = defaultCookieConsentProps;
+  public static readonly defaultProps = defaultCookieConsentProps;
 
   state: CookieConsentState = defaultState;
 
@@ -19,7 +19,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
       this.setState({ visible: true });
       // if acceptOnScroll is set to true and (cookie is undefined or debug is set to true), add a listener.
       if (this.props.acceptOnScroll) {
-        window.addEventListener("scroll", this.handleScroll, { passive: true });
+        globalThis.addEventListener("scroll", this.handleScroll, { passive: true });
       }
     }
   }
@@ -87,12 +87,12 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
    * Sets two cookies to handle incompatible browsers, more details:
    * https://web.dev/samesite-cookie-recipes/#handling-incompatible-clients
    */
-  setCookie(cookieName: string, cookieValue: string | object) {
+  setCookie(cookieName: string, cookieValue: string) {
     const { extraCookieOptions, expires, sameSite } = this.props;
     let { cookieSecurity } = this.props;
 
     if (cookieSecurity === undefined) {
-      cookieSecurity = window.location ? window.location.protocol === "https:" : true;
+      cookieSecurity = globalThis.location ? globalThis.location.protocol === "https:" : true;
     }
 
     const cookieOptions = { expires, ...extraCookieOptions, sameSite, secure: cookieSecurity };
@@ -142,7 +142,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
   removeScrollListener = () => {
     const { acceptOnScroll } = this.props;
     if (acceptOnScroll) {
-      window.removeEventListener("scroll", this.handleScroll);
+      globalThis.removeEventListener("scroll", this.handleScroll);
     }
   };
 
@@ -219,7 +219,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
         myDeclineButtonStyle = Object.assign(
           {},
-          { ...this.state.declineButtonStyle, ...declineButtonStyle }
+          { ...this.state.declineButtonStyle, ...declineButtonStyle },
         );
       }
     }
@@ -252,7 +252,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
           {...customDeclineButtonProps}
         >
           {declineButtonText}
-        </ButtonComponent>
+        </ButtonComponent>,
       );
 
     // add accept button
@@ -269,7 +269,7 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         {...customButtonProps}
       >
         {buttonText}
-      </ButtonComponent>
+      </ButtonComponent>,
     );
 
     if (flipButtons) {
@@ -286,6 +286,15 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
             onClick={() => {
               this.overlayClick();
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                this.overlayClick();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Close cookie consent banner"
           >
             {children}
           </div>

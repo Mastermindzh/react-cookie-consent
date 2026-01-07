@@ -20,8 +20,8 @@ export interface CookieConsentProps {
   buttonText?: string | ReactNode | Function;
   declineButtonText?: string | ReactNode | Function;
   cookieName?: string;
-  cookieValue?: string | object;
-  declineCookieValue?: string | object;
+  cookieValue?: string;
+  declineCookieValue?: string;
   setDeclineCookie?: boolean;
   debug?: boolean;
   expires?: number;

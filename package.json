@@ -1,6 +1,6 @@
 {
   "name": "react-cookie-consent",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "A small, simple and customizable cookie consent bar for use in React applications.",
   "keywords": [
     "react",
@@ -21,8 +21,8 @@
     "name": "Rick van Lieshout",
     "email": "info@rickvanlieshout.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/react-cookie-consent.esm.js",
+  "main": "dist/react-cookie-consent.umd.js",
+  "module": "dist/react-cookie-consent.es.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -30,15 +30,14 @@
   ],
   "scripts": {
     "analyze": "size-limit --why",
-    "build": "tsdx build",
-    "build-storybook": "build-storybook",
-    "install-husky": "npx husky install",
-    "lint": "tsdx lint",
+    "build": "vite build",
+    "build-storybook": "storybook build",
+    "lint": "tsc --noEmit",
     "major": "npm --no-git-tag-version version major",
     "minor": "npm --no-git-tag-version version minor",
     "organize": "npx format-package -w && npx sort-package-json",
     "patch": "npm --no-git-tag-version version patch",
-    "prepare": "tsdx build",
+    "prepare": "vite build",
     "prettier": "prettier 'src/**/*.{js*,ts*,htm*,md,scss}' --write",
     "publish": "npx np",
     "release": "npm run build && git add -A && git tag $npm_package_version && git commit -m \"release $npm_package_version\" && git push && git push --tags && npm publish",
@@ -46,9 +45,9 @@
     "release-minor": "npm run minor && npm run release",
     "release-patch": "npm run patch && npm run release",
     "size": "size-limit",
-    "start": "tsdx watch",
-    "storybook": "start-storybook -p 6006",
-    "test": "tsdx test --passWithNoTests",
+    "start": "vite build --watch",
+    "storybook": "storybook dev -p 6006",
+    "test": "echo \"No tests yet\"",
     "preversion": "grep \"\\[$npm_package_version\\]\" CHANGELOG.md > /dev/null || ( echo 'You need to add an entry in CHANGELOG.md for this version.' && false )"
   },
   "lint-staged": {
@@ -58,45 +57,49 @@
   },
   "prettier": "@mastermindzh/prettier-config",
   "dependencies": {
-    "js-cookie": "^2.2.1"
+    "js-cookie": "^3.0.5"
   },
   "devDependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mastermindzh/prettier-config": "^1.0.0",
-    "@mui/material": "^5.9.2",
-    "@size-limit/preset-small-lib": "^7.0.8",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addons": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@types/js-cookie": "^2.2.6",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "babel-loader": "^8.2.5",
-    "gh-pages": "^4.0.0",
-    "husky": "^8.0.1",
-    "prettier": "^2.6.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "size-limit": "^7.0.8",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.0",
-    "typescript": "^3.9.10"
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mastermindzh/prettier-config": "^1.1.0",
+    "@mui/material": "^7.3.6",
+    "@size-limit/preset-small-lib": "^12.0.0",
+    "@storybook/addon-essentials": "^8.6.15",
+    "@storybook/react": "^8.6.15",
+    "@storybook/react-vite": "^8.6.15",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.7.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-is": "^19.0.0",
+    "size-limit": "^12.0.0",
+    "storybook": "^8.6.15",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1",
+    "vite-plugin-dts": "^4.3.0"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20.16"
   },
   "size-limit": [
     {
-      "path": "dist/react-cookie-consent.cjs.production.min.js",
+      "path": "dist/react-cookie-consent.umd.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/react-cookie-consent.esm.js",
+      "path": "dist/react-cookie-consent.es.js",
       "limit": "10 KB"
     }
   ]

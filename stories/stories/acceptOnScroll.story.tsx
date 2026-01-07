@@ -28,7 +28,7 @@ export const AcceptOnScroll: Story = {
   render: (args) => (
     <>
       <Intro />
-      {Array.from(Array(25).keys()).map((index) => (
+      {Array.from(new Array(25).keys()).map((index) => (
         <p key={index}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates ipsa sequi soluta
           mollitia illum, hic quaerat ipsum sint odit delectus magni neque sunt adipisci culpa harum

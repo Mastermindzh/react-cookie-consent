@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({ jsxRuntime: "classic" }),
     dts({
       insertTypesEntry: true,
     }),

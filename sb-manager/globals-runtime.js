@@ -41202,7 +41202,7 @@ qe();
 var aB = P(Yn(), 1), dn = P(rB(), 1);
 
 // src/manager-api/version.ts
-var nB = "8.6.17";
+var nB = "8.6.18";
 
 // src/manager-api/modules/versions.ts
 var { VERSIONCHECK: d1e } = z, oB = (0, aB.default)(1)(() => {

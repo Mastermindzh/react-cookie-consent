@@ -1,4 +1,4 @@
-import { default as React, Component } from '../node_modules/react';
+import { default as React, Component } from 'react';
 import { CookieConsentProps } from './CookieConsent.props';
 import { CookieConsentState } from './CookieConsent.state';
 import { SAME_SITE_OPTIONS } from './models/constants';

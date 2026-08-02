@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from '../../node_modules/react';
+import { FunctionComponent, ReactNode } from 'react';
 type Props = {
     condition?: boolean;
     wrapper: (_: ReactNode) => any;

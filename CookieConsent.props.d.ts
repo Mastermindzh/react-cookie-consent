@@ -1,4 +1,4 @@
-import { default as React, ReactNode } from '../node_modules/react';
+import { default as React, ReactNode } from 'react';
 import { SAME_SITE_OPTIONS } from './models/constants';
 export interface CookieConsentProps {
     children?: ReactNode;

@@ -11,3 +11,6 @@ export const parameters = {
     },
   },
 };
+
+// autodocs moved from main.js docs.autodocs to preview tags in Storybook 9+
+export const tags = ["autodocs"];

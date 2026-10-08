@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "* * * * 6"
+  ],
+  "timezone": "Europe/Amsterdam",
+  "prConcurrentLimit": 1,
+  "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "groupName": "all dependencies",
+      "groupSlug": "all",
+      "matchPackageNames": [
+        "*"
+      ]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}
